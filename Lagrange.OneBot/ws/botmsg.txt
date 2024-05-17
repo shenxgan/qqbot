@@ -1,0 +1,286 @@
+猜数游戏###猜数游戏：https://python-abc.xyz/basic/8301
+统计字符数量;字符数量###统计字符数量：https://python-abc.xyz/basic/1376
+九九乘法表;九九;乘法表;9*9;99###九九乘法表：https://python-abc.xyz/basic/9025
+注册登录;注册登录系统###注册登录系统_类实现：https://python-abc.xyz/basic/4007
+水仙花数;水仙花###水仙花数：https://python-abc.xyz/basic/6142
+求阶乘;阶乘###求阶乘：https://python-abc.xyz/basic/1352
+杨辉三角形;杨辉三角;杨辉###杨辉三角形：https://python-abc.xyz/basic/2668
+检测密码强度;密码强度###检测密码强度：https://python-abc.xyz/basic/1092
+检测自己的 Python 等级;python等级;py等级;python level###检测自己的 Python 等级：https://python-abc.xyz/basic/9103
+斐波那契数列;斐波那契;fibonacci;fib###斐波那契数列：https://python-abc.xyz/basic/6639\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]
+回文数;回文###回文数：https://python-abc.xyz/basic/2989
+字符串加密;加密###字符串加密：https://python-abc.xyz/basic/1253
+石头剪刀布###石头剪刀布：https://python-abc.xyz/basic/1420
+素数;质数###素数：https://python-abc.xyz/basic/6708
+非利克瑞尔数;利克瑞尔数;利克瑞尔###非利克瑞尔数：https://python-abc.xyz/basic/1853
+读写文件;文件读写;读文件;写文件;文件操作###读写文件：https://python-abc.xyz/basic/6887
+十进制转二进制;转二进制###十进制转二进制：https://python-abc.xyz/basic/5844
+练习题;基础题;基础练习题###网站汇总了一些练习题，供参考：https://python-abc.xyz/basic/8301\n猜数游戏：https://python-abc.xyz/basic/8301\n九九乘法表：https://python-abc.xyz/basic/9025\n求阶乘：https://python-abc.xyz/basic/1352\n素数：https://python-abc.xyz/basic/6708\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135\n冒泡排序：https://python-abc.xyz/basic/9746\n……
+
+矩阵转置###矩阵转置：https://python-abc.xyz/basic/4322
+矩阵相加###矩阵相加：https://python-abc.xyz/basic/8961
+矩阵相乘###矩阵相乘：https://python-abc.xyz/basic/3984
+矩阵;数学矩阵###矩阵转置 https://python-abc.xyz/basic/4322\n矩阵相加 https://python-abc.xyz/basic/8961\n矩阵相乘 https://python-abc.xyz/basic/3984
+
+随机对称;随机对称图形;对称图形###海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n[CQ:image,file=4144_1.gif,subType=0,url=https://python-abc.xyz/static/img/4144_1.gif]
+时钟;数字时钟###海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n[CQ:image,file=7764_1.gif,subType=0,url=https://python-abc.xyz/static/img/7764_1.gif]
+螺旋;黄金螺旋;黄金螺旋线;黄金矩形;螺旋线###海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]
+太极图;太极;阴阳;阴阳图###海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=9354_1.gif,subType=0,url=https://python-abc.xyz/static/img/9354_1.gif]
+海龟绘图;海龟;海归;海龟画图;绘图;画图;海归画图;海归绘图;turtle###海龟绘图官网地址：https://docs.python.org/zh-cn/3/library/turtle.html\n海龟绘图代码示例：\n海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]\n海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=9354_1.gif,subType=0,url=https://python-abc.xyz/static/img/9354_1.gif]
+
+选择排序###选择排序：https://python-abc.xyz/basic/5982
+冒泡排序;bubble###冒泡排序：https://python-abc.xyz/basic/9746
+插入排序###插入排序：https://python-abc.xyz/basic/7394
+归并排序###归并排序：https://python-abc.xyz/basic/6936
+快速排序;快排###快速排序：https://python-abc.xyz/basic/3002
+指鹿为马排序;指鹿为马###指鹿为马排序：https://python-abc.xyz/basic/3982
+排序算法###选择排序：https://python-abc.xyz/basic/5982\n冒泡排序：https://python-abc.xyz/basic/9746\n插入排序：https://python-abc.xyz/basic/7394\n归并排序：https://python-abc.xyz/basic/6936\n快速排序：https://python-abc.xyz/basic/3002\n指鹿为马排序：https://python-abc.xyz/basic/3982
+
+爬虫;python爬虫###爬虫-正则解析：https://python-abc.xyz/basic/5995\n爬虫-BeautifulSoup解析：https://python-abc.xyz/basic/5642\n爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135\n爬虫-Selenium的使用：https://python-abc.xyz/code/5127
+爬虫正则###爬虫-正则：https://python-abc.xyz/basic/5995
+beautifulsoup;bs4###爬虫-BeautifulSoup：https://python-abc.xyz/basic/5642
+豆瓣电影top250;豆瓣爬虫;爬虫豆瓣;top250###爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135
+
+数独;sudoku###数独在线：https://python-abc.xyz/sudoku/\nPython 数独求解代码：https://python-abc.xyz/basic/3765\nPython 数独生成代码：https://python-abc.xyz/basic/6625\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/sudoku.png]
+数独求解;求解数独###数独求解：https://python-abc.xyz/basic/3765
+数独生成;生成数独###数独生成：https://python-abc.xyz/basic/6625
+
+pygame;游戏;python 游戏;game###pygame 是跨平台 Python 模块，专为电子游戏设计。\n贪吃蛇代码：https://python-abc.xyz/basic/4882\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/4882_1.gif]\n俄罗斯方块代码：https://python-abc.xyz/basic/6270\n[CQ:image,file=6270_1.gif,subType=0,url=https://python-abc.xyz/static/img/6270_1.gif]
+PyGame-贪吃蛇;贪吃蛇;snake###PyGame-贪吃蛇：https://python-abc.xyz/basic/4882\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/4882_1.gif]
+PyGame-俄罗斯方块;俄罗斯方块;俄罗斯;tetris###PyGame-俄罗斯方块：https://python-abc.xyz/basic/6270\n[CQ:image,file=6270_1.gif,subType=0,url=https://python-abc.xyz/static/img/6270_1.gif]
+
+群通知机器人;群机器人通知;webhook;webhook通知###企业微信群机器人：https://python-abc.xyz/code/7887\n飞书群机器人：https://python-abc.xyz/code/6743\n钉钉群机器人：https://python-abc.xyz/code/9387
+企业微信群机器人;企业微信群###企业微信群机器人：https://python-abc.xyz/code/7887
+飞书群机器人;飞书群;飞书###飞书群机器人：https://python-abc.xyz/code/6743
+钉钉群机器人;钉钉群;钉钉###钉钉群机器人：https://python-abc.xyz/code/9387
+
+文字转二维码;转二维码;qrcode;二维码###文字转二维码：https://python-abc.xyz/basic/9604
+prettytable;输出表格;表格输出###PrettyTable 的使用：https://python-abc.xyz/code/2001
+装饰器;@语法糖;@语法;@;wrapper;decorator###装饰器：https://python-abc.xyz/code/4578
+发送邮件;邮件;yagmail;sendmail###发送邮件：https://python-abc.xyz/code/1363
+日期格式转换;strftime;strptime;fromtimestamp;timedelta;字符串转日期;日期转字符串;日期加减;时间加减;转时间戳###日期格式转换：https://python-abc.xyz/code/8596
+字符串格式化;f-string;fstring###字符串格式化：https://python-abc.xyz/code/7857
+PyMySQL 的封装使用;pymysql;python mysql###PyMySQL 的封装使用：https://python-abc.xyz/code/0409
+PyMongo 的使用;pymongo;python mongo;python mongodb###PyMongo 的使用：https://python-abc.xyz/code/5894
+mongo;mongodb###MongoDB 是一种面向文档的数据库管理系统\n官网下载地址：https://www.mongodb.com/try/download/community\npymongo使用示例：https://python-abc.xyz/code/5894
+多线程的简单使用;多线程;threading###多线程的简单使用：https://python-abc.xyz/code/1710
+Markdown 转 HTML;markdown;python markdown###Markdown 转 HTML：https://python-abc.xyz/code/1172
+正则表达式;正则;re;import re;findall;.*;\d+###正则表达式：https://python-abc.xyz/code/2854\n[CQ:image,file=2854_1.png,subType=0,url=https://python-abc.xyz/static/img/2854_1.png]
+Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 的使用：https://python-abc.xyz/code/5127
+
+基础语法;语法;python语法;变量名规则###入门1/7-基础语法：https://python-abc.xyz/python/0083
+数据类型;字符串常用方法;列表常用方法;字典常用方法###入门2/7-数据类型：https://python-abc.xyz/python/6668
+运算;算术运算;比较运算;赋值运算;逻辑运算;成员运算;身份运算###入门3/7-运算：https://python-abc.xyz/python/1736
+条件语句;if 语句;if###入门4/7-条件语句：https://python-abc.xyz/python/8369
+循环语句;循环;for 语句;while 语句;for;while###入门5/7-循环语句：https://python-abc.xyz/python/0684
+函数;函数定义;函数参数;默认值参数;参数默认值;关键字参数;位置参数;函数返回值;函数调用;def###入门6/7-函数：https://python-abc.xyz/python/0508
+类;class;对象;类定义;实例;实例对象;类实例;实例初始化;实例属性;实例方法;实例函数;类的继承;类继承;继承###入门7/7-类：https://python-abc.xyz/python/4807
+
+for-else;try-else###循环与异常中的 else 子句：https://python-abc.xyz/python/7118
+match;case;match-case;match 语句;匹配语句;模式匹配###match 语句（3.10 新增）：https://python-abc.xyz/python/2440
+函数注解;->;__annotations__;annotations###函数注解：https://python-abc.xyz/python/2719
+简单语句###简单语句：https://python-abc.xyz/python/8230
+复合语句###复合语句：https://python-abc.xyz/python/8230
+
+pycharm;pc###PyCharm 是专业的 Python IDE，支持智能代码补全、实时错误检查和快速修复，等等…\nPyCharm 下载地址：https://www.jetbrains.com/zh-cn/pycharm/download/#section=windows\n下载社区版即可
+入门;小白;我是小白;萌新;我是萌新;菜鸡互啄;教程;入门教程;入门视频;python入门###1. 看书籍、看文档：\n	官方教程：https://docs.python.org/zh-cn/3/tutorial/index.html\n	菜鸟教程：https://www.runoob.com/python3/python3-tutorial.html\n	w3school 在线教程：https://www.w3school.com.cn/python/index.asp\n	我整理的快速入门：https://python-abc.xyz/python/0083\n	书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可；群文件中有相关的电子书\n2. 看视频：\n	B站：https://search.bilibili.com/all?keyword=python&order=dm
+菜鸟教程;菜鸟;我是菜鸟;我是菜鸡###菜鸟教程(www.runoob.com)提供了编程的基础技术教程, 介绍了HTML、CSS、Javascript、Python，Java，Ruby，C，PHP , MySQL等各种编程语言的基础知识。\n菜鸟教程 Python 地址：https://www.runoob.com/python3/python3-tutorial.html
+vscode###Visual Studio Code 是一款由微软开发且跨平台的免费源代码编辑器。\n下载地址：https://code.visualstudio.com/download
+python;安装python;python安装;python下载;官网;官网地址;python下载地址;官方文档###Python 是一种解释型、交互式、面向对象的编程语言。 它包含了模块、异常、动态类型、高层级动态数据类型以及类等特性。 在面向对象编程以外它还支持多种编程范式，例如过程式和函数式编程等。 Python 结合了超强的功能和极清晰的语法。 它带有许多系统调用和库以及多种窗口系统的接口，并且能用 C 或 C++ 来进行扩展。 它还可用作需要可编程接口的应用程序的扩展语言。 最后，Python 非常易于移植：它可以在包括 Linux 和 macOS 在内的许多 Unix 变种以及 Windows 上运行。\n官方文档地址：https://docs.python.org/zh-cn/3/\n下载地址：https://www.python.org/downloads/
+书籍;入门书籍;书籍推荐;推荐书籍;电子书###书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可；群文件中有相关的电子书
+w3school###在 W3School，你可以找到你所需要的所有的网站建设教程。从基础的 HTML 到 CSS，乃至进阶的 XML、SQL、JS、PHP 和 ASP.NET。\nw3school 在线 Python 教程地址：https://www.w3school.com.cn/python/index.asp
+liaoxuefeng;廖雪峰###研究互联网产品和技术，提供原创中文精品教程.\n廖雪峰 Python教程地址：https://www.liaoxuefeng.com/wiki/1016959663602400
+
+pythonic###Pythonic 指一个思路或一段代码紧密遵循了 Python 语言最常用的风格和理念，而不是使用其他语言中通用的概念来实现代码。
+引用计数###引用计数：对特定对象的引用的数量。当一个对象的引用计数降为零时，所分配资源将被释放。引用计数对 Python 代码来说通常是不可见的，但它是 CPython 实现的一个关键元素。
+集合推导式###集合推导式：处理一个可迭代对象中的所有或部分元素并返回结果集合的一种紧凑写法。 results = {c for c in 'abracadabra' if c not in 'abc'} 将生成字符串集合 {'r', 'd'}。
+slice;切片###切片：通常只包含了特定 sequence/序列 的一部分的对象。切片是通过使用下标标记来创建的，在 [] 中给出几个以冒号分隔的数字，例如 variable_name[1:3:5]。
+虚拟环境;venv###虚拟环境：一种采用协作式隔离的运行时环境，允许 Python 用户和应用程序在安装和升级 Python 分发包时不会干扰到同一系统上运行的其他 Python 应用程序的行为。
+zen of python;python 之禅;import this;zen;禅###Python 之禅：列出 Python 设计的原则与哲学，有助于理解与使用这种语言。查看其具体内容可在交互模式提示符中输入 "import this"。
+>>>;交互式终端;python交互###交互式终端中默认的 Python 提示符。往往会显示于能以交互方式在解释器里执行的样例代码之前。
+bytecode;字节码###字节码：Python 源代码会被编译为字节码，即 CPython 解释器中表示 Python 程序的内部代码。字节码还会缓存在 .pyc 文件中，这样第二次执行同一文件时速度更快（可以免去将源码重新编译为字节码）。
+context manager;上下文管理器;with;context###上下文管理器在 with 语句中使用，通过定义 __enter__() 和 __exit__() 方法来控制环境状态的对象。\nwith 语句：https://docs.python.org/zh-cn/3/reference/compound_stmts.html#with
+coroutine;协程;async/await;async;await;asyncio;异步###协程是子例程的更一般形式。 子例程可以在某一点进入并在另一点退出。协程则可以在许多不同的点上进入、退出和恢复。它们可通过 async def 语句来实现。\n协程示例代码：https://python-abc.xyz/code/5134
+cpython###CPython：Python 编程语言的规范实现，在 python.org 上发布。"CPython" 一词用于在必要时将此实现与其他实现例如 Jython 或 IronPython 相区别。
+
+字典推导式###字典推导式：处理一个可迭代对象中的所有或部分元素并返回结果字典的一种紧凑写法。 results = {n: n ** 2 for n in range(10)} 将生成一个由键 n 到值 n ** 2 的映射构成的字典。
+dictionary view;字典视图###从 dict.keys(), dict.values() 和 dict.items() 返回的对象被称为字典视图。它们提供了字典条目的一个动态视图，这意味着当字典改变时，视图也会相应改变。要将字典视图强制转换为真正的列表，可使用 list(dictview)。\n字典视图对象：https://docs.python.org/zh-cn/3/library/stdtypes.html#dict-views
+docstring;文档字符串###文档字符串：作为类、函数或模块之内的第一个表达式出现的字符串字面值。它在代码执行时会被忽略，但会被解释器识别并放入所在类、函数或模块的 __doc__ 属性中。由于它可用于代码内省，因此是对象存放文档的规范位置。
+duck-typing;鸭子类型###鸭子类型：指一种编程风格，它并不依靠查找对象类型来确定其是否具有正确的接口，而是直接调用或使用其方法或属性（“看起来像鸭子，叫起来也像鸭子，那么肯定就是鸭子。”）由于强调接口而非特定类型，设计良好的代码可通过允许多态替代来提升灵活性。
+向下取整除法;向下取整###向下取整除法：向下舍入到最接近的整数的数学除法。向下取整除法的运算符是 // 。例如，表达式 11 // 4 的计算结果是 2 ，而与之相反的是浮点数的真正除法返回 2.75 。注意 (-11) // 4 会返回 -3 因为这是 -2.75 向下 舍入得到的结果。
+function annotation;函数标注###函数标注：即针对函数形参或返回值的 annotation。函数标注通常用于类型提示。
+__future__;future 语句;future###future 语句, from __future__ import <feature> 指示编译器使用将在未来的 Python 发布版中成为标准的语法和语义来编译当前模块。
+垃圾回收;gc###垃圾回收：释放不再被使用的内存空间的过程。Python 是通过引用计数和一个能够检测和打破循环引用的循环垃圾回收器来执行垃圾回收的。可以使用 gc 模块来控制垃圾回收器。
+generator;生成器###生成器返回一个 generator iterator 的函数。它看起来很像普通函数，不同点在于其包含 yield 表达式以便产生一系列值供给 for-循环使用或是通过 next() 函数逐一获取。
+gil;全局解释器锁###GIL：CPython 解释器所采用的一种机制，它确保同一时刻只有一个线程在执行 Python bytecode。\nhttps://docs.python.org/zh-cn/3/glossary.html#term-global-interpreter-lock\nhttps://python-abc.xyz/python/0512
+hashable;可哈希###可哈希：一个对象的哈希值如果在其生命周期内绝不改变，就被称为 可哈希 （它需要具有 __hash__() 方法），并可以同其他对象进行比较（它需要具有 __eq__() 方法）。可哈希对象必须具有相同的哈希值比较结果才会相同。\nhttps://docs.python.org/zh-cn/3/glossary.html#term-hashable
+idle###IDLE：Python 的 IDE，“集成开发与学习环境”的英文缩写。是 Python 标准发行版附带的基本编辑器和解释器环境。
+immutable;不可变对象;不可变###不可变对象：具有固定值的对象。不可变对象包括数字、字符串和元组。这样的对象不能被改变。如果必须存储一个不同的值，则必须创建新的对象。它们在需要常量哈希值的地方起着重要作用，例如作为字典中的键。
+interactive;交互###Python 带有一个交互式解释器，即你可以在解释器提示符后输入语句和表达式，立即执行并查看其结果。只需不带参数地启动 python 命令（也可以在你的计算机开始菜单中选择相应菜单项）。在测试新想法或检验模块和包的时候用这种方式会非常方便（请记得使用 help(x)）。
+iterator;迭代器###迭代器：用来表示一连串数据流的对象。重复调用迭代器的 __next__() 方法（或将其传给内置函数 next()）将逐个返回流中的项。当没有数据可用时则将引发 StopIteration 异常。
+lambda;匿名函数;lambda 表达式###lambda：由一个单独 expression 构成的匿名内联函数，表达式会在调用时被求值。创建 lambda 函数的句法为 lambda [parameters]: expression\nhttps://python-abc.xyz/python/2743
+列表推导式###列表推导式：处理一个序列中的所有或部分元素并返回结果列表的一种紧凑写法。result = [x ** 2 for x in range(10)] 将生成一个 0 到 9 的平方列表。
+魔术方法;特殊方法###魔术方法/特殊方法：一种由 Python 隐式调用的方法，用来对某个类型执行特定操作例如相加等等。这种方法的名称的首尾都为双下划线。\nhttps://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames
+metaclass;元类###元类：一种用于创建类的类。\nhttps://docs.python.org/zh-cn/3/reference/datamodel.html#metaclasses
+module;模块###模块：此对象是 Python 代码的一种组织单位。各模块具有独立的命名空间，可包含任意 Python 对象。模块可通过 importing 操作被加载到 Python 中。
+mutable;可变对象;可变###可变对象可以在其 id() 保持固定的情况下改变其取值。
+namespace;命名空间###命名空间是存放变量的场所。命名空间有局部、全局和内置的，还有对象中的嵌套命名空间（在方法之内）。命名空间通过防止命名冲突来支持模块化。
+pep###“Python 增强提议”的英文缩写。一个 PEP 就是一份设计文档，用来向 Python 社区提供信息，或描述一个 Python 的新增特性及其进度或环境。\nhttps://peps.python.org/pep-0000/
+pep8;Python 代码风格指南;Python 代码风格;代码风格###Python 代码风格指南：https://peps.python.org/pep-0008/
+mysql###MySQL 是一个关系型数据库管理系统\n官网下载地址：https://dev.mysql.com/downloads/installer/\n客户端 Navicat 下载地址：https://www.navicat.com.cn/download/navicat-premium\npymysql 使用示例：https://python-abc.xyz/code/0409
+xpath###XPath 为 XML 路径语言，它是一种用来确定 XML 文档中某部分位置的计算机语言。\n浏览器中可通过按 F12 之后鼠标右键复制出 xpath 路径
+requests###Requests 是一个优雅而简单的 Python HTTP 库，专为人类构建。\n官网地址：https://requests.readthedocs.io/en/latest/\nrequests 爬虫示例：https://python-abc.xyz/basic/5995
+celery;芹菜###Celery - 分布式任务队列，是一个专注于实时处理的任务队列，同时也支持任务调度。\n官网地址：https://docs.celeryq.dev/en/stable/
+django###Django 是最流行的 Python Web 框架之一\n官网教程地址：https://docs.djangoproject.com/zh-hans/4.0/intro/tutorial01/
+jinja;jinja2;模板引擎###Jinja 是一个快速、富有表现力、可扩展的模板引擎。模板中的特殊占位符允许编写类似于 Python 语法的代码。然后向模板传递数据以呈现最终文档。\n官网地址：https://jinja.palletsprojects.com/\n示例代码：https://python-abc.xyz/sanic/0811
+pandas;数据分析;dataframe;df###Pandas 是 Python 语言的一个用于数据分析的扩展程序库。\n官网地址：https://pandas.pydata.org/\nPandas 常用操作：https://python-abc.xyz/code/6707
+paramiko;ssh;python ssh###Paramiko 是 SSHv2 协议的纯 Python 实现，提供客户端和服务器功能。\n官网地址：https://www.paramiko.org/\n代码示例：https://python-abc.xyz/code/0413
+内置函数###Python 3.10.5 总共有以下这些内置函数：\nhttps://docs.python.org/zh-cn/3/library/functions.html\nabs() aiter() all() any() anext() ascii() bin() bool() breakpoint() bytearray() bytes() callable() chr() classmethod() compile() complex() delattr() dict() dir() divmod() enumerate() eval() exec() filter() float() format() frozenset() getattr() globals() hasattr() hash() help() hex() id() input() int() isinstance() issubclass() iter() len() list() locals() map() max() memoryview() min() next() object() oct() open() ord() pow() print() property() range() repr() reversed() round() set() setattr() slice() sorted() staticmethod() str() sum() super() tuple() type() vars() zip() __import__()
+jupyter;python在线;python 在线;在线python;手机python;在线写代码###Python 在线：https://python-abc.xyz/jupyter/tree
+abs###内置函数 abs(x)\n返回一个数的绝对值。
+all###内置函数 all(iterable)\n如果 iterable 的所有元素均为真值（或可迭代对象为空）则返回 True 。
+any###内置函数 any(iterable)\n如果 iterable 的任一元素为真值则返回 True。 如果可迭代对象为空，返回 False。
+bin###内置函数 bin(x)\n将整数转变为以“0b”前缀的二进制字符串。
+callable###内置函数 callable(object)\n如果参数 object 是可调用的就返回 True，否则返回 False。
+chr###内置函数 chr(i)\n返回 Unicode 码位为整数 i 的字符的字符串格式。例如，chr(97) 返回字符串 'a'。这是 ord() 的逆函数。
+classmethod;类方法###内置函数 @classmethod\n把一个方法封装成类方法。
+delattr###内置函数 delattr(object, name)\nsetattr() 相关的函数。实参是一个对象和一个字符串。该字符串必须是对象的某个属性。\n如果对象允许，该函数将删除指定的属性。例如 delattr(x, 'foobar') 等价于 del x.foobar 。
+dir###内置函数 dir([object])\n如果没有实参，则返回当前本地作用域中的名称列表。\n如果有实参，它会尝试返回该对象的有效属性列表。
+divmod;商和余数###内置函数 divmod(a, b)\n以两个（非复数）数字为参数，在作整数除法时，返回商和余数。
+enumerate###内置函数 enumerate(iterable, start=0)\n返回一个枚举对象。iterable 必须是一个序列，或 iterator，或其他支持迭代的对象。\nenumerate() 返回的迭代器的 __next__() 方法返回一个元组，里面包含一个计数值（从 start 开始，默认为 0）和通过迭代 iterable 获得的值。
+eval###内置函数 eval(expression[, globals[, locals]])\n实参是一个字符串，以及可选的 globals 和 locals。返回值就是表达式的求值结果。\n如果给出的源数据是个字符串，那么其前后的空格和制表符将被剔除。
+filter###内置函数 filter(function, iterable)\n用 iterable 中函数 function 返回真的那些元素，构建一个新的迭代器。
+getattr###内置函数 getattr(object, name[, default])\n返回对象命名属性的值。name 必须是字符串。如果该字符串是对象的属性之一，则返回该属性的值。
+hasattr###内置函数 hasattr(object, name)\n该实参是一个对象和一个字符串。如果字符串是对象的属性之一的名称，则返回 True，否则返回 False。
+globals###内置函数 globals()\nglobals() 函数会以字典类型返回当前位置的全部全局变量。
+hash###内置函数 hash(object)\n返回该对象的哈希值（如果它有的话）。哈希值是整数。它们在字典查找元素时用来快速比较字典的键。\n相同大小的数字变量有相同的哈希值（即使它们类型不同，如 1 和 1.0）。
+help###内置函数 help([object])\n启动内置的帮助系统（此函数主要在交互式中使用）。
+hex;十六进制###内置函数 hex(x)\n将整数转换为以“0x”为前缀的小写十六进制字符串。
+id;内存地址###内置函数 id(object)\n返回对象的“标识值”。该值是一个整数，在此对象的生命周期中保证是唯一且恒定的。两个生命期不重叠的对象可能具有相同的 id() 值。\n在 CPython 中返回的是对象在内存中的地址。
+input;输入###内置函数 input([prompt])\n如果存在 prompt 实参，则将其写入标准输出，末尾不带换行符。接下来，该函数从输入中读取一行，将其转换为字符串（除了末尾的换行符）并返回。
+isinstance;对象类型###内置函数 isinstance(object, classinfo)\n如果 object 参数是 classinfo 参数的实例，或其（直接、间接或 virtual ）子类的实例，则返回 True。\n如果 object 不是给定类型的对象，则总是返回 False。\n如果 classinfo 是类型对象的元组（或由该类元组递归生成）或多个类型的 union 类型，那么当 object 是其中任一类型的实例时就会返回 True。\n如果 classinfo 不是某个类型或类型元组，将会触发 TypeError 异常。
+len;长度;对象长度###内置函数 len(s)\n返回对象的长度（元素个数）。实参可以是序列（如 string、bytes、tuple、list 或 range 等）或集合（如 dictionary、set 或 frozen set 等）。
+map###内置函数 map(function, iterable, ...)\n返回一个将 function 应用于 iterable 中每一项并输出其结果的迭代器。
+max;最大值###内置函数 max(iterable, *[, key, default])\nmax(arg1, arg2, *args[, key])\n返回可迭代对象中最大的元素，或者返回两个及以上实参中最大的。
+min;最小值###内置函数 min(iterable, *[, key, default])\nmin(arg1, arg2, *args[, key])\n返回可迭代对象中最小的元素，或者返回两个及以上实参中最小的。
+oct;八进制###内置函数 oct(x)\n将一个整数转变为一个前缀为“0o”的八进制字符串。
+open;打开文件###内置函数 open(file, mode='r', buffering=- 1, encoding=None, errors=None, newline=None, closefd=True, opener=None)\n打开 file 并返回对应的 file object。如果该文件不能被打开，则引发 OSError。\nhttps://docs.python.org/zh-cn/3/library/functions.html#open
+ord###内置函数 ord(c)\n对表示单个 Unicode 字符的字符串，返回代表它 Unicode 码点的整数。例如 ord('a') 返回整数 97。这是 chr() 的逆函数。
+pow;次幂;次方;平方###内置函数 pow(base, exp[, mod])\n返回 base 的 exp 次幂；如果 mod 存在，则返回 base 的 exp 次幂对 mod 取余（比 pow(base, exp) % mod 更高效）。 两参数形式 pow(base, exp) 等价于乘方运算符: base**exp。
+print;输出###内置函数 print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)\n将 objects 打印输出至 file 指定的文本流，以 sep 分隔并在末尾加上 end。 sep 、 end 、 file 和 flush 必须以关键字参数的形式给出。
+property###内置函数 class property(fget=None, fset=None, fdel=None, doc=None)\n返回 property 属性。\nhttps://docs.python.org/zh-cn/3/library/functions.html#property
+range###内置函数 class range(stop)\nclass range(start, stop[, step])\n虽然被称为函数，但 range 实际上是一个不可变的序列类型
+reversed;反序;逆序###内置函数 reversed(seq)\n返回一个反向的 iterator。
+round;四舍五入;保留两位有效数字###内置函数 round(number[, ndigits])\n返回 number 舍入到小数点后 ndigits 位精度的值。\n如果 ndigits 被省略或为 None，则返回最接近输入值的整数。
+setattr###内置函数 setattr(object, name, value)\n本函数与 getattr() 相对应。其参数为一个对象、一个字符串和一个任意值。字符串可以为某现有属性的名称，或为新属性。只要对象允许，函数会将值赋给属性。如 setattr(x, 'foobar', 123) 等价于 x.foobar = 123。
+sorted;排序###内置函数 sorted(iterable, /, *, key=None, reverse=False)\n根据 iterable 中的项返回一个新的已排序列表。\n具有两个可选参数，它们都必须指定为关键字参数。\n\tkey 指定带有单个参数的函数，用于从 iterable 的每个元素中提取用于比较的键 (例如 key=str.lower)。 默认值为 None (直接比较元素)。\n\treverse 为一个布尔值。如果设为 True，则每个列表元素将按反向顺序比较进行排序。
+staticmethod;静态方法;类静态方法###内置函数 @staticmethod\n将方法转换为静态方法。
+sum;求和###内置函数 sum(iterable, /, start=0)\n从 start 开始自左向右对 iterable 的项求和并返回总计值。\niterable 的项通常为数字，而 start 值则不允许为字符串。
+super###内置函数 class super([type[, object-or-type]])\n返回一个代理对象，它会将方法调用委托给 type 的父类或兄弟类。 这对于访问已在类中被重载的继承方法很有用。\nhttps://docs.python.org/zh-cn/3/library/functions.html#super
+type;类型###内置函数 class type(object)\nclass type(name, bases, dict, **kwds)\n传入一个参数时，返回 object 的类型。\n返回值是一个 type 对象，通常与 object.__class__ 所返回的对象相同。\n推荐使用 isinstance() 内置函数来检测对象的类型，因为它会考虑子类的情况。
+zip###内置函数 zip(*iterables, strict=False)\n在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组。\nhttps://docs.python.org/zh-cn/3/library/functions.html#zip
+python 关键字;关键字;保留字###Python 3.10.5 总共有以下 35 个关键字：\nhttps://docs.python.org/zh-cn/3/reference/lexical_analysis.html#keywords\nFalse       await       else          import        pass\nNone      break       except      in               raise\nTrue        class         finally      is                return\nand         continue   for           lambda      try\nas            def           from        nonlocal     while\nassert      del            global      not            with\nasync       elif            if             or               yield\n关键字简单释义：https://python-abc.xyz/python/0083
+树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/raspberry-pi.png]
+pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
+推导式###1. 列表推导式：[i**2 for i in range(10)]\n2. 集合推导式：{i**2 for i in range(10)}\n3. 生成器表达式：(i**2 for i in range(10))\n4. 字典推导式：{i: i**2 for i in range(10)}
+numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。\n官网地址：https://numpy.org/
+scrapy###Scrapy 是一个快速且强大的网络爬虫框架。\n官网地址：https://scrapy.org/
+vim;vi###Vim 是从vi发展出来的一个文本编辑器。其代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。\n和Emacs并列成为类Unix系统用户最喜欢的编辑器。
+emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以程序员和其他以技术工作为主的计算机用户为主。\n在Unix文化里，Emacs是黑客们关于编辑器之战的两大主角之一，它的对手是vi（Vim）。
+sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849
+why;why?;为什么;为什么？;十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
+pip源;python源;换源;清华源;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
+机器人;QQ机器人;qq 机器人;古古###QQ机器人搭建文档：https://python-abc.xyz/code/5807
+快速入门###快速入门：https://python-abc.xyz/python/0083\n入门1/7-基础语法：https://python-abc.xyz/python/0083\n入门2/7-数据类型：https://python-abc.xyz/python/6668\n入门3/7-运算：https://python-abc.xyz/python/1736\n入门4/7-条件语句：https://python-abc.xyz/python/8369\n入门5/7-循环语句：https://python-abc.xyz/python/0684\n入门6/7-函数：https://python-abc.xyz/python/0508\n入门7/7-类：https://python-abc.xyz/python/4807
+virtual machine;虚拟机###虚拟机：一台完全通过软件定义的计算机。Python 虚拟机可执行字节码编译器所生成的 bytecode。
+str;string;字符串###字符串使用单引号 ' 或者双引号 " 引起来构成。\n比如 print('hello world.')\n02-数据类型：https://python-abc.xyz/python/6668
+tuple;元组###元组常用小括号 () 括起并由逗号分隔的多个表达式构成。\n比如 x = ('a', 'b', 3)\n02-数据类型：https://python-abc.xyz/python/6668
+list;列表###列表由用方括号 [] 括起并由逗号分隔的多个表达式构成。\n比如 x = ['a', 'b', 3]\n02-数据类型：https://python-abc.xyz/python/6668
+set;可变集合;集合###可变集合，可通过内置的 set() 构造器或者大括号 {} 括起来创建。\n比如 x = {'a', 'b', 3}\n常用与成员检测和列表去重\n02-数据类型：https://python-abc.xyz/python/6668
+dict;字典###字典使用大括号 {} 内以逗号分隔 {键: 值} 对的方式创建。\n比如 x = {1: 'a', 2: 'b', 'c': 3}\n字典的 key（键）必须是可哈希的\n02-数据类型：https://python-abc.xyz/python/6668
+int;整数;整型###int 整型、整数；比如 x = 1\n02-数据类型：https://python-abc.xyz/python/6668
+float;浮点型;浮点数;小数###float 浮点型、小数；比如 x = 0.5\n02-数据类型：https://python-abc.xyz/python/6668
+bool;boolean;true;false;真;假;真假###bool 布尔型、逻辑值 False 和 True；比如 x = True\n02-数据类型：https://python-abc.xyz/python/6668
+complex;复数###复数包含实部和虚部，分别以一个浮点数表示。\n比如 z = 1 + 2j\n要从一个复数 z 中提取这两个部分，可使用 z.real 和 z.imag。
+frozenset;不可变集合;冻结集合###frozenset 类型是不可变并且为可哈希的，其内容在被创建后不能再改变。
+flask###Flask 是最流行的 Python Web 框架之一\n官网地址：https://flask.palletsprojects.com/en/latest/\n中文地址：https://dormousehole.readthedocs.io/en/latest/
+str.capitalize;capitalize###str.capitalize()\n返回原字符串的副本，其首个字符大写，其余为小写。
+str.casefold;casefold###str.casefold()\n返回原字符串消除大小写的副本。 消除大小写的字符串可用于忽略大小写的匹配。\n消除大小写类似于转为小写，但是更加彻底一些，因为它会移除字符串中的所有大小写变化形式。 例如，德语小写字母 'ß' 相当于 "ss"。 由于它已经是小写了，lower() 不会对 'ß' 做任何改变；而 casefold() 则会将其转换为 "ss"。
+str.center;center###str.center(width[, fillchar])\n返回长度为 width 的字符串，原字符串在其正中。 使用指定的 fillchar 填充两边的空位（默认使用 ASCII 空格符）。 如果 width 小于等于 len(s) 则返回原字符串的副本。
+str.count###str.count(sub[, start[, end]])\n返回子字符串 sub 在 [start, end] 范围内非重叠出现的次数。 可选参数 start 与 end 会被解读为切片表示法。
+str.encode;encode###str.encode(encoding='utf-8', errors='strict')\n返回原字符串编码为字节串对象的版本。 默认编码为 'utf-8'。 可以给出 errors 来设置不同的错误处理方案。
+str.endswith;endswith###str.endswith(suffix[, start[, end]])\n如果字符串以指定的 suffix 结束返回 True，否则返回 False。 suffix 也可以为由多个供查找的后缀构成的元组。 如果有可选项 start，将从所指定位置开始检查。 如果有可选项 end，将在所指定位置停止比较。
+str.expandtabs;expandtabs###str.expandtabs(tabsize=8)\n返回字符串的副本，其中所有的制表符会由一个或多个空格替换，具体取决于当前列位置和给定的制表符宽度。
+str.find;find###str.find(sub[, start[, end]])\n返回子字符串 sub 在 s[start:end] 切片内被找到的最小索引。 可选参数 start 与 end 会被解读为切片表示法。 如果 sub 未被找到则返回 -1。
+str.format;format###str.format(*args, **kwargs)\n执行字符串格式化操作。 调用此方法的字符串可以包含字符串字面值或者以花括号 {} 括起来的替换域。 每个替换域可以包含一个位置参数的数字索引，或者一个关键字参数的名称。 返回的字符串副本中每个替换域都会被替换为对应参数的字符串值。\n字符串格式化：https://python-abc.xyz/code/7857
+str.format_map;format_map###str.format_map(mapping)\n类似于 str.format(**mapping)，不同之处在于 mapping 会被直接使用而不是复制到一个 dict。
+str.index###str.index(sub[, start[, end]])\n类似于 find()，但在找不到子字符串时会引发 ValueError。
+判断字母或数字;str.isalnum;isalnum###str.isalnum()\n如果字符串中的所有字符都是字母或数字且至少有一个字符，则返回 True ， 否则返回 False 。
+判断都是字母;str.isalpha;isalpha###str.isalpha()\n如果字符串中的所有字符都是字母，并且至少有一个字符，返回 True ，否则返回 False 。
+str.isascii;isascii###str.isascii()\n如果字符串为空或字符串中的所有字符都是 ASCII ，返回 True ，否则返回 False 。
+str.isdecimal;isdecimal###str.isdecimal()\n如果字符串中的所有字符都是十进制字符且该字符串至少有一个字符，则返回 True ， 否则返回 False 。
+判断都是数字;str.isdigit;isdigit###str.isdigit()\n如果字符串中的所有字符都是数字，并且至少有一个字符，返回 True ，否则返回 False 。
+str.isidentifier;isidentifier###str.isidentifier()\n如果字符串是有效的标识符，并且至少有一个字符，返回 True ，否则返回 False 。
+str.islower;islower###str.islower()\n如果字符串中至少有一个区分大小写的字符且此类字符均为小写则返回 True ，否则返回 False 。
+判断都是数值;str.isnumeric;isnumeric###str.isnumeric()\n如果字符串中至少有一个字符且所有字符均为数值字符则返回 True ，否则返回 False 。
+str.isprintable;isprintable###str.isprintable()\n如果字符串中所有字符均为可打印字符或字符串为空则返回 True ，否则返回 False 。
+str.isspace;isspace###str.isspace()\n如果字符串中只有空白字符且至少有一个字符则返回 True ，否则返回 False 。
+str.istitle;istitle###str.istitle()\n如果字符串中至少有一个字符且为标题字符串则返回 True ，例如大写字符之后只能带非大写字符而小写字符必须有大写字符打头。 否则返回 False 。
+str.isupper;isupper###str.isupper()\n如果字符串中至少有一个区分大小写的字符且此类字符均为大写则返回 True ，否则返回 False 。
+字符串拼接;拼接;str.join;join###str.join(iterable)\n返回一个由 iterable 中的字符串拼接而成的字符串。 如果 iterable 中存在任何非字符串值包括 bytes 对象则会引发 TypeError。 调用该方法的字符串将作为元素之间的分隔。
+str.ljust;ljust###str.ljust(width[, fillchar])\n返回长度为 width 的字符串，原字符串在其中靠左对齐。 使用指定的 fillchar 填充空位 (默认使用 ASCII 空格符)。 如果 width 小于等于 len(s) 则返回原字符串的副本。
+小写;转小写;str.lower;lower###str.lower()\n返回原字符串的副本，其所有区分大小写的字符均转换为小写。
+str.lstrip;lstrip###str.lstrip([chars])\n返回原字符串的副本，移除其中的前导字符。 chars 参数为指定要移除字符的字符串。 如果省略或为 None，则 chars 参数默认移除空白符。 实际上 chars 参数并非指定单个前缀；而是会移除参数值的所有组合
+str.maketrans;maketrans###static str.maketrans(x[, y[, z]])\n此静态方法返回一个可供 str.translate() 使用的转换对照表。
+str.partition;partition###str.partition(sep)\n在 sep 首次出现的位置拆分字符串，返回一个 3 元组，其中包含分隔符之前的部分、分隔符本身，以及分隔符之后的部分。 如果分隔符未找到，则返回的 3 元组中包含字符本身以及两个空字符串。
+str.removeprefix;removeprefix###str.removeprefix(prefix, /)\n如果字符串以 前缀 字符串开头，返回 string[len(prefix):] 。否则，返回原始字符串的副本
+str.removesuffix;removesuffix###str.removesuffix(suffix, /)\n如果字符串以 后缀 字符串结尾，并且 后缀 非空，返回 string[:-len(suffix)] 。否则，返回原始字符串的副本
+字符串替换;替换;str.replace;replace###str.replace(old, new[, count])\n返回字符串的副本，其中出现的所有子字符串 old 都将被替换为 new。 如果给出了可选参数 count，则只替换前 count 次出现
+str.rfind;rfind###str.rfind(sub[, start[, end]])\n返回子字符串 sub 在字符串内被找到的最大（最右）索引，这样 sub 将包含在 s[start:end] 当中。 可选参数 start 与 end 会被解读为切片表示法。 如果未找到则返回 -1。
+str.rindex;rindex###str.rindex(sub[, start[, end]])\n类似于 rfind()，但在子字符串 sub 未找到时会引发 ValueError。
+str.rjust;rjust###str.rjust(width[, fillchar])\n返回长度为 width 的字符串，原字符串在其中靠右对齐。 使用指定的 fillchar 填充空位 (默认使用 ASCII 空格符)。 如果 width 小于等于 len(s) 则返回原字符串的副本。
+str.rpartition;rpartition###str.rpartition(sep)\n在 sep 最后一次出现的位置拆分字符串，返回一个 3 元组，其中包含分隔符之前的部分、分隔符本身，以及分隔符之后的部分。 如果分隔符未找到，则返回的 3 元组中包含两个空字符串以及字符串本身。
+str.rsplit;rsplit###str.rsplit(sep=None, maxsplit=-1)\n返回一个由字符串内单词组成的列表，使用 sep 作为分隔字符串。 如果给出了 maxsplit，则最多进行 maxsplit 次拆分，从 最右边 开始。 如果 sep 未指定或为 None，任何空白字符串都会被作为分隔符。
+str.rstrip;rstrip###str.rstrip([chars])\n返回原字符串的副本，移除其中的末尾字符。 chars 参数为指定要移除字符的字符串。 如果省略或为 None，则 chars 参数默认移除空白符。 实际上 chars 参数并非指定单个后缀；而是会移除参数值的所有组合
+字符串分割;分割;str.split;split###str.split(sep=None, maxsplit=-1)\n返回一个由字符串内单词组成的列表，使用 sep 作为分隔字符串。 如果给出了 maxsplit，则最多进行 maxsplit 次拆分（因此，列表最多会有 maxsplit+1 个元素）。 如果 maxsplit 未指定或为 -1，则不限制拆分次数（进行所有可能的拆分）。
+str.splitlines;splitlines###str.splitlines(keepends=False)\n返回由原字符串中各行组成的列表，在行边界的位置拆分。 结果列表中不包含行边界，除非给出了 keepends 且为真值。
+str.startswith;startswith###str.startswith(prefix[, start[, end]])\n如果字符串以指定的 prefix 开始则返回 True，否则返回 False。 prefix 也可以为由多个供查找的前缀构成的元组。 如果有可选项 start，将从所指定位置开始检查。 如果有可选项 end，将在所指定位置停止比较。
+str.strip;strip###str.strip([chars])\n返回原字符串的副本，移除其中的前导和末尾字符。 chars 参数为指定要移除字符的字符串。 如果省略或为 None，则 chars 参数默认移除空白符。 实际上 chars 参数并非指定单个前缀或后缀；而是会移除参数值的所有组合
+str.swapcase;swapcase###str.swapcase()\n返回原字符串的副本，其中大写字符转换为小写，反之亦然。 请注意 s.swapcase().swapcase() == s 并不一定为真值。
+str.title;title###str.title()\n返回原字符串的标题版本，其中每个单词第一个字母为大写，其余字母为小写。
+str.translate;translate###str.translate(table)\n返回原字符串的副本，其中每个字符按给定的转换表进行映射。 转换表必须是一个使用 __getitem__() 来实现索引操作的对象，通常为 mapping 或 sequence。\n你可以使用 str.maketrans() 基于不同格式的字符到字符映射来创建一个转换映射表。
+大写;转大写;str.upper;upper###str.upper()\n返回原字符串的副本，其中所有区分大小写的字符均转换为大写。
+str.zfill;zfill###str.zfill(width)\n返回原字符串的副本，在左边填充 ASCII '0' 数码使其长度变为 width。 正负值前缀 ('+'/'-') 的处理方式是在正负符号 之后 填充而非在之前。 如果 width 小于等于 len(s) 则返回原字符串的副本。
+追加列表;列表追加;list.append;append###list.append(x)\n在列表末尾添加一个元素，相当于 a[len(a):] = [x] 。
+扩展列表;列表扩展;list.extend;extend###list.extend(iterable)\n用可迭代对象的元素扩展列表。相当于 a[len(a):] = iterable 。
+列表插入;list.insert;insert###list.insert(i, x)\n在指定位置插入元素。第一个参数是插入元素的索引，因此，a.insert(0, x) 在列表开头插入元素， a.insert(len(a), x) 等同于 a.append(x) 。
+list.remove;remove###list.remove(x)\n从列表中删除第一个值为 x 的元素。未找到指定元素时，触发 ValueError 异常。
+list.pop###list.pop([i])\n删除列表中指定位置的元素，并返回被删除的元素。未指定位置时，a.pop() 删除并返回列表的最后一个元素。\n（方法签名中 i 两边的方括号表示该参数是可选的，不是要求输入方括号。这种表示法常见于 Python 参考库）。
+清空列表;列表清空;list.clear###list.clear()\n删除列表里的所有元素，相当于 del a[:] 。
+list.index###list.index(x[, start[, end]])\n返回列表中第一个值为 x 的元素的零基索引。未找到指定元素时，触发 ValueError 异常。\n可选参数 start 和 end 是切片符号，用于将搜索限制为列表的特定子序列。返回的索引是相对于整个序列的开始计算的，而不是 start 参数。
+list.count###list.count(x)\n返回列表中元素 x 出现的次数。
+列表排序;list.sort;sort###list.sort(*, key=None, reverse=False)\n就地排序列表中的元素（自定义的排序参数，与 sorted() 参数用法一样）。
+列表逆序;list.reverse;reverse###list.reverse()\n就地翻转列表中的元素。
+列表复制;复制列表;列表拷贝;list.copy###list.copy()\n返回列表的浅拷贝。相当于 a[:] 。
+count###str.count(sub[, start[, end]])\n返回子字符串 sub 在 [start, end] 范围内非重叠出现的次数。 可选参数 start 与 end 会被解读为切片表示法。\n\nlist.count(x)\n返回列表中元素 x 出现的次数。
+index###str.index(sub[, start[, end]])\n类似于 find()，但在找不到子字符串时会引发 ValueError。\n\nlist.index(x[, start[, end]])\n返回列表中第一个值为 x 的元素的零基索引。未找到指定元素时，触发 ValueError 异常。\n可选参数 start 和 end 是切片符号，用于将搜索限制为列表的特定子序列。返回的索引是相对于整个序列的开始计算的，而不是 start 参数。
+列表方法;列表的方法;列表所有方法;所有列表方法;列表的所有方法###list.append(x) 追加\nlist.extend(iterable) 扩展\nlist.insert(i, x) 插入\nlist.remove(x) 删除\nlist.pop([i]) 删除并返回\nlist.clear() 清空\nlist.index(x[, start[, end]]) 返回元素索引\nlist.count(x) 返回元素次数\nlist.sort(*, key=None, reverse=False) 就地排序\nlist.reverse() 就地翻转\nlist.copy() 浅拷贝\nhttps://docs.python.org/zh-cn/3/tutorial/datastructures.html#more-on-lists
+__name__ == '__main__';if __name__ == '__main__';__main__;__name__;最高层级代码###if __name__ == '__main__'\n除非模块在顶层环境中被执行，否则 if __name__ == '__main__' 代码块内的代码不会运行。\n\n当一个 Python 模块或包被导入时，__name__ 会被设为模块的名称。 通常，这将是 Python 文件本身的名称去掉 .py 后缀\n如果文件是包的组成部分，则 __name__ 还将包括父包的路径\n不过，如果模块是在最高层级代码环境中执行的，则它的 __name__ 会被设为字符串 '__main__'。\n\n__main__ 是最高层级代码运行所在环境的名称。 \n“最高层级代码”即用户指定最先启动运行的 Python 模块。 它被称为“最高层级”是因为它将导入程序所需的所有其他模块。 有时“最高层级代码”也被称为应用的 入口点。\nhttps://docs.python.org/zh-cn/3/library/__main__.html
+字典所支持的操作;字典的所有方法;字典所有方法;所有字典方法;字典方法###list(d) 返回字典 d 中所有键的列表。\nlen(d) 返回字典 d 中的项数。\nd[key] 返回 d 中以 key 为键的项。\nd[key] = value 将 d[key] 设为 value。\ndel d[key] 将 d[key] 从 d 中移除。\nkey in d 是否存在 key\nkey not in d 等价于 not key in d。\niter(d) 返回以字典的键为元素的迭代器。\nclear() 移除字典中的所有元素。\ncopy() 返回原字典的浅拷贝。\nclassmethod fromkeys(iterable[, value]) 使用来自 iterable 的键创建一个新字典，并将键值设为 value。\nget(key[, default]) 如果 key 存在于字典中则返回 key 的值，否则返回 default。\nitems() 返回由字典项 ((键, 值) 对) 组成的一个新视图。\nkeys() 返回由字典键组成的一个新视图。\npop(key[, default]) 如果 key 存在于字典中则将其移除并返回其值，否则返回 default。\npopitem() 从字典中移除并返回一个 (键, 值) 对。\nreversed(d) 返回一个逆序获取字典键的迭代器。\nsetdefault(key[, default]) 设置默认值\nupdate([other]) 使用来自 other 的键/值对更新字典，覆盖原有的键。\nvalues() 返回由字典值组成的一个新视图。\nd | other 合并 d 和 other 中的键和值来创建一个新的字典\nd |= other 用 other 的键和值更新字典 d\nhttps://docs.python.org/zh-cn/3/library/stdtypes.html#dict
+dict.clear;字典清空;清空字典###dict.clear()\n移除字典中的所有元素。
+dict.copy###dict.copy()\n返回原字典的浅拷贝。
+dict.get;get###dict.get(key[, default])\n如果 key 存在于字典中则返回 key 的值，否则返回 default。 如果 default 未给出则默认为 None，因而此方法绝不会引发 KeyError。
+dict.items;items###dict.items()\n返回由字典项 ((键, 值) 对) 组成的一个新视图。
+dict.keys;keys###dict.keys()\n返回由字典键组成的一个新视图。
+dict.pop###dict.pop(key[, default])\n如果 key 存在于字典中则将其移除并返回其值，否则返回 default。 如果 default 未给出且 key 不存在于字典中，则会引发 KeyError。
+dict.popitem;popitem###dict.popitem()\n从字典中移除并返回一个 (键, 值) 对。 键值对会按 LIFO 的顺序被返回。\npopitem() 适用于对字典进行消耗性的迭代，这在集合算法中经常被使用。\n如果字典为空，调用 popitem() 将引发 KeyError。
+dict.setdefault;setdefault###dict.setdefault(key[, default])\n如果字典存在键 key ，返回它的值。如果不存在，插入值为 default 的键 key ，并返回 default 。 default 默 认为 None。
+dict.update;update###dict.update([other])\n使用来自 other 的键/值对更新字典，覆盖原有的键。 返回 None。\nupdate() 接受另一个字典对象，或者一个包含键/值对（以长度为二的元组 或其他可迭代对象表示）的可迭代对象。 \n如果给出了关键字参数，则会以其所指定的键/值对更新字典: d.update(red=1, blue=2)。
+dict.values;values###dict.values()\n返回由字典值组成的一个新视图。\n两个 dict.values() 视图之间的相等性比较将总是返回 False。 这在 dict.values() 与其自身比较时也同样适用
+pop###list.pop([i])\n删除列表中指定位置的元素，并返回被删除的元素。未指定位置时，a.pop() 删除并返回列表的最后一个元素。\n（方法签名中 i 两边的方括号表示该参数是可选的，不是要求输入方括号。这种表示法常见于 Python 参考库）。\n\ndict.pop(key[, default])\n如果 key 存在于字典中则将其移除并返回其值，否则返回 default。 如果 default 未给出且 key 不存在于字典中，则会引发 KeyError。
+clear###list.clear()\n删除列表里的所有元素，相当于 del a[:] 。\n\ndict.clear()\n移除字典中的所有元素。
+copy###list.copy()\n返回列表的浅拷贝。相当于 a[:] 。\n\ndict.copy()\n返回原字典的浅拷贝。
+路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/roadmap-python.png]
+
+pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：https://pyinstaller.org/en/stable/
+json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))

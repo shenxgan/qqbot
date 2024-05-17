@@ -1,0 +1,14 @@
+services:
+  bot:
+    image: ghcr.io/konatadev/lagrange.onebot:edge
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - ws
+
+  ws:
+    image: python:3.12-slim
+    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple sanic && python server.py"
+    working_dir: /app
+    volumes:
+      - ./ws:/app
