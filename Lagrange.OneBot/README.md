@@ -22,4 +22,8 @@ docker compose up -d
 ```
 
 ## 配置文件
-- 配置文件是 [`data/appsetting.json`](data/appsetting.json)
+- 配置文件是 [`data/appsettings.json`](data/appsettings.json)
+
+## 添加自己的回复逻辑
+- 我们使用的是反向 websocket
+- 逻辑代码位于 [`ws/server.py`](ws/server.py) 文件
