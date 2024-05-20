@@ -190,7 +190,7 @@ emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以
 sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849
 why;why?;为什么;为什么？;十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
 pip源;python源;换源;清华源;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
-机器人;QQ机器人;qq 机器人;古古###QQ机器人搭建文档：https://python-abc.xyz/code/5807
+Lagrange;OneBot;qqbot;bot;机器人;QQ机器人;qq 机器人###QQ机器人搭建文档：https://python-abc.xyz/code/5807\n最新无风控机器人：https://github.com/shenxgan/qqbot
 快速入门###快速入门：https://python-abc.xyz/python/0083\n入门1/7-基础语法：https://python-abc.xyz/python/0083\n入门2/7-数据类型：https://python-abc.xyz/python/6668\n入门3/7-运算：https://python-abc.xyz/python/1736\n入门4/7-条件语句：https://python-abc.xyz/python/8369\n入门5/7-循环语句：https://python-abc.xyz/python/0684\n入门6/7-函数：https://python-abc.xyz/python/0508\n入门7/7-类：https://python-abc.xyz/python/4807
 virtual machine;虚拟机###虚拟机：一台完全通过软件定义的计算机。Python 虚拟机可执行字节码编译器所生成的 bytecode。
 str;string;字符串###字符串使用单引号 ' 或者双引号 " 引起来构成。\n比如 print('hello world.')\n02-数据类型：https://python-abc.xyz/python/6668
