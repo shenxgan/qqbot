@@ -7,7 +7,7 @@
 杨辉三角形;杨辉三角;杨辉###杨辉三角形：https://python-abc.xyz/basic/2668
 检测密码强度;密码强度###检测密码强度：https://python-abc.xyz/basic/1092
 检测自己的 Python 等级;python等级;py等级;python level###检测自己的 Python 等级：https://python-abc.xyz/basic/9103
-斐波那契数列;斐波那契;fibonacci;fib###斐波那契数列：https://python-abc.xyz/basic/6639\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]
+斐波那契数列;斐波那契;fibonacci;fib###斐波那契数列：https://python-abc.xyz/basic/6639\n[CQ:image,file=https://python-abc.xyz/static/img/7859_1.gif]
 回文数;回文###回文数：https://python-abc.xyz/basic/2989
 字符串加密;加密###字符串加密：https://python-abc.xyz/basic/1253
 石头剪刀布###石头剪刀布：https://python-abc.xyz/basic/1420
@@ -22,11 +22,11 @@
 矩阵相乘###矩阵相乘：https://python-abc.xyz/basic/3984
 矩阵;数学矩阵###矩阵转置 https://python-abc.xyz/basic/4322\n矩阵相加 https://python-abc.xyz/basic/8961\n矩阵相乘 https://python-abc.xyz/basic/3984
 
-随机对称;随机对称图形;对称图形###海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n[CQ:image,file=4144_1.gif,subType=0,url=https://python-abc.xyz/static/img/4144_1.gif]
-时钟;数字时钟###海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n[CQ:image,file=7764_1.gif,subType=0,url=https://python-abc.xyz/static/img/7764_1.gif]
-螺旋;黄金螺旋;黄金螺旋线;黄金矩形;螺旋线###海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]
-太极图;太极;阴阳;阴阳图###海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=9354_1.gif,subType=0,url=https://python-abc.xyz/static/img/9354_1.gif]
-海龟绘图;海龟;海归;海龟画图;绘图;画图;海归画图;海归绘图;turtle###海龟绘图官网地址：https://docs.python.org/zh-cn/3/library/turtle.html\n海龟绘图代码示例：\n海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=7859_1.gif,subType=0,url=https://python-abc.xyz/static/img/7859_1.gif]\n海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=9354_1.gif,subType=0,url=https://python-abc.xyz/static/img/9354_1.gif]
+随机对称;随机对称图形;对称图形###海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n[CQ:image,file=https://python-abc.xyz/static/img/4144_1.gif]
+时钟;数字时钟###海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n[CQ:image,file=https://python-abc.xyz/static/img/7764_1.gif]
+螺旋;黄金螺旋;黄金螺旋线;黄金矩形;螺旋线###海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=https://python-abc.xyz/static/img/7859_1.gif]
+太极图;太极;阴阳;阴阳图###海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=https://python-abc.xyz/static/img/9354_1.gif]
+海龟绘图;海龟;海归;海龟画图;绘图;画图;海归画图;海归绘图;turtle###海龟绘图官网地址：https://docs.python.org/zh-cn/3/library/turtle.html\n海龟绘图代码示例：\n海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=https://python-abc.xyz/static/img/7859_1.gif]\n海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=https://python-abc.xyz/static/img/9354_1.gif]
 
 选择排序###选择排序：https://python-abc.xyz/basic/5982
 冒泡排序;bubble###冒泡排序：https://python-abc.xyz/basic/9746
@@ -41,13 +41,13 @@
 beautifulsoup;bs4###爬虫-BeautifulSoup：https://python-abc.xyz/basic/5642
 豆瓣电影top250;豆瓣爬虫;爬虫豆瓣;top250###爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135
 
-数独;sudoku###数独在线：https://python-abc.xyz/sudoku/\nPython 数独求解代码：https://python-abc.xyz/basic/3765\nPython 数独生成代码：https://python-abc.xyz/basic/6625\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/sudoku.png]
+数独;sudoku###数独在线：https://python-abc.xyz/sudoku/\nPython 数独求解代码：https://python-abc.xyz/basic/3765\nPython 数独生成代码：https://python-abc.xyz/basic/6625\n[CQ:image,file=https://python-abc.xyz/static/img/sudoku.png]
 数独求解;求解数独###数独求解：https://python-abc.xyz/basic/3765
 数独生成;生成数独###数独生成：https://python-abc.xyz/basic/6625
 
-pygame;游戏;python 游戏;game###pygame 是跨平台 Python 模块，专为电子游戏设计。\n贪吃蛇代码：https://python-abc.xyz/basic/4882\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/4882_1.gif]\n俄罗斯方块代码：https://python-abc.xyz/basic/6270\n[CQ:image,file=6270_1.gif,subType=0,url=https://python-abc.xyz/static/img/6270_1.gif]
-PyGame-贪吃蛇;贪吃蛇;snake###PyGame-贪吃蛇：https://python-abc.xyz/basic/4882\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/4882_1.gif]
-PyGame-俄罗斯方块;俄罗斯方块;俄罗斯;tetris###PyGame-俄罗斯方块：https://python-abc.xyz/basic/6270\n[CQ:image,file=6270_1.gif,subType=0,url=https://python-abc.xyz/static/img/6270_1.gif]
+pygame;游戏;python 游戏;game###pygame 是跨平台 Python 模块，专为电子游戏设计。\n贪吃蛇代码：https://python-abc.xyz/basic/4882\n[CQ:image,file=https://python-abc.xyz/static/img/4882_1.gif]\n俄罗斯方块代码：https://python-abc.xyz/basic/6270\n[CQ:image,file=https://python-abc.xyz/static/img/6270_1.gif]
+PyGame-贪吃蛇;贪吃蛇;snake###PyGame-贪吃蛇：https://python-abc.xyz/basic/4882\n[CQ:image,file=https://python-abc.xyz/static/img/4882_1.gif]
+PyGame-俄罗斯方块;俄罗斯方块;俄罗斯;tetris###PyGame-俄罗斯方块：https://python-abc.xyz/basic/6270\n[CQ:image,file=https://python-abc.xyz/static/img/6270_1.gif]
 
 群通知机器人;群机器人通知;webhook;webhook通知###企业微信群机器人：https://python-abc.xyz/code/7887\n飞书群机器人：https://python-abc.xyz/code/6743\n钉钉群机器人：https://python-abc.xyz/code/9387
 企业微信群机器人;企业微信群###企业微信群机器人：https://python-abc.xyz/code/7887
@@ -65,7 +65,7 @@ PyMongo 的使用;pymongo;python mongo;python mongodb###PyMongo 的使用：http
 mongo;mongodb###MongoDB 是一种面向文档的数据库管理系统\n官网下载地址：https://www.mongodb.com/try/download/community\npymongo使用示例：https://python-abc.xyz/code/5894
 多线程的简单使用;多线程;threading###多线程的简单使用：https://python-abc.xyz/code/1710
 Markdown 转 HTML;markdown;python markdown###Markdown 转 HTML：https://python-abc.xyz/code/1172
-正则表达式;正则;re;import re;findall;.*;\d+###正则表达式：https://python-abc.xyz/code/2854\n[CQ:image,file=2854_1.png,subType=0,url=https://python-abc.xyz/static/img/2854_1.png]
+正则表达式;正则;re;import re;findall;.*;\d+###正则表达式：https://python-abc.xyz/code/2854\n[CQ:image,file=https://python-abc.xyz/static/img/2854_1.png]
 Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 的使用：https://python-abc.xyz/code/5127
 
 基础语法;语法;python语法;变量名规则###入门1/7-基础语法：https://python-abc.xyz/python/0083
@@ -180,7 +180,7 @@ super###内置函数 class super([type[, object-or-type]])\n返回一个代理�
 type;类型###内置函数 class type(object)\nclass type(name, bases, dict, **kwds)\n传入一个参数时，返回 object 的类型。\n返回值是一个 type 对象，通常与 object.__class__ 所返回的对象相同。\n推荐使用 isinstance() 内置函数来检测对象的类型，因为它会考虑子类的情况。
 zip###内置函数 zip(*iterables, strict=False)\n在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组。\nhttps://docs.python.org/zh-cn/3/library/functions.html#zip
 python 关键字;关键字;保留字###Python 3.10.5 总共有以下 35 个关键字：\nhttps://docs.python.org/zh-cn/3/reference/lexical_analysis.html#keywords\nFalse       await       else          import        pass\nNone      break       except      in               raise\nTrue        class         finally      is                return\nand         continue   for           lambda      try\nas            def           from        nonlocal     while\nassert      del            global      not            with\nasync       elif            if             or               yield\n关键字简单释义：https://python-abc.xyz/python/0083
-树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/raspberry-pi.png]
+树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=https://python-abc.xyz/static/img/raspberry-pi.png]
 pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
 推导式###1. 列表推导式：[i**2 for i in range(10)]\n2. 集合推导式：{i**2 for i in range(10)}\n3. 生成器表达式：(i**2 for i in range(10))\n4. 字典推导式：{i: i**2 for i in range(10)}
 numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。\n官网地址：https://numpy.org/
@@ -280,7 +280,8 @@ dict.values;values###dict.values()\n返回由字典值组成的一个新视图�
 pop###list.pop([i])\n删除列表中指定位置的元素，并返回被删除的元素。未指定位置时，a.pop() 删除并返回列表的最后一个元素。\n（方法签名中 i 两边的方括号表示该参数是可选的，不是要求输入方括号。这种表示法常见于 Python 参考库）。\n\ndict.pop(key[, default])\n如果 key 存在于字典中则将其移除并返回其值，否则返回 default。 如果 default 未给出且 key 不存在于字典中，则会引发 KeyError。
 clear###list.clear()\n删除列表里的所有元素，相当于 del a[:] 。\n\ndict.clear()\n移除字典中的所有元素。
 copy###list.copy()\n返回列表的浅拷贝。相当于 a[:] 。\n\ndict.copy()\n返回原字典的浅拷贝。
-路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=4882_1.gif,subType=0,url=https://python-abc.xyz/static/img/roadmap-python.png]
+路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=https://python-abc.xyz/static/img/roadmap-python.png]
 
 pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：https://pyinstaller.org/en/stable/
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
+
