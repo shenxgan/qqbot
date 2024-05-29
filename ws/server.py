@@ -63,7 +63,7 @@ async def qqbot(request, ws):
     while True:
         data = await ws.recv()
         data = json.loads(data)
-        logger.info(json.dumps(data, indent=4, ensure_ascii=False))
+        logger.debug(json.dumps(data, indent=4, ensure_ascii=False))
 
         msg = None
         # if 判断是群消息且文本消息不为空
