@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import os
 
 from sanic import Sanic
 from sanic import text
@@ -26,9 +27,12 @@ async def run_code(request):
     )
     stdout, stderr = await proc.communicate()
     msg = stdout.decode() + stderr.decode()
+    os.remove(fname)
 
-    _msg = msg.split('\n')[:15]
-    res = '\n'.join(_msg)
+    max_line = os.getenv('OUTPUT_MAX_LINE', 15)
+    max_len = os.getenv('OUTPUT_MAX_LEN', 256)
+    _msg = msg.split('\n')[:max_line]
+    res = '\n'.join(_msg)[:max_len]
     return text(res)
 
 
