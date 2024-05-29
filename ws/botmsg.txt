@@ -288,7 +288,7 @@ continue;继续循环;continue 语句###continue 在语法上只会出现于 for
 import;引入模块;导入模块;import 语句###import 用于导入模块。\n简单语句：https://python-abc.xyz/python/8230
 __future__;future 语句;future###future 语句, from __future__ import <feature> 指示编译器使用将在未来的 Python 发布版中成为标准的语法和语义来编译当前模块。\n简单语句：https://python-abc.xyz/python/8230
 global;全局变量;global 语句###global 语句是作用于整个当前代码块的声明。 它意味着所列出的标识符将被解读为全局变量。 要给全局变量赋值不可能不用到 global 关键字，不过自由变量也可以指向全局变量而不必声明为全局变量。\n简单语句：https://python-abc.xyz/python/8230
-nonlocal;全局变量;nonlocal 语句###nonlocal 语句会使其所列出的标识符指向之前在非局部作用域中绑定的名称。 它允许封装的代码重新绑定这样的非局部标识符。\n简单语句：https://python-abc.xyz/python/8230
+nonlocal;nonlocal 语句###nonlocal 语句会使其所列出的标识符指向之前在非局部作用域中绑定的名称。 它允许封装的代码重新绑定这样的非局部标识符。\n简单语句：https://python-abc.xyz/python/8230
 
 tk;tkinter###tkinter 包 ("Tk 接口") 是针对 Tcl/Tk GUI 工具包的标准 Python 接口。Tk 和 tkinter 在大多数 Unix 平台，包括 macOS，以及 Windows 系统上均可使用。\n若在命令行执行 python -m tkinter，应会弹出一个简单的 Tk 界面窗口， 表明 tkinter 包已安装完成，还会显示当前安装的 Tcl/Tk 版本，以便阅读对应版本的 Tcl/Tk 文档。\nhttps://docs.python.org/zh-cn/3/library/tkinter.html
 虚拟环境;venv###虚拟环境：一种采用协作式隔离的运行时环境，允许 Python 用户和应用程序在安装和升级 Python 分发包时不会干扰到同一系统上运行的其他 Python 应用程序的行为。\nhttps://docs.python.org/zh-cn/3/library/venv.html
@@ -302,3 +302,4 @@ pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：htt
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ugly;avatar;ugly-avatar;头像;丑;丑头像###丑头像在线生成：https://python-abc.xyz/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.png]
+代码运行;运行代码;执行代码###使用###开头，后加代码；机器人即会执行此代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot

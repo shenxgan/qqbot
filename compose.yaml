@@ -1,6 +1,7 @@
 services:
   bot:
     image: ghcr.io/konatadev/lagrange.onebot:edge
+    restart: always
     volumes:
       - ./data:/app/data
     depends_on:
@@ -8,7 +9,25 @@ services:
 
   ws:
     image: python:3.12-slim
-    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple sanic && python server.py"
+    restart: always
+    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt && python server.py"
     working_dir: /app
     volumes:
       - ./ws:/app
+
+  python:
+    image: python:3.12-slim
+    restart: always
+    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt && python server.py"
+    environment:
+      SANIC_KEEP_ALIVE: False
+      SANIC_REQUEST_TIMEOUT: 10
+      SANIC_RESPONSE_TIMEOUT: 10
+    working_dir: /app
+    volumes:
+      - ./python:/app
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M

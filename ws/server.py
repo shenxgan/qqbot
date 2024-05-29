@@ -1,4 +1,5 @@
 import re
+import requests
 import json
 
 from sanic import Sanic
@@ -49,6 +50,13 @@ def group_msg(data):
     return msg
 
 
+def run_code(code):
+    """运行代码"""
+    url = 'http://python:8001/code'  # python 为 python 容器的名称
+    r = requests.post(url, json={'code': code})
+    return r.text
+
+
 @app.websocket('/qqbot')
 async def qqbot(request, ws):
     """QQ机器人"""
@@ -60,7 +68,14 @@ async def qqbot(request, ws):
         msg = None
         # if 判断是群消息且文本消息不为空
         if data.get('message_type') == 'group' and data.get('raw_message'):
-            msg = group_msg(data)
+            message = data['raw_message']
+            if message[:3] == '###':
+                code = message[3:].strip()
+                code = code.replace('&#91;', '[').replace(
+                    '&#93;', ']').replace('&amp;', '&')
+                msg = run_code(code) or '😶无输出😲'
+            else:
+                msg = group_msg(data)
 
         if msg:
             ret = {
