@@ -16,16 +16,16 @@ services:
       - ./ws:/app
 
   python:
-    image: python:3.12-slim
+    # image: python:3.12-slim
+    build: 
+      context: ./python
     restart: always
-    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt && python server.py"
+    command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt --user && python server.py"
     environment:
       SANIC_KEEP_ALIVE: False
       SANIC_REQUEST_TIMEOUT: 10
       SANIC_RESPONSE_TIMEOUT: 10
     working_dir: /app
-    volumes:
-      - ./python:/app
     deploy:
       resources:
         limits:
