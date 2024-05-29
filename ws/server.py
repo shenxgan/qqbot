@@ -29,6 +29,17 @@ async def load_botmsg(app):
     app.ctx.botmsg = botmsg
 
 
+@app.before_server_start
+async def init_flag(app):
+    """初始化开关"""
+    app.ctx.flag = {
+        '机器人': True,
+        '回复': True,
+        '代码': False,
+        '测试': False,
+    }
+
+
 def init_message(data):
     """初始处理消息体"""
     raw_message = data['raw_message']
@@ -76,22 +87,60 @@ def run_code(message):
     return msg
 
 
+def admin_action(message):
+    """机器人管理命令"""
+    app = Sanic.get_app()
+    all_actions = []
+    for flag, _ in app.ctx.flag.items():
+        all_actions.append(f'开启{flag}')
+        all_actions.append(f'关闭{flag}')
+    msg = None
+    if message == '机器人指令':
+        msg = '\n'.join(all_actions)
+    elif message in all_actions:
+        action = message[:2]
+        obj = message[2:]
+        if action == '开启':
+            v = True
+        elif action == '关闭':
+            v = False
+        app.ctx.flag[obj] = v
+        msg = f'指令【{message}】执行完毕'
+    return msg
+
+
 @app.websocket('/qqbot')
 async def qqbot(request, ws):
     """QQ机器人"""
     while True:
         data = await ws.recv()
         data = json.loads(data)
-        logger.debug(json.dumps(data, indent=4, ensure_ascii=False))
+        app = request.app
+
+        is_me = False
+        if 'user_id' in data and 'self_id' in data:
+            is_me = data['user_id'] == data['self_id']
+
+        if app.ctx.flag['测试']:
+            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
+            if is_me is False:
+                continue
+
+        if is_me is False and app.ctx.flag['机器人'] is False:
+            continue
 
         msg = None
         # if 判断是群消息且文本消息不为空
         if data.get('message_type') == 'group' and data.get('raw_message'):
             message, ats = init_message(data)
-            if message[:3] == '###':
+
+            if app.ctx.flag['代码'] and message[:3] == '###':
                 msg = run_code(message)
-            else:
+            elif app.ctx.flag['回复']:
                 msg = group_msg(message)
+
+        if (not msg) and is_me is True:
+            msg = admin_action(message)
 
         if msg and ats:
             msg = ' '.join(ats) + '\n' + msg
