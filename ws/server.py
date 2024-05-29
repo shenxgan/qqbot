@@ -1,3 +1,4 @@
+import random
 import re
 import requests
 import json
@@ -66,7 +67,13 @@ def run_code(message):
 
     url = 'http://python:8001/code'  # python 为 python 容器的名称
     r = requests.post(url, json={'code': code})
-    return r.text or '😶无输出😲'
+    msg = r.text
+    if msg:
+        emojis = '🏄✨🚀⚡⚽🧐🥶'
+        msg = random.choice(emojis) + msg
+    else:
+        msg = '😶无输出😲'
+    return msg
 
 
 @app.websocket('/qqbot')
