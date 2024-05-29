@@ -28,10 +28,8 @@ async def load_botmsg(app):
     app.ctx.botmsg = botmsg
 
 
-def group_msg(data):
-    """根据关键字触发回复"""
-    app = Sanic.get_app()
-
+def init_message(data):
+    """初始处理消息体"""
     raw_message = data['raw_message']
     re_s = r'(\[CQ:.*?\])'
     cqs = re.findall(re_s, raw_message)
@@ -42,19 +40,33 @@ def group_msg(data):
             ats.add(cq)
         message = message.replace(cq, '')
     message = message.strip()
+    return message, ats
+
+
+def group_msg(message):
+    """根据关键字触发回复"""
+    app = Sanic.get_app()
 
     key = message.lower().replace('()', '').strip()
     msg = app.ctx.botmsg.get(key)
-    if msg and ats:
-        msg = ' '.join(ats) + '\n' + msg
     return msg
 
 
-def run_code(code):
+def run_code(message):
     """运行代码"""
+    code = message[3:].strip()
+    replace_kv = {
+        '&#91;': '[',
+        '&#93;': ']',
+        '&amp;': '&',
+        '\r\n': '\n',
+    }
+    for k, v in replace_kv.items():
+        code = code.replace(k, v)
+
     url = 'http://python:8001/code'  # python 为 python 容器的名称
     r = requests.post(url, json={'code': code})
-    return r.text
+    return r.text or '😶无输出😲'
 
 
 @app.websocket('/qqbot')
@@ -68,14 +80,14 @@ async def qqbot(request, ws):
         msg = None
         # if 判断是群消息且文本消息不为空
         if data.get('message_type') == 'group' and data.get('raw_message'):
-            message = data['raw_message']
+            message, ats = init_message(data)
             if message[:3] == '###':
-                code = message[3:].strip()
-                code = code.replace('&#91;', '[').replace(
-                    '&#93;', ']').replace('&amp;', '&')
-                msg = run_code(code) or '😶无输出😲'
+                msg = run_code(message)
             else:
-                msg = group_msg(data)
+                msg = group_msg(message)
+
+        if msg and ats:
+            msg = ' '.join(ats) + '\n' + msg
 
         if msg:
             ret = {

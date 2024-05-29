@@ -17,7 +17,7 @@ async def run_code(request):
     now = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
     fname = f'/tmp/{now}.py'
     with open(fname, 'w') as f:
-        f.write(code.replace('\r\n', '\n'))
+        f.write(code)
     cmd = f'timeout 5 python {fname}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
