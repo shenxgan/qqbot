@@ -16,7 +16,7 @@ async def run_code(request):
     data = request.json
     code = data['code']
 
-    timeout = 5
+    timeout = 2
     max_line = 15
     max_len = 256
 
