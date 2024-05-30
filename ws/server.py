@@ -35,7 +35,7 @@ async def load_botmsg(app):
 async def init_flag(app):
     """初始化开关"""
     app.ctx.flag = {
-        '机器人': True,
+        '机器人': False,
         '回复': True,
         '代码': True,
     }
@@ -127,9 +127,9 @@ async def qqbot(request, ws):
 
         # 机器人关闭时，仅自己可用
         if app.ctx.flag['机器人'] is False:
-            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
             if not is_me:
                 continue
+            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
 
         msg = None
         # if 判断是群消息且文本消息不为空

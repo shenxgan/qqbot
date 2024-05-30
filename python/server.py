@@ -32,6 +32,7 @@ async def run_code(request):
     )
     stdout, stderr = await proc.communicate()
     msg = stdout.decode() + stderr.decode()
+    msg = msg[:max_len*2]
     os.remove(fname)
 
     _msg = msg.split('\n')[:max_line]
