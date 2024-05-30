@@ -56,7 +56,7 @@ PyGame-俄罗斯方块;俄罗斯方块;俄罗斯;tetris###PyGame-俄罗斯方块
 
 文字转二维码;转二维码;qrcode;二维码###文字转二维码：https://python-abc.xyz/basic/9604
 prettytable;输出表格;表格输出###PrettyTable 的使用：https://python-abc.xyz/code/2001
-装饰器;@语法糖;@语法;@;wrapper;decorator###装饰器：https://python-abc.xyz/code/4578
+装饰器;@语法糖;@语法;@;wrapper;decorator###装饰器是一个返回值为另一个函数的函数，通常使用 @wrapper 语法形式来进行函数变换\n装饰器语法只是一种语法糖\n装饰器：https://python-abc.xyz/code/4578
 发送邮件;邮件;yagmail;sendmail###发送邮件：https://python-abc.xyz/code/1363
 日期格式转换;strftime;strptime;fromtimestamp;timedelta;字符串转日期;日期转字符串;日期加减;时间加减;转时间戳###日期格式转换：https://python-abc.xyz/code/8596
 字符串格式化;f-string;fstring###字符串格式化：https://python-abc.xyz/code/7857
@@ -66,7 +66,6 @@ mongo;mongodb###MongoDB 是一种面向文档的数据库管理系统\n官网下
 多线程的简单使用;多线程;threading###多线程的简单使用：https://python-abc.xyz/code/1710
 Markdown 转 HTML;markdown;python markdown###Markdown 转 HTML：https://python-abc.xyz/code/1172
 正则表达式;正则;re;import re;findall;.*;\d+###正则表达式：https://python-abc.xyz/code/2854\n[CQ:image,file=https://python-abc.xyz/static/img/2854_1.png]
-Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 的使用：https://python-abc.xyz/code/5127
 
 基础语法;语法;python语法;变量名规则###入门1/7-基础语法：https://python-abc.xyz/python/0083
 数据类型;字符串常用方法;列表常用方法;字典常用方法###入门2/7-数据类型：https://python-abc.xyz/python/6668
@@ -128,7 +127,7 @@ xpath###XPath 为 XML 路径语言，它是一种用来确定 XML 文档中某�
 requests###Requests 是一个优雅而简单的 Python HTTP 库，专为人类构建。\n官网地址：https://requests.readthedocs.io/en/latest/\nrequests 爬虫示例：https://python-abc.xyz/basic/5995
 celery;芹菜###Celery - 分布式任务队列，是一个专注于实时处理的任务队列，同时也支持任务调度。\n官网地址：https://docs.celeryq.dev/en/stable/
 django###Django 是最流行的 Python Web 框架之一\n官网教程地址：https://docs.djangoproject.com/zh-hans/4.0/intro/tutorial01/
-jinja;jinja2;模板引擎###Jinja 是一个快速、富有表现力、可扩展的模板引擎。模板中的特殊占位符允许编写类似于 Python 语法的代码。然后向模板传递数据以呈现最终文档。\n官网地址：https://jinja.palletsprojects.com/\n示例代码：https://python-abc.xyz/sanic/0811
+jinja2;jinja;模板语言###Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。\nhttps://docs.jinkan.org/docs/jinja2/index.html\n示例代码：https://python-abc.xyz/sanic/0811/
 pandas;数据分析;dataframe;df###Pandas 是 Python 语言的一个用于数据分析的扩展程序库。\n官网地址：https://pandas.pydata.org/\nPandas 常用操作：https://python-abc.xyz/code/6707
 paramiko;ssh;python ssh###Paramiko 是 SSHv2 协议的纯 Python 实现，提供客户端和服务器功能。\n官网地址：https://www.paramiko.org/\n代码示例：https://python-abc.xyz/code/0413
 内置函数###Python 3.10.5 总共有以下这些内置函数：\nhttps://docs.python.org/zh-cn/3/library/functions.html\nabs() aiter() all() any() anext() ascii() bin() bool() breakpoint() bytearray() bytes() callable() chr() classmethod() compile() complex() delattr() dict() dir() divmod() enumerate() eval() exec() filter() float() format() frozenset() getattr() globals() hasattr() hash() help() hex() id() input() int() isinstance() issubclass() iter() len() list() locals() map() max() memoryview() min() next() object() oct() open() ord() pow() print() property() range() repr() reversed() round() set() setattr() slice() sorted() staticmethod() str() sum() super() tuple() type() vars() zip() __import__()
@@ -183,7 +182,7 @@ numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶�
 scrapy###Scrapy 是一个快速且强大的网络爬虫框架。\n官网地址：https://scrapy.org/
 vim;vi###Vim 是从vi发展出来的一个文本编辑器。其代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。\n和Emacs并列成为类Unix系统用户最喜欢的编辑器。
 emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以程序员和其他以技术工作为主的计算机用户为主。\n在Unix文化里，Emacs是黑客们关于编辑器之战的两大主角之一，它的对手是vi（Vim）。
-sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849
+sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849/
 why;why?;为什么;为什么？;十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
 pip源;python源;换源;换清华源;清华源;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n示例2：pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple\n全局配置：pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 Lagrange;OneBot;qqbot;bot;机器人;QQ机器人;qq 机器人###QQ机器人搭建文档：https://python-abc.xyz/code/5807\n最新无风控机器人：https://github.com/shenxgan/qqbot
@@ -296,6 +295,8 @@ idle###IDLE：Python 的 IDE，“集成开发与学习环境”的英文缩写�
 垃圾回收;gc###垃圾回收：释放不再被使用的内存空间的过程。Python 是通过引用计数和一个能够检测和打破循环引用的循环垃圾回收器来执行垃圾回收的。可以使用 gc 模块来控制垃圾回收器。\nhttps://docs.python.org/zh-cn/3/library/gc.html
 pdb;调试###pdb 模块定义了一个交互式源代码调试器，用于 Python 程序。它支持在源码行间设置（有条件的）断点和单步执行，检视堆栈帧，列出源码列表，以及在任何堆栈帧的上下文中运行任意 Python 代码。它还支持事后调试，可以在程序控制下调用。\nhttps://docs.python.org/zh-cn/3/library/pdb.html
 pprint;美化输出###pprint 模块提供了“美化打印”任意 Python 数据结构的功能，这种美化形式可用作对解释器的输入。\nhttps://docs.python.org/zh-cn/3/library/pprint.html
+pyautogui;autogui###PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持（Windows，OS X，Linux）。\nhttps://github.com/asweigart/pyautogui/blob/master/docs/simplified-chinese.ipynb
+Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 是支持 web 浏览器自动化的一系列工具和库的综合项目。\nSelenium 的使用：https://python-abc.xyz/code/5127
 
 路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=https://python-abc.xyz/static/img/roadmap-python.png]
 pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：https://pyinstaller.org/en/stable/

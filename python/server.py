@@ -15,11 +15,16 @@ async def run_code(request):
     """
     data = request.json
     code = data['code']
+
+    timeout = 5
+    max_line = 15
+    max_len = 256
+
     now = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
     fname = f'/tmp/{now}.py'
     with open(fname, 'w') as f:
         f.write(code)
-    cmd = f'timeout 5 python {fname}'
+    cmd = f'timeout {timeout} python {fname}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -29,8 +34,6 @@ async def run_code(request):
     msg = stdout.decode() + stderr.decode()
     os.remove(fname)
 
-    max_line = os.getenv('OUTPUT_MAX_LINE', 15)
-    max_len = os.getenv('OUTPUT_MAX_LEN', 256)
     _msg = msg.split('\n')[:max_line]
     res = '\n'.join(_msg)[:max_len]
     return text(res)

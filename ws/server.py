@@ -1,12 +1,14 @@
+import json
 import random
 import re
 import requests
-import json
+import time
 
 from sanic import Sanic
 from sanic.log import logger
 
 app = Sanic('qqbot')
+app.ctx.last_ts = {}  # 记录每个人上次触发的时间戳
 
 
 @app.before_server_start
@@ -35,8 +37,7 @@ async def init_flag(app):
     app.ctx.flag = {
         '机器人': True,
         '回复': True,
-        '代码': False,
-        '测试': False,
+        '代码': True,
     }
 
 
@@ -97,6 +98,8 @@ def admin_action(message):
     msg = None
     if message == '机器人指令':
         msg = '\n'.join(all_actions)
+    elif message == '机器人状态':
+        msg = json.dumps(app.ctx.flag, indent=4, ensure_ascii=False)
     elif message in all_actions:
         action = message[:2]
         obj = message[2:]
@@ -112,33 +115,45 @@ def admin_action(message):
 @app.websocket('/qqbot')
 async def qqbot(request, ws):
     """QQ机器人"""
+    app = request.app
     while True:
         data = await ws.recv()
         data = json.loads(data)
-        app = request.app
 
+        # 记录是否是自己发送的消息
         is_me = False
         if 'user_id' in data and 'self_id' in data:
             is_me = data['user_id'] == data['self_id']
 
-        if app.ctx.flag['测试']:
+        # 机器人关闭时，仅自己可用
+        if app.ctx.flag['机器人'] is False:
             logger.info(json.dumps(data, indent=4, ensure_ascii=False))
-            if is_me is False:
+            if not is_me:
                 continue
-
-        if is_me is False and app.ctx.flag['机器人'] is False:
-            continue
 
         msg = None
         # if 判断是群消息且文本消息不为空
         if data.get('message_type') == 'group' and data.get('raw_message'):
             message, ats = init_message(data)
+            # who = data['sender']['user_id']
+            who = data['user_id']
+
+            # 限制每个人触发频率为15秒一次
+            now = time.time()
+            if not is_me and (now - app.ctx.last_ts.get(who, 0) < 15):
+                continue
 
             if app.ctx.flag['代码'] and message[:3] == '###':
                 msg = run_code(message)
+                if not ats:
+                    ats = [f'[CQ:at,qq={who}]']
             elif app.ctx.flag['回复']:
                 msg = group_msg(message)
 
+            if msg:
+                app.ctx.last_ts[who] = now
+
+        # 未触发任何回复、且是自己时，进一步判断是否时管理指令
         if (not msg) and is_me is True:
             msg = admin_action(message)
 

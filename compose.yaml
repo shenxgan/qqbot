@@ -3,7 +3,7 @@ services:
     image: ghcr.io/konatadev/lagrange.onebot:edge
     restart: always
     volumes:
-      - ./data:/app/data
+      - ./bot:/app/data
     depends_on:
       - ws
 
