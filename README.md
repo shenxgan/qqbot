@@ -1,6 +1,12 @@
+# Python 学习机器人
+
 ## 介绍
 - 使用的是 [Lagrange.OneBot](https://github.com/LagrangeDev/Lagrange.Core)
 - 开箱即用，使用 docker 一键启动
+
+## 功能
+- 关键字触发回复（关键字均与 python 相关）
+- 运行 python 代码并回复执行输出
 
 ## 首次启动
 ```bash
@@ -14,7 +20,7 @@ docker compose up
 - 所有关键字以及自动回复的消息均存于 [`ws/botmsg.txt`](ws/botmsg.txt) 文件中
 - 修改了 `ws/botmsg.txt` 文件后需要重启
 
-## 后台启动
+## 后台运行
 ```bash
 docker compose up -d
 ```
