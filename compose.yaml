@@ -20,7 +20,7 @@ services:
       context: ./python
     restart: always
     environment:
-      SANIC_KEEP_ALIVE: False
+      # SANIC_KEEP_ALIVE: False
       SANIC_REQUEST_TIMEOUT: 10
       SANIC_RESPONSE_TIMEOUT: 10
     deploy:

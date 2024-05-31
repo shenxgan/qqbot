@@ -24,7 +24,7 @@ async def run_code(request):
     fname = f'/tmp/{now}.py'
     with open(fname, 'w') as f:
         f.write(code)
-    cmd = f'timeout {timeout} python {fname}'
+    cmd = f'timeout {timeout} python -u {fname}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
