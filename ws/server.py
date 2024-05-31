@@ -35,7 +35,7 @@ async def load_botmsg(app):
 async def init_flag(app):
     """初始化开关"""
     app.ctx.flag = {
-        '机器人': False,
+        '机器人': True,
         '回复': True,
         '代码': True,
     }

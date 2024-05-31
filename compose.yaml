@@ -16,7 +16,6 @@ services:
       - ./ws:/app
 
   python:
-    # image: python:3.12-slim
     build: 
       context: ./python
     restart: always
