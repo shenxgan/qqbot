@@ -8,7 +8,8 @@ from sanic import Sanic
 from sanic.log import logger
 
 app = Sanic('qqbot')
-app.ctx.last_ts = {}  # 记录每个人上次触发的时间戳
+app.ctx.last_ts = {}    # 记录每个人上次触发的时间戳
+app.ctx.allow = set()   # 关闭机器人时还允许使用的人员
 
 
 @app.before_server_start
@@ -35,7 +36,7 @@ async def load_botmsg(app):
 async def init_flag(app):
     """初始化开关"""
     app.ctx.flag = {
-        '机器人': True,
+        '机器人': False,
         '回复': True,
         '代码': True,
     }
@@ -81,14 +82,14 @@ def run_code(message):
     r = requests.post(url, json={'code': code})
     msg = r.text
     if msg:
-        emojis = '🏄✨🚀⚡⚽🧐🥶'
+        emojis = '🏄✨🚀⚡⚽🧐'
         msg = random.choice(emojis) + msg
     else:
         msg = '😶无输出😲'
     return msg
 
 
-def admin_action(message):
+def admin_action(message, ats):
     """机器人管理命令"""
     app = Sanic.get_app()
     all_actions = []
@@ -100,6 +101,17 @@ def admin_action(message):
         msg = '\n'.join(all_actions)
     elif message == '机器人状态':
         msg = json.dumps(app.ctx.flag, indent=4, ensure_ascii=False)
+    elif message == '允许':
+        msg = []
+        for at in ats:
+            # at = '[CQ:at,qq=123456]'
+            who = at[10:-1]
+            app.ctx.allow.add(int(who))
+            msg.append(f'已允许 你:{who} 使用机器人')
+        msg = '\n'.join(msg)
+    elif message == '清空允许':
+        app.ctx.allow = {}
+        msg = '已清空所有人使用机器人'
     elif message in all_actions:
         action = message[:2]
         obj = message[2:]
@@ -127,7 +139,8 @@ async def qqbot(request, ws):
 
         # 机器人关闭时，仅自己可用
         if app.ctx.flag['机器人'] is False:
-            if not is_me:
+            who = data.get('user_id')
+            if not (is_me or who in app.ctx.allow):
                 continue
             logger.info(json.dumps(data, indent=4, ensure_ascii=False))
 
@@ -140,7 +153,8 @@ async def qqbot(request, ws):
 
             # 限制每个人触发频率为15秒一次
             now = time.time()
-            if not is_me and (now - app.ctx.last_ts.get(who, 0) < 15):
+            if not (is_me or who in app.ctx.allow) \
+                    and (now - app.ctx.last_ts.get(who, 0) < 15):
                 continue
 
             if app.ctx.flag['代码'] and message[:3] == '###':
@@ -155,7 +169,7 @@ async def qqbot(request, ws):
 
         # 未触发任何回复、且是自己时，进一步判断是否时管理指令
         if (not msg) and is_me is True:
-            msg = admin_action(message)
+            msg = admin_action(message, ats)
 
         if msg and ats:
             msg = ' '.join(ats) + '\n' + msg
