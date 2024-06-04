@@ -113,7 +113,7 @@ def admin_action(message, ats):
         app.ctx.allow = set()
         msg = '已清空所有人使用机器人'
     elif message == '所有允许人员':
-        msg = '\n'.join(app.ctx.allow)
+        msg = '\n'.join(map(str, app.ctx.allow))
     elif message in all_actions:
         action = message[:2]
         obj = message[2:]
