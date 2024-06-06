@@ -36,7 +36,7 @@ async def load_botmsg(app):
 async def init_flag(app):
     """初始化开关"""
     app.ctx.flag = {
-        '机器人': False,
+        '机器人': True,
         '回复': True,
         '代码': True,
     }
@@ -112,7 +112,7 @@ def admin_action(message, ats):
     elif message == '清空允许':
         app.ctx.allow = set()
         msg = '已清空所有人使用机器人'
-    elif message == '所有允许人员':
+    elif message == '所有允许':
         msg = '\n'.join(map(str, app.ctx.allow))
     elif message in all_actions:
         action = message[:2]

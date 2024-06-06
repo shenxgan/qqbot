@@ -15,7 +15,7 @@
 非利克瑞尔数;利克瑞尔数;利克瑞尔###非利克瑞尔数：https://python-abc.xyz/basic/1853
 读写文件;文件读写;读文件;写文件;文件操作###读写文件：https://python-abc.xyz/basic/6887
 十进制转二进制;转二进制###十进制转二进制：https://python-abc.xyz/basic/5844
-练习题;基础题;基础练习题###网站汇总了一些练习题，供参考：https://python-abc.xyz/basic/8301\n猜数游戏：https://python-abc.xyz/basic/8301\n九九乘法表：https://python-abc.xyz/basic/9025\n求阶乘：https://python-abc.xyz/basic/1352\n素数：https://python-abc.xyz/basic/6708\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135\n冒泡排序：https://python-abc.xyz/basic/9746\n……
+练习题;基础题;基础练习题###网站汇总了一些练习题，供参考：\n猜数游戏：https://python-abc.xyz/basic/8301\n九九乘法表：https://python-abc.xyz/basic/9025\n求阶乘：https://python-abc.xyz/basic/1352\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135\n……
 
 矩阵转置###矩阵转置：https://python-abc.xyz/basic/4322
 矩阵相加###矩阵相加：https://python-abc.xyz/basic/8961
@@ -26,7 +26,7 @@
 时钟;数字时钟###海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n[CQ:image,file=https://python-abc.xyz/static/img/7764_1.gif]
 螺旋;黄金螺旋;黄金螺旋线;黄金矩形;螺旋线###海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=https://python-abc.xyz/static/img/7859_1.gif]
 太极图;太极;阴阳;阴阳图###海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=https://python-abc.xyz/static/img/9354_1.gif]
-海龟绘图;海龟;海归;海龟画图;绘图;画图;海归画图;海归绘图;turtle###海龟绘图官网地址：https://docs.python.org/zh-cn/3/library/turtle.html\n海龟绘图代码示例：\n海龟绘图-随机对称图形：https://python-abc.xyz/basic/4144\n海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n海龟绘图-黄金螺旋：https://python-abc.xyz/basic/7859\n[CQ:image,file=https://python-abc.xyz/static/img/7859_1.gif]\n海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=https://python-abc.xyz/static/img/9354_1.gif]
+海龟绘图;海龟;海龟画图;绘图;画图;turtle###海龟绘图官网地址：https://docs.python.org/zh-cn/3/library/turtle.html\n海龟绘图代码示例：\n海龟绘图-数字时钟：https://python-abc.xyz/basic/7764\n海龟绘图-太极图：https://python-abc.xyz/basic/9354\n[CQ:image,file=https://python-abc.xyz/static/img/9354_1.gif]
 
 选择排序###选择排序：https://python-abc.xyz/basic/5982
 冒泡排序;bubble###冒泡排序：https://python-abc.xyz/basic/9746
@@ -34,7 +34,7 @@
 归并排序###归并排序：https://python-abc.xyz/basic/6936
 快速排序;快排###快速排序：https://python-abc.xyz/basic/3002
 指鹿为马排序;指鹿为马###指鹿为马排序：https://python-abc.xyz/basic/3982
-排序算法###选择排序：https://python-abc.xyz/basic/5982\n冒泡排序：https://python-abc.xyz/basic/9746\n插入排序：https://python-abc.xyz/basic/7394\n归并排序：https://python-abc.xyz/basic/6936\n快速排序：https://python-abc.xyz/basic/3002\n指鹿为马排序：https://python-abc.xyz/basic/3982
+排序算法###选择排序：https://python-abc.xyz/basic/5982\n冒泡排序：https://python-abc.xyz/basic/9746\n插入排序：https://python-abc.xyz/basic/7394\n归并排序：https://python-abc.xyz/basic/6936\n快速排序：https://python-abc.xyz/basic/3002
 
 爬虫;python爬虫###爬虫-正则解析：https://python-abc.xyz/basic/5995\n爬虫-BeautifulSoup解析：https://python-abc.xyz/basic/5642\n爬虫-豆瓣电影Top250：https://python-abc.xyz/basic/0135\n爬虫-Selenium的使用：https://python-abc.xyz/code/5127
 爬虫正则###爬虫-正则：https://python-abc.xyz/basic/5995
@@ -81,11 +81,11 @@ match;case;match-case;match 语句;匹配语句;模式匹配###match 语句（3.
 简单语句###简单语句：https://python-abc.xyz/python/8230
 复合语句###复合语句：https://python-abc.xyz/python/0086
 
-pycharm;pc###PyCharm 是专业的 Python IDE，支持智能代码补全、实时错误检查和快速修复，等等…\nPyCharm 下载地址：https://www.jetbrains.com/zh-cn/pycharm/download/#section=windows\n下载社区版即可
-入门;小白;我是小白;萌新;我是萌新;菜鸡互啄;教程;入门教程;入门视频;python入门###1. 看书籍、看文档：\n	官方教程：https://docs.python.org/zh-cn/3/tutorial/index.html\n	菜鸟教程：https://www.runoob.com/python3/python3-tutorial.html\n	w3school 在线教程：https://www.w3school.com.cn/python/index.asp\n	我整理的快速入门：https://python-abc.xyz/python/0083\n	书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可；群文件中有相关的电子书\n2. 看视频：\n	B站：https://search.bilibili.com/all?keyword=python&order=dm
+pycharm;pc###PyCharm 是专业的 Python IDE，支持智能代码补全、实时错误检查和快速修复，等等…\nPyCharm 下载地址：https://www.jetbrains.com/zh-cn/pycharm/download/#section=windows\n下载社区版即可。建议纯新手无脑使用这个
+入门;小白;我是小白;萌新;我是萌新;菜鸡互啄;教程;入门教程;入门视频;python入门###1. 看书籍、看文档：\n	官方教程：https://docs.python.org/zh-cn/3/tutorial/index.html\n	菜鸟教程：https://www.runoob.com/python3/python3-tutorial.html\n	我整理的快速入门（共7节）：https://python-abc.xyz/python/0083\n	书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可\n2. 看视频：\n	B站：https://search.bilibili.com/all?keyword=python&order=dm
 菜鸟教程;菜鸟;我是菜鸟;我是菜鸡###菜鸟教程(www.runoob.com)提供了编程的基础技术教程, 介绍了HTML、CSS、Javascript、Python，Java，Ruby，C，PHP , MySQL等各种编程语言的基础知识。\n菜鸟教程 Python 地址：https://www.runoob.com/python3/python3-tutorial.html
-vscode###Visual Studio Code 是一款由微软开发且跨平台的免费源代码编辑器。\n下载地址：https://code.visualstudio.com/download
-python;安装python;python安装;python下载;官网;官网地址;python下载地址;官方文档###Python 是一种解释型、交互式、面向对象的编程语言。 它包含了模块、异常、动态类型、高层级动态数据类型以及类等特性。 在面向对象编程以外它还支持多种编程范式，例如过程式和函数式编程等。 Python 结合了超强的功能和极清晰的语法。 它带有许多系统调用和库以及多种窗口系统的接口，并且能用 C 或 C++ 来进行扩展。 它还可用作需要可编程接口的应用程序的扩展语言。 最后，Python 非常易于移植：它可以在包括 Linux 和 macOS 在内的许多 Unix 变种以及 Windows 上运行。\n官方文档地址：https://docs.python.org/zh-cn/3/\n下载地址：https://www.python.org/downloads/
+vscode###Visual Studio Code 是一款由微软开发且跨平台的免费源代码编辑器。\n下载地址：https://code.visualstudio.com/download\n下载完后需要安装 python 插件与中文插件
+python;安装python;python安装;python下载;官网;官网地址;python下载地址;官方文档###Python 是一门易于学习、功能强大的编程语言。\n官方文档地址：https://docs.python.org/zh-cn/3/\n下载地址：https://www.python.org/downloads/
 书籍;入门书籍;书籍推荐;推荐书籍;电子书###书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可；群文件中有相关的电子书
 w3school###在 W3School，你可以找到你所需要的所有的网站建设教程。从基础的 HTML 到 CSS，乃至进阶的 XML、SQL、JS、PHP 和 ASP.NET。\nw3school 在线 Python 教程地址：https://www.w3school.com.cn/python/index.asp
 liaoxuefeng;廖雪峰###研究互联网产品和技术，提供原创中文精品教程.\n廖雪峰 Python教程地址：https://www.liaoxuefeng.com/wiki/1016959663602400
@@ -303,4 +303,4 @@ pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：htt
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ugly;avatar;ugly-avatar;头像;丑;丑头像###丑头像在线生成：https://python-abc.xyz/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.png]
-代码运行;运行代码;执行代码###使用###开头，后加代码；机器人即会执行此代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
+代码运行;运行代码;执行代码;代码执行###使用###开头，后加 python 代码；即可执行此代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
