@@ -13,6 +13,7 @@ cmds = {
     'python': 'timeout {timeout} python -u {fname}',
     'c': 'timeout {timeout} gcc -x c -o {fname}.o {fname}'
          ' && timeout {timeout} {fname}.o',
+    'js': 'timeout {timeout} node {fname}',
 }
 
 
@@ -21,6 +22,8 @@ def check_language(code):
     tp = 'python'
     if '#include <stdio.h>' in code:
         tp = 'c'
+    elif 'console.log' in code:
+        tp = 'js'
     logger.info(f'代码语言为：{tp}')
     return tp
 
