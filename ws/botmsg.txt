@@ -1,3 +1,6 @@
+ping###pong
+乒###乓
+
 猜数游戏###猜数游戏：https://python-abc.xyz/basic/8301
 统计字符数量;字符数量###统计字符数量：https://python-abc.xyz/basic/1376
 九九乘法表;九九;乘法表;9*9;99###九九乘法表：https://python-abc.xyz/basic/9025
@@ -176,7 +179,7 @@ type;类型###内置函数 class type(object)\nclass type(name, bases, dict, **k
 zip###内置函数 zip(*iterables, strict=False)\n在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组。\nhttps://docs.python.org/zh-cn/3/library/functions.html#zip
 python 关键字;关键字;保留字###Python 3.10.5 总共有以下 35 个关键字：\nhttps://docs.python.org/zh-cn/3/reference/lexical_analysis.html#keywords\nFalse       await       else          import        pass\nNone      break       except      in               raise\nTrue        class         finally      is                return\nand         continue   for           lambda      try\nas            def           from        nonlocal     while\nassert      del            global      not            with\nasync       elif            if             or               yield\n关键字简单释义：https://python-abc.xyz/python/0083
 树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=https://python-abc.xyz/static/img/raspberry-pi.png]
-pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
+pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 下载慢，则可以换国内源\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
 推导式###1. 列表推导式：[i**2 for i in range(10)]\n2. 集合推导式：{i**2 for i in range(10)}\n3. 生成器表达式：(i**2 for i in range(10))\n4. 字典推导式：{i: i**2 for i in range(10)}
 numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。\n官网地址：https://numpy.org/
 scrapy###Scrapy 是一个快速且强大的网络爬虫框架。\n官网地址：https://scrapy.org/
@@ -184,7 +187,7 @@ vim;vi###Vim 是从vi发展出来的一个文本编辑器。其代码补完、�
 emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以程序员和其他以技术工作为主的计算机用户为主。\n在Unix文化里，Emacs是黑客们关于编辑器之战的两大主角之一，它的对手是vi（Vim）。
 sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849/
 why;why?;为什么;为什么？;十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
-pip源;python源;换源;换清华源;清华源;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n示例2：pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple\n全局配置：pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
+pip源;python源;换源;换清华源;清华源;清华园;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n全局配置：pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 Lagrange;OneBot;qqbot;bot;机器人;QQ机器人;qq 机器人###QQ机器人搭建文档：https://python-abc.xyz/code/5807\n最新无风控机器人：https://github.com/shenxgan/qqbot
 快速入门###快速入门：https://python-abc.xyz/python/0083\n入门1/7-基础语法：https://python-abc.xyz/python/0083\n入门2/7-数据类型：https://python-abc.xyz/python/6668\n入门3/7-运算：https://python-abc.xyz/python/1736\n入门4/7-条件语句：https://python-abc.xyz/python/8369\n入门5/7-循环语句：https://python-abc.xyz/python/0684\n入门6/7-函数：https://python-abc.xyz/python/0508\n入门7/7-类：https://python-abc.xyz/python/4807
 virtual machine;虚拟机###虚拟机：一台完全通过软件定义的计算机。Python 虚拟机可执行字节码编译器所生成的 bytecode。
@@ -299,7 +302,7 @@ pyautogui;autogui###PyAutoGUI是一个纯Python的GUI自动化工具，其目的
 Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 是支持 web 浏览器自动化的一系列工具和库的综合项目。\nSelenium 的使用：https://python-abc.xyz/code/5127
 
 路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=https://python-abc.xyz/static/img/roadmap-python.png]
-pyinstaller;exe;打包;打包工具###python 的打包工具\n官网地址：https://pyinstaller.org/en/stable/
+pyinstaller;exe;打包;打包工具###PyInstaller 为 python 的一种打包工具；简单打包命令 pyinstaller -F -w xxx.py\n官网地址：https://pyinstaller.org/en/stable/
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ugly;avatar;ugly-avatar;头像;丑;丑头像###丑头像在线生成：https://python-abc.xyz/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.png]

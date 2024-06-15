@@ -51,7 +51,8 @@ def init_message(data):
     ats = set()
     for cq in cqs:
         if cq[1:6] == 'CQ:at':
-            ats.add(cq)
+            if cq != f'[CQ:at,qq={data["self_id"]}]':  # 不@自己
+                ats.add(cq)
         message = message.replace(cq, '')
     message = message.strip()
     return message, ats
@@ -101,7 +102,7 @@ def admin_action(message, ats):
         msg = '\n'.join(all_actions)
     elif message == '机器人状态':
         msg = json.dumps(app.ctx.flag, indent=4, ensure_ascii=False)
-    elif message == '允许':
+    elif message == '加入白名单':
         msg = []
         for at in ats:
             # at = '[CQ:at,qq=123456]'
@@ -109,10 +110,10 @@ def admin_action(message, ats):
             app.ctx.allow.add(int(who))
             msg.append(f'已允许 你:{who} 使用机器人')
         msg = '\n'.join(msg)
-    elif message == '清空允许':
+    elif message == '清空白名单':
         app.ctx.allow = set()
         msg = '已清空所有人使用机器人'
-    elif message == '所有允许':
+    elif message == '所有白名单':
         msg = '\n'.join(map(str, app.ctx.allow))
     elif message in all_actions:
         action = message[:2]
@@ -161,8 +162,8 @@ async def qqbot(request, ws):
 
             if app.ctx.flag['代码'] and message[:3] == '###':
                 msg = run_code(message)
-                if not ats:
-                    ats = [f'[CQ:at,qq={who}]']
+                if not is_me:
+                    ats.add(f'[CQ:at,qq={who}]')
             elif app.ctx.flag['回复']:
                 msg = group_msg(message)
 
