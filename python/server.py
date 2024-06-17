@@ -36,7 +36,7 @@ async def run_code(request):
     data = request.json
     code = data['code']
 
-    timeout = 2
+    timeout = 1
     max_line = 15
     max_len = 256
 
@@ -54,8 +54,12 @@ async def run_code(request):
         stderr=asyncio.subprocess.PIPE,
     )
     stdout, stderr = await proc.communicate()
-    msg = stdout.decode() + stderr.decode()
-    msg = msg[:max_len*2]
+    for i in range(9):
+        try:
+            msg = stdout[:max_len+i].decode() + stderr[:max_len+i].decode()
+            break
+        except Exception:
+            pass
     os.remove(fname)
 
     _msg = msg.split('\n')[:max_line]
