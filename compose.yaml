@@ -26,5 +26,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 200M
+          cpus: '1'
+          memory: 1024M
+      restart_policy:
+        condition: on-failure
