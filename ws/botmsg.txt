@@ -300,10 +300,11 @@ pdb;调试###pdb 模块定义了一个交互式源代码调试器，用于 Pytho
 pprint;美化输出###pprint 模块提供了“美化打印”任意 Python 数据结构的功能，这种美化形式可用作对解释器的输入。\nhttps://docs.python.org/zh-cn/3/library/pprint.html
 pyautogui;autogui###PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持（Windows，OS X，Linux）。\nhttps://github.com/asweigart/pyautogui/blob/master/docs/simplified-chinese.ipynb
 Selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 是支持 web 浏览器自动化的一系列工具和库的综合项目。\nSelenium 的使用：https://python-abc.xyz/code/5127
+pywebview;webview;webgui;gui###pywebview: 使用 JavaScript、HTML 和 CSS 为您的 Python 程序构建 GUI\n[CQ:image,file=https://python-abc.xyz/static/img/6622_1.gif]\n使用介绍：https://python-abc.xyz/code/6622
 
 路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/roadmap/\n[CQ:image,file=https://python-abc.xyz/static/img/roadmap-python.png]
 pyinstaller;exe;打包;打包工具###PyInstaller 为 python 的一种打包工具；简单打包命令 pyinstaller -F -w xxx.py\n官网地址：https://pyinstaller.org/en/stable/
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ugly;avatar;ugly-avatar;头像;丑;丑头像###丑头像在线生成：https://python-abc.xyz/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.png]
-代码运行;运行代码;执行代码;代码执行###使用###开头，后加 python 代码；即可执行此代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
+代码运行;运行代码;执行代码;代码执行###使用###开头，后加代码（可多行）即可执行；支持 python/c/js 代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
