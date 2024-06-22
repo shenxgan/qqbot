@@ -307,4 +307,4 @@ pyinstaller;exe;打包;打包工具###PyInstaller 为 python 的一种打包工�
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ugly;avatar;ugly-avatar;头像;丑;丑头像###丑头像在线生成：https://python-abc.xyz/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.png]
-代码运行;运行代码;执行代码;代码执行###使用###开头，后加代码（可多行）即可执行；支持 python/c/js 代码\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
+代码运行;运行代码;执行代码;代码执行###使用###开头，后加要执行的代码（可多行）\n目前支持 python/c/js 三种代码语言\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
