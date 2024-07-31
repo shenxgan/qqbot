@@ -10,7 +10,7 @@ app = Sanic('python')
 
 
 cmds = {
-    'python': 'timeout {timeout} python -u {fname}',
+    'py': 'timeout {timeout} python -u {fname}',
     'c': 'timeout {timeout} gcc -x c -o {fname}.o {fname}'
          ' && timeout {timeout} {fname}.o',
     'js': 'timeout {timeout} node {fname}',
@@ -19,7 +19,7 @@ cmds = {
 
 def check_language(code):
     """检测代码语言"""
-    tp = 'python'
+    tp = 'py'
     if '#include <stdio.h>' in code:
         tp = 'c'
     elif 'console.log' in code:

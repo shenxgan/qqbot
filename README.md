@@ -35,3 +35,7 @@ docker compose up -d
 ## 添加自己的回复逻辑
 - 我们使用的是反向 websocket
 - 逻辑代码位于 [`ws/server.py`](ws/server.py) 文件
+
+## 切换QQ账号
+- 删掉 bot 目录下除了 `appsettings.json` 之外的所有文件
+- 重新启动，使用新QQ扫码登录即可
