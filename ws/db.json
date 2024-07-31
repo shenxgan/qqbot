@@ -1,0 +1,10 @@
+{
+    "trigger": {
+        "cd": 15,
+        "last_ts": {}
+    },
+    "flag": {
+        "bot": true,
+        "code": true
+    }
+}
