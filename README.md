@@ -17,8 +17,8 @@ docker compose up
 
 ## 测试
 - 进群发送 python 即可看到回复
-- 所有关键字以及自动回复的消息均存于 [`ws/botmsg.txt`](ws/botmsg.txt) 文件中
-- 修改了 `ws/botmsg.txt` 文件后需要重启
+- 所有关键字以及自动回复的消息均存于 [`ws/plugins/kv_python/kvmsg.txt`](ws/plugins/kv_python/kvmsg.txt) 文件中
+- 修改了 `ws/plugins/kv_python/kvmsg.txt` 文件后需要重启
     ```bash
     docker compose down
     docker compose up --build

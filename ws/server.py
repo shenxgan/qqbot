@@ -1,54 +1,25 @@
 import json
+import os
+import importlib
 
 from sanic import Sanic
 from sanic.log import logger
 
 from group_msg import group_msg
-from admin import Admin
 
 app = Sanic('qqbot')
 
 
 @app.before_server_start
-async def load_botmsg(app):
-    """加载机器人回复内容到本地内存"""
-    with open('botmsg.txt') as f:
-        res = f.read()
-
-    botmsg = {}
-    botkeys = []
-    for r in res.split('\n'):
-        if not r.strip():
+async def load_plugins(app):
+    """加载所有插件，并初始化"""
+    app.ctx.plugins = []
+    for de in os.scandir('plugins'):
+        if not de.is_dir():
             continue
-        keys, value = r.split('###', 1)
-        keys = keys.split(';')
-        value = value.replace('\\n', '\n')
-        botkeys.append(keys[0])
-        for key in keys:
-            if key in botmsg:
-                logger.error(f'key {key} 重复')
-            botmsg[key] = value
-    logger.info(f'botmsg 关键字加载完毕，共 {len(botmsg)} 条数据')
-    app.ctx.botmsg = botmsg
-    app.ctx.botkeys = botkeys
-
-
-@app.before_server_start
-async def load_db(app):
-    """加载数据库
-    使用json文件来充当数据库
-    """
-    fpath = 'db.json'
-    with open(fpath) as f:
-        data = f.read()
-        db_data = json.loads(data)
-    app.ctx.db = db_data
-
-
-@app.before_server_start
-async def load_admin(app):
-    """加载机器人管理指令"""
-    app.ctx.admin = Admin()
+        logger.info(f'加载插件 {de.name}')
+        x = importlib.import_module(f'plugins.{de.name}.main')
+        app.ctx.plugins.append(x.Plugin())
 
 
 @app.websocket('/qqbot')
@@ -64,15 +35,10 @@ async def qqbot(request, ws):
         if 'user_id' in data and 'self_id' in data:
             is_me = data['user_id'] == data['self_id']
 
-        # 机器人关闭时，仅自己可用
-        if app.ctx.db['flag']['bot'] is False:
-            if not is_me:
-                continue
-
         # 根据消息类型、内容来进行分别处理
         if data.get('message_type') == 'group' and data.get('raw_message'):
             await group_msg(ws, data, is_me)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False, auto_reload=True)
+    app.run(host='0.0.0.0', debug=False, auto_reload=False, workers=1)
