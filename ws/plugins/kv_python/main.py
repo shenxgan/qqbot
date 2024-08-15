@@ -1,10 +1,12 @@
 import os
 
+from plugins.base import Base
 
-class Plugin:
+
+class Plugin(Base):
     """Python 知识点，关键字触发"""
     def __init__(self):
-        self.is_open = True
+        super().__init__()
         self.is_at = False
         self.kvmsg = self.load_kvmsg()
 
@@ -29,15 +31,7 @@ class Plugin:
         print(f'kvmsg 关键字加载完毕，共 {len(kvmsg)} 条数据')
         return kvmsg
 
-    def is_match(self, message):
-        """检测是否匹配此插件"""
-        return True
-
-    def run(self, message):
-        if not self.is_open:
-            return
-        if not self.is_match(message):
-            return
+    def handle(self, message):
         key = message.lower().replace('()', '').strip()
         msg = self.kvmsg.get(key)
         return msg

@@ -17,6 +17,8 @@ async def load_plugins(app):
     for de in os.scandir('plugins'):
         if not de.is_dir():
             continue
+        if de.name == '__pycache__':
+            continue
         logger.info(f'加载插件 {de.name}')
         x = importlib.import_module(f'plugins.{de.name}.main')
         app.ctx.plugins.append(x.Plugin())
