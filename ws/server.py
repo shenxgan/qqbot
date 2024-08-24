@@ -5,7 +5,8 @@ import importlib
 from sanic import Sanic
 from sanic.log import logger
 
-from group_msg import group_msg
+from message import group_msg
+from notice import notice
 
 app = Sanic('qqbot')
 
@@ -37,10 +38,15 @@ async def qqbot(request, ws):
         if 'user_id' in data and 'self_id' in data:
             is_me = data['user_id'] == data['self_id']
 
+        post_type = data.get('post_type')
         # 根据消息类型、内容来进行分别处理
-        if data.get('message_type') == 'group' and data.get('raw_message'):
+        if post_type == 'message' \
+                and data.get('message_type') == 'group' \
+                and data.get('raw_message'):
             await group_msg(ws, data, is_me)
+        elif post_type == 'notice':
+            await notice(ws, data)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False, auto_reload=False, workers=1)
+    app.run(host='0.0.0.0', debug=False, auto_reload=True, workers=1)

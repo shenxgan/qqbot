@@ -2,6 +2,7 @@ class Base:
     def __init__(self):
         self.is_open = True     # 插件开关
         self.is_at = True       # 回复消息时是否at触发之人
+        self.type = 'message'   # 类型
 
     def is_match(self, message):
         """检测是否匹配此插件"""

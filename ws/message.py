@@ -31,6 +31,8 @@ async def group_msg(ws, data, is_me):
     msg = None
 
     for plugin in app.ctx.plugins:
+        if plugin.type != 'message':
+            continue
         try:
             msg = plugin.run(message)
             if msg:

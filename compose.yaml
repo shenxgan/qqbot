@@ -1,6 +1,6 @@
 services:
   bot:
-    image: ghcr.io/lagrangedev/lagrange.onebot:edge
+    image: ghcr.nju.edu.cn/lagrangedev/lagrange.onebot:edge
     restart: always
     volumes:
       - ./bot:/app/data
