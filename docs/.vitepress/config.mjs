@@ -8,8 +8,8 @@ export default defineConfig({
   base: '/qqbot/',
   lastUpdated: true,
   head: [
-    ['link', { rel: 'icon', href: '/static/img/logo.png' }],
-    ['link', { rel: 'stylesheet', href: '/static/css/style.css' }],
+    ['link', { rel: 'icon', href: '/qqbot/static/img/logo.png' }],
+    ['link', { rel: 'stylesheet', href: '/qqbot/static/css/style.css' }],
     [
       'script',
       { async: '', src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3829557881750869', crossorigin: 'anonymous' }
@@ -33,7 +33,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '指南', link: '/guide/5170' },
-      { text: '插件', link: '/plugin/3490' }
+      { text: '插件', link: '/plugin/3490' },
+      { text: 'OneBot 11', link: '/onebot-11/README' },
     ],
 
     sidebar: {
@@ -46,7 +47,6 @@ export default defineConfig({
           ]
         }
       ],
-
       '/plugin/': [
         {
           text: '插件',
@@ -54,6 +54,51 @@ export default defineConfig({
             { text: '插件介绍', link: '/plugin/3490' },
           ]
         }
+      ],
+      '/onebot-11/': [
+        { text: 'OneBot 11 标准', link: 'https://github.com/botuniverse/onebot-11' },
+        {
+          text: '通信',
+          collapsed: false,
+          items: [
+            { text: '通信概述', link: '/onebot-11/communication/README' },
+            { text: 'HTTP', link: '/onebot-11/communication/http' },
+            { text: 'HTTP POST', link: '/onebot-11/communication/http-post' },
+            { text: '正向 WebSocket', link: '/onebot-11/communication/ws' },
+            { text: '反向 WebSocket', link: '/onebot-11/communication/ws-reverse' },
+            { text: '鉴权', link: '/onebot-11/communication/authorization' },
+          ]
+        },
+        {
+          text: '消息',
+          collapsed: false,
+          items: [
+            { text: '消息概述', link: '/onebot-11/message/README' },
+            { text: '字符串格式', link: '/onebot-11/message/string' },
+            { text: '数组格式', link: '/onebot-11/message/array' },
+            { text: '消息段类型', link: '/onebot-11/message/segment' },
+          ]
+        },
+        {
+          text: 'API',
+          collapsed: false,
+          items: [
+            { text: 'API 概述', link: '/onebot-11/api/README' },
+            { text: '公开 API', link: '/onebot-11/api/public' },
+            { text: '隐藏 API', link: '/onebot-11/api/hidden' },
+          ]
+        },
+        {
+          text: '事件',
+          collapsed: false,
+          items: [
+            { text: '事件概述', link: '/onebot-11/event/README' },
+            { text: '消息事件', link: '/onebot-11/event/message' },
+            { text: '通知事件', link: '/onebot-11/event/notice' },
+            { text: '请求事件', link: '/onebot-11/event/request' },
+            { text: '元事件', link: '/onebot-11/event/meta' },
+          ]
+        },
       ],
     },
 
