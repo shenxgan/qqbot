@@ -28,6 +28,7 @@ export default defineConfig({
     ],
   ],
   cleanUrls: true,  // 干净的路由，不带 .html
+  ignoreDeadLinks: true,
   themeConfig: {
     logo: '/static/img/logo.png',
     // https://vitepress.dev/reference/default-theme-config
