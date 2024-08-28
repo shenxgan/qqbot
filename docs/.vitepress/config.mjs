@@ -54,6 +54,7 @@ export default defineConfig({
           text: '插件',
           items: [
             { text: '插件介绍', link: '/plugin/3490' },
+            { text: '如何创建插件', link: '/plugin/5640' },
           ]
         }
       ],
