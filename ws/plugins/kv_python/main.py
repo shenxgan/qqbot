@@ -31,7 +31,7 @@ class Plugin(Base):
         print(f'kvmsg 关键字加载完毕，共 {len(kvmsg)} 条数据')
         return kvmsg
 
-    def handle(self, message):
+    async def handle(self, message):
         key = message.lower().replace('()', '').strip()
         msg = self.kvmsg.get(key)
         return msg

@@ -8,14 +8,14 @@ class Base:
         """检测是否匹配此插件"""
         return True
 
-    def handle(self, message):
+    async def handle(self, message):
         """核心处理逻辑"""
         pass
 
-    def run(self, message):
+    async def run(self, message):
         """外部调用入口"""
         if not self.is_open:
             return
         if not self.is_match(message):
             return
-        return self.handle(message)
+        return await self.handle(message)

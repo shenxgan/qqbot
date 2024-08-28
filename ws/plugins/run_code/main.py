@@ -19,7 +19,7 @@ class Plugin(Base):
         else:
             return False
 
-    def handle(self, message):
+    async def handle(self, message):
         code = message[3:].strip()
         # qq会进行转义，此处是对转义的字符进行还原
         replace_kv = {

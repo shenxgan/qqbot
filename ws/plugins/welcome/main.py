@@ -22,6 +22,6 @@ class Plugin(Base):
         else:
             return False
 
-    def handle(self, data):
+    async def handle(self, data):
         msg = '欢迎入群~'
         return msg

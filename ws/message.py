@@ -34,7 +34,13 @@ async def group_msg(ws, data, is_me):
         if plugin.type != 'message':
             continue
         try:
-            msg = plugin.run(message)
+            if hasattr(plugin, 'admin'):
+                plugin.admin = {
+                    'ws': ws,
+                    'data': data,
+                    'ats': ats,
+                }
+            msg = await plugin.run(message)
             if msg:
                 if plugin.is_at:
                     ats.add(f'[CQ:at,qq={who}]')
