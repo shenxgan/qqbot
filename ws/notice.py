@@ -13,7 +13,7 @@ async def notice(ws, data):
         if plugin.type != 'notice':
             continue
         try:
-            msg = plugin.run(data)
+            msg = await plugin.run(data)
             if msg:
                 break
         except Exception as e:
