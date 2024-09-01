@@ -12,6 +12,11 @@ services:
     restart: always
     command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt && python server.py"
     working_dir: /app
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./ws:/app
 

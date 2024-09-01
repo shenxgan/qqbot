@@ -34,12 +34,9 @@ async def group_msg(ws, data, is_me):
         if plugin.type != 'message':
             continue
         try:
-            if hasattr(plugin, 'admin'):
-                plugin.admin = {
-                    'ws': ws,
-                    'data': data,
-                    'ats': ats,
-                }
+            for attr in {'ws', 'data', 'ats'}:
+                if hasattr(plugin, attr):
+                    setattr(plugin, attr, locals()[attr])
             msg = await plugin.run(message)
             if msg:
                 if plugin.is_at:

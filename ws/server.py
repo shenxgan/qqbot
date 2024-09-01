@@ -20,9 +20,12 @@ async def load_plugins(app):
             continue
         if de.name == '__pycache__':
             continue
-        logger.info(f'加载插件 {de.name}')
-        x = importlib.import_module(f'plugins.{de.name}.main')
-        app.ctx.plugins.append(x.Plugin())
+        try:
+            logger.info(f'加载插件 {de.name}')
+            x = importlib.import_module(f'plugins.{de.name}.main')
+            app.ctx.plugins.append(x.Plugin())
+        except Exception as e:
+            logger.error(f'插件 {de.name} 加载失败：{e}')
 
 
 @app.websocket('/qqbot')

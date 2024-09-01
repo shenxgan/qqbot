@@ -52,14 +52,14 @@ copy_change() {
 
 case "$1" in
     start)
-        docker compose up -d
+        docker compose up $2
     ;;
     stop)
         docker compose down
     ;;
     restart)
         docker compose down
-        docker compose up -d
+        docker compose up $2
     ;;
     tail)
         docker compose logs -f $2
