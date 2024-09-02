@@ -45,7 +45,7 @@ copy_change() {
 
     read -p "是否重启服务？[yes/no]：" _yes
     if [[ "$_yes" == "yes" ]]; then
-        ssh $host "cd $project_path && ./run.sh restart"
+        ssh $host "cd $project_path && ./run.sh restart -d"
     fi
 }
 
@@ -65,7 +65,7 @@ case "$1" in
         docker compose logs -f $2
     ;;
     deploy)
-        ssh $host "cd $project_path && git pull origin main && ./run.sh restart"
+        ssh $host "cd $project_path && git pull origin main && ./run.sh restart -d"
     ;;
     upload|up)
         shift
