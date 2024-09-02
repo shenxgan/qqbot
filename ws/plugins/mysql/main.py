@@ -13,15 +13,17 @@ class Plugin(Base):
         self.is_at = False
         self.data = None
         self.ats = None
-        self.conn_info = {
+        self.conn_info = self.get_mysql_conn()
+
+    def get_mysql_conn(self):
+        conn_info = {
             'host': os.getenv('MYSQL_HOST', '127.0.0.1'),
             'port': os.getenv('MYSQL_PORT', '3306'),
             'user': os.getenv('MYSQL_USER', 'root'),
             'passwd': os.getenv('MYSQL_PASSWORD', '123456'),
-            # 'database': 'mysql',
         }
-        self.conn_info['port'] = int(self.conn_info['port'])
-        self.mysql = MySQL(**self.conn_info)
+        conn_info['port'] = int(conn_info['port'])
+        return conn_info
 
     def is_match(self, message):
         """检测是否匹配此插件"""
@@ -44,9 +46,13 @@ class Plugin(Base):
         re_s = r'qq=(\d+),*'
         info = re.findall(re_s, at)
         qq = info[0]
+
+        mysql = MySQL(**self.conn_info)
         for sql in sqls:
             sql = sql.format(qq)
-            self.mysql.execute(sql)
+            mysql.execute(sql)
+        mysql.close()
+
         msgs = [
             '数据库、账号和密码创建成功：',
             f'\t连接地址：{self.conn_info["host"]}',

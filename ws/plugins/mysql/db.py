@@ -20,3 +20,7 @@ class MySQL():
             print(traceback.format_exc())
             # 异常后回滚
             self.conn.rollback()
+
+    def close(self):
+        if self.conn:
+            self.conn.close()
