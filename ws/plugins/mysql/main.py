@@ -31,21 +31,40 @@ class Plugin(Base):
             return False
         if not self.ats:
             return False
-        if message.strip() == r'\mysql':
+        if message.startswith(r'\mysql'):
             return True
         else:
             return False
 
     async def handle(self, message):
-        sqls = [
-            'create database db{0};',
-            "CREATE USER '{0}'@'%' IDENTIFIED BY '{0}';",
-            "GRANT ALL ON db{0}.* TO '{0}'@'%';",
-        ]
         at = list(self.ats)[0]  # 一次只能一个，多个取第一个
         re_s = r'qq=(\d+),*'
         info = re.findall(re_s, at)
         qq = info[0]
+
+        if message.strip() == r'\mysql drop':
+            sqls = [
+                f"DROP USER '{qq}'@'%';",       # 删除用户
+                f"DROP DATABASE db{qq};"        # 删除数据库
+            ]
+            msgs = [
+                '数据库和账号均已删除。',
+            ]
+        else:
+            sqls = [
+                f"CREATE DATABASE db{qq};",                         # 创建数据库
+                f"CREATE USER '{qq}'@'%' IDENTIFIED BY '{qq}';",    # 创建账号和密码
+                f"GRANT ALL ON db{qq}.* TO '{qq}'@'%';",            # 分配数据库权限
+                f"ALTER USER '{qq}'@'%' PASSWORD EXPIRE;",          # 将密码过期
+            ]
+            msgs = [
+                '数据库、账号和密码创建成功：',
+                f'\t连接地址：{self.conn_info["host"]}',
+                f'\t端口：{self.conn_info["port"]}',
+                f'\t用户名：{qq}',
+                f'\t密码：{qq}（首次登录需要重置密码）',
+                f'\t数据库：db{qq}',
+            ]
 
         mysql = MySQL(**self.conn_info)
         for sql in sqls:
@@ -53,13 +72,5 @@ class Plugin(Base):
             mysql.execute(sql)
         mysql.close()
 
-        msgs = [
-            '数据库、账号和密码创建成功：',
-            f'\t连接地址：{self.conn_info["host"]}',
-            f'\t端口：{self.conn_info["port"]}',
-            '\t用户名：{你的qq号}',
-            '\t密码：{你的qq号}',
-            '\t数据库：db{你的qq号}',
-        ]
         msg = '\n'.join(msgs)
         return msg
