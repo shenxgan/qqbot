@@ -9,7 +9,7 @@ class Plugin(Base):
         super().__init__()
         self.type = 'notice'
         self.last_ts = {}       # 记录每个群的触发时间
-        self.cd = 3600          # 同一群回复间隔为1小时
+        self.cd = 3600 * 8      # 同一群回复间隔为8小时
 
     def is_match(self, data):
         """检测是否匹配此插件"""
