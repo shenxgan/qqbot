@@ -1,0 +1,42 @@
+import os
+import requests
+
+from plugins.base import Base
+
+
+class Plugin(Base):
+    """豆包AI"""
+    def __init__(self):
+        super().__init__()
+        self.is_at = True
+        self.system_content = '你的每次回复都在50字以内'
+
+    def doubao(self, content):
+        api_key = os.environ.get('DOUBAO_API_KEY')
+        model = os.environ.get('DOUBAO_MODEL')
+        url = 'https://ark.cn-beijing.volces.com/api/v3/chat/completions'
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {api_key}',
+        }
+        data = {
+            'model': model,
+            'messages': [
+                {'role': 'system', 'content': self.system_content},
+                {'role': 'user', 'content': content},
+            ]
+        }
+        r = requests.post(url, json=data, headers=headers)
+        msg = r.json()['choices'][0]['message']['content']
+        return msg
+
+    def is_match(self, message):
+        """检测是否匹配此插件"""
+        if message[:4] == r'\gpt':
+            return True
+        else:
+            return False
+
+    async def handle(self, message):
+        content = message[4:].strip()
+        return self.doubao(content)
