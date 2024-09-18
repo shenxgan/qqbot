@@ -56,6 +56,12 @@ export default defineConfig({
             { text: '插件介绍', link: '/plugin/3490' },
             { text: '如何创建插件', link: '/plugin/5640' },
           ]
+        },
+        {
+          text: '内置插件',
+          items: [
+            { text: 'Python 关键字', link: '/plugin/5941' },
+          ]
         }
       ],
       '/onebot-11/': [
