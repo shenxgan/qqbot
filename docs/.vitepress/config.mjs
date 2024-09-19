@@ -61,6 +61,7 @@ export default defineConfig({
           text: '内置插件',
           items: [
             { text: 'Python 关键字', link: '/plugin/5941' },
+            { text: '运行代码', link: '/plugin/0210' },
           ]
         }
       ],
