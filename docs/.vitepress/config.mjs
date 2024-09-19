@@ -62,6 +62,8 @@ export default defineConfig({
           items: [
             { text: 'Python 关键字', link: '/plugin/5941' },
             { text: '运行代码', link: '/plugin/0210' },
+            { text: '成语接龙', link: '/plugin/1296' },
+            { text: '豆包 AI', link: '/plugin/9234' },
           ]
         }
       ],
