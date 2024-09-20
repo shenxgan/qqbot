@@ -1,3 +1,5 @@
+import os
+import random
 import time
 
 from plugins.base import Base
@@ -10,6 +12,17 @@ class Plugin(Base):
         self.type = 'notice'
         self.last_ts = {}       # 记录每个群的触发时间
         self.cd = 3600 * 8      # 同一群回复间隔为8小时
+        self.welcome_msg = self.load_msg()
+
+    def load_msg(self):
+        """加载欢迎语到本地内存"""
+        fdir = os.path.dirname(os.path.abspath(__file__))
+        fpath = os.path.join(fdir, 'msg.txt')
+        with open(fpath) as f:
+            data = f.read()
+        welcome_msg = [line for line in data.split('\n') if line.strip()]
+        print(f'入群欢迎语加载完毕，共 {len(welcome_msg)} 条数据')
+        return welcome_msg
 
     def is_match(self, data):
         """检测是否匹配此插件"""
@@ -23,5 +36,5 @@ class Plugin(Base):
             return False
 
     async def handle(self, data):
-        msg = '欢迎入群~'
+        msg = random.choice(self.welcome_msg)
         return msg
