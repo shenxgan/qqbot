@@ -64,6 +64,8 @@ export default defineConfig({
             { text: '运行代码', link: '/plugin/0210' },
             { text: '成语接龙', link: '/plugin/1296' },
             { text: '豆包 AI', link: '/plugin/9234' },
+            { text: '设置专属头衔', link: '/plugin/7595' },
+            { text: '入群欢迎', link: '/plugin/4233' },
           ]
         }
       ],
