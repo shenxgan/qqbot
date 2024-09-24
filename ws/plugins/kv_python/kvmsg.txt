@@ -67,6 +67,7 @@ mongo;mongodb###MongoDB 是一种面向文档的数据库管理系统\n官网下
 markdown 转 html;markdown;python markdown###Markdown 转 HTML：https://python-abc.xyz/code/1172
 正则表达式;正则;re;import re;findall;.*;\d+###正则表达式：https://python-abc.xyz/code/2854\n[CQ:image,file=https://python-abc.xyz/static/img/2854_1.png]
 
+快速入门###快速入门：https://python-abc.xyz/python/0083\n入门1/7-基础语法：https://python-abc.xyz/python/0083\n入门2/7-数据类型：https://python-abc.xyz/python/6668\n入门3/7-运算：https://python-abc.xyz/python/1736\n入门4/7-条件语句：https://python-abc.xyz/python/8369\n入门5/7-循环语句：https://python-abc.xyz/python/0684\n入门6/7-函数：https://python-abc.xyz/python/0508\n入门7/7-类：https://python-abc.xyz/python/4807
 基础语法;语法;python语法;变量名规则###入门1/7-基础语法：https://python-abc.xyz/python/0083
 数据类型;字符串常用方法;列表常用方法;字典常用方法###入门2/7-数据类型：https://python-abc.xyz/python/6668
 运算;算术运算;比较运算;赋值运算;逻辑运算;成员运算;身份运算###算术运算\n比较运算\n赋值运算\n逻辑运算\n成员运算\n身份运算\n入门3/7-运算：https://python-abc.xyz/python/1736
@@ -80,6 +81,13 @@ match 语句;match;case;match-case;匹配语句;模式匹配###match 语句（3.
 简单语句###简单语句：https://python-abc.xyz/python/8230
 复合语句###复合语句：https://python-abc.xyz/python/0086
 
+tkinter;tk###tkinter 包 ("Tk 接口") 是针对 Tcl/Tk GUI 工具包的标准 Python 接口。Tk 和 tkinter 在大多数 Unix 平台，包括 macOS，以及 Windows 系统上均可使用。\n若在命令行执行 python -m tkinter，应会弹出一个简单的 Tk 界面窗口， 表明 tkinter 包已安装完成，还会显示当前安装的 Tcl/Tk 版本，以便阅读对应版本的 Tcl/Tk 文档。\nhttps://docs.python.org/zh-cn/3/library/tkinter.html
+虚拟环境;venv###虚拟环境：一种采用协作式隔离的运行时环境，允许 Python 用户和应用程序在安装和升级 Python 分发包时不会干扰到同一系统上运行的其他 Python 应用程序的行为。\nhttps://docs.python.org/zh-cn/3/library/venv.html
+idle###IDLE：Python 的 IDE，“集成开发与学习环境”的英文缩写。是 Python 标准发行版附带的基本编辑器和解释器环境。\nhttps://docs.python.org/zh-cn/3/library/idle.html
+垃圾回收;gc###垃圾回收：释放不再被使用的内存空间的过程。Python 是通过引用计数和一个能够检测和打破循环引用的循环垃圾回收器来执行垃圾回收的。可以使用 gc 模块来控制垃圾回收器。\nhttps://docs.python.org/zh-cn/3/library/gc.html
+pdb;调试###pdb 模块定义了一个交互式源代码调试器，用于 Python 程序。它支持在源码行间设置（有条件的）断点和单步执行，检视堆栈帧，列出源码列表，以及在任何堆栈帧的上下文中运行任意 Python 代码。它还支持事后调试，可以在程序控制下调用。\nhttps://docs.python.org/zh-cn/3/library/pdb.html
+pprint;美化输出###pprint 模块提供了“美化打印”任意 Python 数据结构的功能，这种美化形式可用作对解释器的输入。\nhttps://docs.python.org/zh-cn/3/library/pprint.html
+pip源;python源;换源;换清华源;清华源;清华园;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n全局配置：pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 python;python下载;官网;官网地址;python下载地址;官方文档###Python 是一门易于学习、功能强大的编程语言。\n官方文档地址：https://docs.python.org/zh-cn/3/\n下载地址：https://www.python.org/downloads/
 安装python;python安装###Python 安装详细教程：https://python-abc.xyz/noob/1047
 pycharm;pc###PyCharm 是专业的 Python IDE，支持智能代码补全、实时错误检查和快速修复，等等…\nPyCharm 下载地址：https://www.jetbrains.com/zh-cn/pycharm/download/#section=windows\n下载社区版即可。建议纯新手无脑使用这个
@@ -90,7 +98,9 @@ vscode###Visual Studio Code 是一款由微软开发且跨平台的免费源代�
 书籍推荐;入门书籍;推荐书籍;电子书###书籍推荐《Python编程：从入门到实践》和《流畅的Python》任选一本即可；群文件中有相关的电子书
 w3school###在 W3School，你可以找到你所需要的所有的网站建设教程。从基础的 HTML 到 CSS，乃至进阶的 XML、SQL、JS、PHP 和 ASP.NET。\nw3school 在线 Python 教程地址：https://www.w3school.com.cn/python/index.asp
 liaoxuefeng;廖雪峰###研究互联网产品和技术，提供原创中文精品教程.\n廖雪峰 Python教程地址：https://www.liaoxuefeng.com/wiki/1016959663602400
-
+pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 下载慢，则可以换国内源\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
+pep###“Python 增强提议”的英文缩写。一个 PEP 就是一份设计文档，用来向 Python 社区提供信息，或描述一个 Python 的新增特性及其进度或环境。\nhttps://peps.python.org/pep-0000/
+pep8;Python 代码风格指南;Python 代码风格;代码风格###Python 代码风格指南：https://peps.python.org/pep-0008/
 pythonic###Pythonic 指一个思路或一段代码紧密遵循了 Python 语言最常用的风格和理念，而不是使用其他语言中通用的概念来实现代码。
 引用计数###引用计数：对特定对象的引用的数量。当一个对象的引用计数降为零时，所分配资源将被释放。引用计数对 Python 代码来说通常是不可见的，但它是 CPython 实现的一个关键元素。
 集合推导式###集合推导式：处理一个可迭代对象中的所有或部分元素并返回结果集合的一种紧凑写法。 results = {c for c in 'abracadabra' if c not in 'abc'} 将生成字符串集合 {'r', 'd'}。
@@ -100,7 +110,7 @@ zen of python;python 之禅;import this;zen;禅###Python 之禅：列出 Python 
 上下文管理器;context manager;with;context###上下文管理器在 with 语句中使用，通过定义 __enter__() 和 __exit__() 方法来控制环境状态的对象。\nwith 语句：https://docs.python.org/zh-cn/3/reference/compound_stmts.html#with
 协程;coroutine;async/await;async;await;asyncio;异步###协程是子例程的更一般形式。 子例程可以在某一点进入并在另一点退出。协程则可以在许多不同的点上进入、退出和恢复。它们可通过 async def 语句来实现。\n协程示例代码：https://python-abc.xyz/code/5134
 cpython###CPython：Python 编程语言的规范实现，在 python.org 上发布。"CPython" 一词用于在必要时将此实现与其他实现例如 Jython 或 IronPython 相区别。
-
+推导式###1. 列表推导式：[i**2 for i in range(10)]\n2. 集合推导式：{i**2 for i in range(10)}\n3. 生成器表达式：(i**2 for i in range(10))\n4. 字典推导式：{i: i**2 for i in range(10)}
 字典推导式###字典推导式：处理一个可迭代对象中的所有或部分元素并返回结果字典的一种紧凑写法。 results = {n: n ** 2 for n in range(10)} 将生成一个由键 n 到值 n ** 2 的映射构成的字典。
 字典视图;dictionary view###从 dict.keys(), dict.values() 和 dict.items() 返回的对象被称为字典视图。它们提供了字典条目的一个动态视图，这意味着当字典改变时，视图也会相应改变。要将字典视图强制转换为真正的列表，可使用 list(dictview)。\n字典视图对象：https://docs.python.org/zh-cn/3/library/stdtypes.html#dict-views
 文档字符串;docstring###文档字符串：作为类、函数或模块之内的第一个表达式出现的字符串字面值。它在代码执行时会被忽略，但会被解释器识别并放入所在类、函数或模块的 __doc__ 属性中。由于它可用于代码内省，因此是对象存放文档的规范位置。
@@ -120,21 +130,26 @@ cpython###CPython：Python 编程语言的规范实现，在 python.org 上发�
 元类;metaclass###元类：一种用于创建类的类。\nhttps://docs.python.org/zh-cn/3/reference/datamodel.html#metaclasses
 模块;module###模块：此对象是 Python 代码的一种组织单位。各模块具有独立的命名空间，可包含任意 Python 对象。模块可通过 importing 操作被加载到 Python 中。
 命名空间;namespace###命名空间是存放变量的场所。命名空间有局部、全局和内置的，还有对象中的嵌套命名空间（在方法之内）。命名空间通过防止命名冲突来支持模块化。
-pep###“Python 增强提议”的英文缩写。一个 PEP 就是一份设计文档，用来向 Python 社区提供信息，或描述一个 Python 的新增特性及其进度或环境。\nhttps://peps.python.org/pep-0000/
-pep8;Python 代码风格指南;Python 代码风格;代码风格###Python 代码风格指南：https://peps.python.org/pep-0008/
-mysql###MySQL 是一个关系型数据库管理系统\n官网下载地址：https://dev.mysql.com/downloads/installer/\n客户端 Navicat 下载地址：https://www.navicat.com.cn/download/navicat-premium\npymysql 使用示例：https://python-abc.xyz/code/0409
-navicat;npl;navicat精简版###Navicat Premium Lite 是 Navicat 的精简版，拥有基本数据库操作所需的核心功能。【免费】\n它允许你同时连接到各种数据库平台，包括 MySQL、PostgreSQL、SQL Server、Oracle、MariaDB，以及 Redis 和 MongoDB 等 NoSQL 数据库。\n下载地址：https://www.navicat.com.cn/download/navicat-premium-lite
-xpath###XPath 为 XML 路径语言，它是一种用来确定 XML 文档中某部分位置的计算机语言。\n浏览器中可通过按 F12 之后鼠标右键复制出 xpath 路径
-requests###Requests 是一个优雅而简单的 Python HTTP 库，专为人类构建。\n官网地址：https://requests.readthedocs.io/en/latest/\nrequests 爬虫示例：https://python-abc.xyz/basic/5995
-celery;芹菜###Celery - 分布式任务队列，是一个专注于实时处理的任务队列，同时也支持任务调度。\n官网地址：https://docs.celeryq.dev/en/stable/
-django###Django 是最流行的 Python Web 框架之一\n官网教程地址：https://docs.djangoproject.com/zh-hans/4.0/intro/tutorial01/
-jinja2;jinja;模板语言###Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。\nhttps://docs.jinkan.org/docs/jinja2/index.html\n示例代码：https://python-abc.xyz/sanic/0811/
-pandas;数据分析;dataframe;df###Pandas 是 Python 语言的一个用于数据分析的扩展程序库。\n官网地址：https://pandas.pydata.org/\nPandas 常用操作：https://python-abc.xyz/code/6707
-paramiko;ssh;python ssh###Paramiko 是 SSHv2 协议的纯 Python 实现，提供客户端和服务器功能。\n官网地址：https://www.paramiko.org/\n代码示例：https://python-abc.xyz/code/0413
+future 语句;__future__;future###future 语句, from __future__ import <feature> 指示编译器使用将在未来的 Python 发布版中成为标准的语法和语义来编译当前模块。\n简单语句：https://python-abc.xyz/python/8230
+
+
 python 关键字;关键字;保留字###Python 3.10.5 总共有以下 35 个关键字：\nhttps://docs.python.org/zh-cn/3/reference/lexical_analysis.html#keywords\nFalse       await       else          import        pass\nNone      break       except      in               raise\nTrue        class         finally      is                return\nand         continue   for           lambda      try\nas            def           from        nonlocal     while\nassert      del            global      not            with\nasync       elif            if             or               yield\n关键字简单释义：https://python-abc.xyz/python/0083
+assert;断言;assert 语句###assert 语句是在程序中插入调试性断言的简便方式。\n简单语句：https://python-abc.xyz/python/8230
+pass;占位;pass 语句###pass 是一个空操作 --- 当它被执行时，什么都不发生。它适合当语法上需要一条语句但并不需要执行任何代码时用来临时占位。\n简单语句：https://python-abc.xyz/python/8230
+del;删除对象;del 语句###del 用于删除对象。\n简单语句：https://python-abc.xyz/python/8230
+return;函数返回;return 语句###return 会离开当前函数调用，并以表达式列表 (或 None) 作为返回值。\n简单语句：https://python-abc.xyz/python/8230
+yield;yield 表达式;yield 语句###yield 表达式在定义 generator 函数或 asynchronous generator 函数时才会用到因此只能在函数定义的内部使用。 在一个函数体内使用 yield 表达式会使这个函数变成一个生成器函数，而在一个 async def 函数的内部使用它则会让这个协程函数变成一个异步生成器函数。\n简单语句：https://python-abc.xyz/python/8230
+raise;抛出异常;raise 语句###raise 用于抛出一个异常。\n简单语句：https://python-abc.xyz/python/8230
+break;跳出循环;break 语句###break 在语法上只会出现于 for 或 while 循环所嵌套的代码，但不会出现于该循环内部的函数或类定义所嵌套的代码。\n它会终结最近的外层循环，如果循环有可选的 else 子句，也会跳过该子句。\n简单语句：https://python-abc.xyz/python/8230
+continue;继续循环;continue 语句###continue 在语法上只会出现于 for 或 while 循环所嵌套的代码中，但不会出现于该循环内部的函数或类定义中。它会继续执行最近的外层循环的下一个轮次。\n简单语句：https://python-abc.xyz/python/8230
+import 语句;import;引入模块;导入模块###import 用于导入模块。\n简单语句：https://python-abc.xyz/python/8230
+global;全局变量;global 语句###global 语句是作用于整个当前代码块的声明。 它意味着所列出的标识符将被解读为全局变量。 要给全局变量赋值不可能不用到 global 关键字，不过自由变量也可以指向全局变量而不必声明为全局变量。\n简单语句：https://python-abc.xyz/python/8230
+nonlocal;nonlocal 语句###nonlocal 语句会使其所列出的标识符指向之前在非局部作用域中绑定的名称。 它允许封装的代码重新绑定这样的非局部标识符。\n简单语句：https://python-abc.xyz/python/8230
+none###None 关键字是 python 中的一个特殊的常量，表示一个空的对象。
+
+
 python 内置函数;内置函数###Python 3.10.5 总共有以下这些内置函数：\nhttps://docs.python.org/zh-cn/3/library/functions.html\nabs() aiter() all() any() anext() ascii() bin() bool() breakpoint() bytearray() bytes() callable() chr() classmethod() compile() complex() delattr() dict() dir() divmod() enumerate() eval() exec() filter() float() format() frozenset() getattr() globals() hasattr() hash() help() hex() id() input() int() isinstance() issubclass() iter() len() list() locals() map() max() memoryview() min() next() object() oct() open() ord() pow() print() property() range() repr() reversed() round() set() setattr() slice() sorted() staticmethod() str() sum() super() tuple() type() vars() zip() __import__()
-jupyter;python在线;python 在线;在线python;手机python;在线写代码###Python 在线：https://python-abc.xyz/jupyter/tree
-abs###内置函数 abs(x)\n返回一个数的绝对值。
+abs###内置函数 abs(x)\n返回一个数的绝对值。\n参数可以是整数、浮点数或任何实现了 __abs__() 的对象。如果参数是一个复数，则返回它的模。
 all###内置函数 all(iterable)\n如果 iterable 的所有元素均为真值（或可迭代对象为空）则返回 True 。
 any###内置函数 any(iterable)\n如果 iterable 的任一元素为真值则返回 True。 如果可迭代对象为空，返回 False。
 bin###内置函数 bin(x)\n将整数转变为以“0b”前缀的二进制字符串。
@@ -146,6 +161,7 @@ dir###内置函数 dir([object])\n如果没有实参，则返回当前本地作�
 divmod;商和余数###内置函数 divmod(a, b)\n以两个（非复数）数字为参数，在作整数除法时，返回商和余数。
 enumerate###内置函数 enumerate(iterable, start=0)\n返回一个枚举对象。iterable 必须是一个序列，或 iterator，或其他支持迭代的对象。\nenumerate() 返回的迭代器的 __next__() 方法返回一个元组，里面包含一个计数值（从 start 开始，默认为 0）和通过迭代 iterable 获得的值。
 eval###内置函数 eval(expression[, globals[, locals]])\n实参是一个字符串，以及可选的 globals 和 locals。返回值就是表达式的求值结果。\n如果给出的源数据是个字符串，那么其前后的空格和制表符将被剔除。
+exec###内置函数 exec(object, globals=None, locals=None, /, *, closure=None)\n此函数支持动态执行 Python 代码。object 必须是字符串或代码对象。如果它是一个字符串，则该字符串被解析为一组 Python 语句，然后执行该语句（除非发生语法错误）。如果它是一个代码对象，则只需执行即可。
 filter###内置函数 filter(function, iterable)\n用 iterable 中函数 function 返回真的那些元素，构建一个新的迭代器。
 getattr###内置函数 getattr(object, name[, default])\n返回对象命名属性的值。name 必须是字符串。如果该字符串是对象的属性之一，则返回该属性的值。
 hasattr###内置函数 hasattr(object, name)\n该实参是一个对象和一个字符串。如果字符串是对象的属性之一的名称，则返回 True，否则返回 False。
@@ -156,15 +172,18 @@ hex;十六进制###内置函数 hex(x)\n将整数转换为以“0x”为前缀�
 id;内存地址###内置函数 id(object)\n返回对象的“标识值”。该值是一个整数，在此对象的生命周期中保证是唯一且恒定的。两个生命期不重叠的对象可能具有相同的 id() 值。\n在 CPython 中返回的是对象在内存中的地址。
 input;输入###内置函数 input([prompt])\n如果存在 prompt 实参，则将其写入标准输出，末尾不带换行符。接下来，该函数从输入中读取一行，将其转换为字符串（除了末尾的换行符）并返回。
 isinstance;对象类型###内置函数 isinstance(object, classinfo)\n如果 object 参数是 classinfo 参数的实例，或其（直接、间接或 virtual ）子类的实例，则返回 True。\n如果 object 不是给定类型的对象，则总是返回 False。\n如果 classinfo 是类型对象的元组（或由该类元组递归生成）或多个类型的 union 类型，那么当 object 是其中任一类型的实例时就会返回 True。\n如果 classinfo 不是某个类型或类型元组，将会触发 TypeError 异常。
+iter###内置函数 iter(object, sentinel)\n返回一个 iterator 对象。
 len;长度;对象长度###内置函数 len(s)\n返回对象的长度（元素个数）。实参可以是序列（如 string、bytes、tuple、list 或 range 等）或集合（如 dictionary、set 或 frozen set 等）。
+locals###\n内置函数 locals()\n更新并返回表示当前本地符号表的字典。在函数块中调用时，locals() 会返回自由变量，但在类块中不会返回。
 map###内置函数 map(function, iterable, ...)\n返回一个将 function 应用于 iterable 中每一项并输出其结果的迭代器。
 max;最大值###内置函数 max(iterable, *[, key, default])\nmax(arg1, arg2, *args[, key])\n返回可迭代对象中最大的元素，或者返回两个及以上实参中最大的。
 min;最小值###内置函数 min(iterable, *[, key, default])\nmin(arg1, arg2, *args[, key])\n返回可迭代对象中最小的元素，或者返回两个及以上实参中最小的。
+next###内置函数 next(iterator, default)\n通过调用 iterator 的 __next__() 方法获取下一个元素。如果迭代器耗尽，则返回给定的 default，如果没有默认值则触发 StopIteration。
 oct;八进制###内置函数 oct(x)\n将一个整数转变为一个前缀为“0o”的八进制字符串。
 open;打开文件###内置函数 open(file, mode='r', buffering=- 1, encoding=None, errors=None, newline=None, closefd=True, opener=None)\n打开 file 并返回对应的 file object。如果该文件不能被打开，则引发 OSError。\nhttps://docs.python.org/zh-cn/3/library/functions.html#open
 ord###内置函数 ord(c)\n对表示单个 Unicode 字符的字符串，返回代表它 Unicode 码点的整数。例如 ord('a') 返回整数 97。这是 chr() 的逆函数。
 pow;次幂;次方;平方###内置函数 pow(base, exp[, mod])\n返回 base 的 exp 次幂；如果 mod 存在，则返回 base 的 exp 次幂对 mod 取余（比 pow(base, exp) % mod 更高效）。 两参数形式 pow(base, exp) 等价于乘方运算符: base**exp。
-print;输出###内置函数 print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)\n将 objects 打印输出至 file 指定的文本流，以 sep 分隔并在末尾加上 end。 sep 、 end 、 file 和 flush 必须以关键字参数的形式给出。
+print###内置函数 print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)\n将 objects 打印输出至 file 指定的文本流，以 sep 分隔并在末尾加上 end。 sep 、 end 、 file 和 flush 必须以关键字参数的形式给出。
 property###内置函数 class property(fget=None, fset=None, fdel=None, doc=None)\n返回 property 属性。\nhttps://docs.python.org/zh-cn/3/library/functions.html#property
 range###内置函数 class range(stop)\nclass range(start, stop[, step])\n虽然被称为函数，但 range 实际上是一个不可变的序列类型
 reversed;反序;逆序###内置函数 reversed(seq)\n返回一个反向的 iterator。
@@ -175,20 +194,11 @@ staticmethod;静态方法;类静态方法###内置函数 @staticmethod\n将方�
 sum;求和###内置函数 sum(iterable, /, start=0)\n从 start 开始自左向右对 iterable 的项求和并返回总计值。\niterable 的项通常为数字，而 start 值则不允许为字符串。
 super###内置函数 class super([type[, object-or-type]])\n返回一个代理对象，它会将方法调用委托给 type 的父类或兄弟类。 这对于访问已在类中被重载的继承方法很有用。\nhttps://docs.python.org/zh-cn/3/library/functions.html#super
 type;类型###内置函数 class type(object)\nclass type(name, bases, dict, **kwds)\n传入一个参数时，返回 object 的类型。\n返回值是一个 type 对象，通常与 object.__class__ 所返回的对象相同。\n推荐使用 isinstance() 内置函数来检测对象的类型，因为它会考虑子类的情况。
+vars###内置函数 vars(object)\n返回模块、类、实例或任何其它具有 __dict__ 属性的对象的 __dict__ 属性。
 zip###内置函数 zip(*iterables, strict=False)\n在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组。\nhttps://docs.python.org/zh-cn/3/library/functions.html#zip
-树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=https://python-abc.xyz/static/img/raspberry-pi.png]
-pip;pip3###pip 是 Python 的包安装程序。\n如果 pip 下载慢，则可以换国内源\n如果 pip 没有加入到环境变量，则可以使用 python -m pip 来代替
-推导式###1. 列表推导式：[i**2 for i in range(10)]\n2. 集合推导式：{i**2 for i in range(10)}\n3. 生成器表达式：(i**2 for i in range(10))\n4. 字典推导式：{i: i**2 for i in range(10)}
-numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。\n官网地址：https://numpy.org/
-scrapy###Scrapy 是一个快速且强大的网络爬虫框架。\n官网地址：https://scrapy.org/
-vim;vi###Vim 是从vi发展出来的一个文本编辑器。其代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。\n和Emacs并列成为类Unix系统用户最喜欢的编辑器。
-emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以程序员和其他以技术工作为主的计算机用户为主。\n在Unix文化里，Emacs是黑客们关于编辑器之战的两大主角之一，它的对手是vi（Vim）。
-sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849/
-十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
-pip源;python源;换源;换清华源;清华源;清华园;国内源;换国内源###pip install 时使用国内源可有效提高下载速度\n临时使用方式：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxx\n全局配置：pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n清华源详细介绍：https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
-qq机器人;lagrange;onebot;qqbot###QQ机器人搭建文档：https://python-abc.xyz/code/5807\n当前机器人及源码：https://github.com/shenxgan/qqbot
-快速入门###快速入门：https://python-abc.xyz/python/0083\n入门1/7-基础语法：https://python-abc.xyz/python/0083\n入门2/7-数据类型：https://python-abc.xyz/python/6668\n入门3/7-运算：https://python-abc.xyz/python/1736\n入门4/7-条件语句：https://python-abc.xyz/python/8369\n入门5/7-循环语句：https://python-abc.xyz/python/0684\n入门6/7-函数：https://python-abc.xyz/python/0508\n入门7/7-类：https://python-abc.xyz/python/4807
-virtual machine;虚拟机###虚拟机：一台完全通过软件定义的计算机。Python 虚拟机可执行字节码编译器所生成的 bytecode。
+__import__###内置函数 __import__(name, globals=None, locals=None, fromlist=(), level=0)\n此函数会由 import 语句发起调用，导入模块 name。\n与 importlib.import_module() 不同，这是一个日常 Python 编程中不需要用到的高级函数。
+
+
 str;string;字符串###字符串使用单引号 ' 或者双引号 " 引起来构成。\n比如 print('hello world.')\n02-数据类型：https://python-abc.xyz/python/6668
 tuple;元组###元组常用小括号 () 括起并由逗号分隔的多个表达式构成。\n比如 x = ('a', 'b', 3)\n02-数据类型：https://python-abc.xyz/python/6668
 list;列表###列表由用方括号 [] 括起并由逗号分隔的多个表达式构成。\n比如 x = ['a', 'b', 3]\n02-数据类型：https://python-abc.xyz/python/6668
@@ -196,10 +206,10 @@ set;可变集合;集合###可变集合，可通过内置的 set() 构造器或�
 dict;字典###字典使用大括号 {} 内以逗号分隔 {键: 值} 对的方式创建。\n比如 x = {1: 'a', 2: 'b', 'c': 3}\n字典的 key（键）必须是可哈希的\n02-数据类型：https://python-abc.xyz/python/6668
 int;整数;整型###int 整型、整数；比如 x = 1\n02-数据类型：https://python-abc.xyz/python/6668
 float;浮点型;浮点数;小数###float 浮点型、小数；比如 x = 0.5\n02-数据类型：https://python-abc.xyz/python/6668
-bool;boolean;true;false;真;假;真假###bool 布尔型、逻辑值 False 和 True；比如 x = True\n02-数据类型：https://python-abc.xyz/python/6668
+bool;boolean;true;false;布尔###bool 布尔型、逻辑值 False 和 True；比如 x = True\n02-数据类型：https://python-abc.xyz/python/6668
 complex;复数###复数包含实部和虚部，分别以一个浮点数表示。\n比如 z = 1 + 2j\n要从一个复数 z 中提取这两个部分，可使用 z.real 和 z.imag。
 frozenset;不可变集合;冻结集合###frozenset 类型是不可变并且为可哈希的，其内容在被创建后不能再改变。
-flask###Flask 是最流行的 Python Web 框架之一\n官网地址：https://flask.palletsprojects.com/en/latest/\n中文地址：https://dormousehole.readthedocs.io/en/latest/
+
 str.capitalize;capitalize###str.capitalize()\n返回原字符串的副本，其首个字符大写，其余为小写。
 str.casefold;casefold###str.casefold()\n返回原字符串消除大小写的副本。 消除大小写的字符串可用于忽略大小写的匹配。\n消除大小写类似于转为小写，但是更加彻底一些，因为它会移除字符串中的所有大小写变化形式。 例如，德语小写字母 'ß' 相当于 "ss"。 由于它已经是小写了，lower() 不会对 'ß' 做任何改变；而 casefold() 则会将其转换为 "ss"。
 str.center;center###str.center(width[, fillchar])\n返回长度为 width 的字符串，原字符串在其正中。 使用指定的 fillchar 填充两边的空位（默认使用 ASCII 空格符）。 如果 width 小于等于 len(s) 则返回原字符串的副本。
@@ -247,6 +257,8 @@ str.title;title###str.title()\n返回原字符串的标题版本，其中每个�
 str.translate;translate###str.translate(table)\n返回原字符串的副本，其中每个字符按给定的转换表进行映射。 转换表必须是一个使用 __getitem__() 来实现索引操作的对象，通常为 mapping 或 sequence。\n你可以使用 str.maketrans() 基于不同格式的字符到字符映射来创建一个转换映射表。
 大写;转大写;str.upper;upper###str.upper()\n返回原字符串的副本，其中所有区分大小写的字符均转换为大写。
 str.zfill;zfill###str.zfill(width)\n返回原字符串的副本，在左边填充 ASCII '0' 数码使其长度变为 width。 正负值前缀 ('+'/'-') 的处理方式是在正负符号 之后 填充而非在之前。 如果 width 小于等于 len(s) 则返回原字符串的副本。
+
+列表的所有方法;列表方法;列表所有方法;所有列表方法###list.append(x) 追加\nlist.extend(iterable) 扩展\nlist.insert(i, x) 插入\nlist.remove(x) 删除\nlist.pop([i]) 删除并返回\nlist.clear() 清空\nlist.index(x[, start[, end]]) 返回元素索引\nlist.count(x) 返回元素次数\nlist.sort(*, key=None, reverse=False) 就地排序\nlist.reverse() 就地翻转\nlist.copy() 浅拷贝\nhttps://docs.python.org/zh-cn/3/tutorial/datastructures.html#more-on-lists
 列表追加;list.append;append###list.append(x)\n在列表末尾添加一个元素，相当于 a[len(a):] = [x] 。
 列表扩展;list.extend;extend###list.extend(iterable)\n用可迭代对象的元素扩展列表。相当于 a[len(a):] = iterable 。
 列表插入;list.insert;insert###list.insert(i, x)\n在指定位置插入元素。第一个参数是插入元素的索引，因此，a.insert(0, x) 在列表开头插入元素， a.insert(len(a), x) 等同于 a.append(x) 。
@@ -260,9 +272,8 @@ list.count###list.count(x)\n返回列表中元素 x 出现的次数。
 列表复制;复制列表;列表拷贝;list.copy###list.copy()\n返回列表的浅拷贝。相当于 a[:] 。
 count###str.count(sub[, start[, end]])\n返回子字符串 sub 在 [start, end] 范围内非重叠出现的次数。 可选参数 start 与 end 会被解读为切片表示法。\n\nlist.count(x)\n返回列表中元素 x 出现的次数。
 index###str.index(sub[, start[, end]])\n类似于 find()，但在找不到子字符串时会引发 ValueError。\n\nlist.index(x[, start[, end]])\n返回列表中第一个值为 x 的元素的零基索引。未找到指定元素时，触发 ValueError 异常。\n可选参数 start 和 end 是切片符号，用于将搜索限制为列表的特定子序列。返回的索引是相对于整个序列的开始计算的，而不是 start 参数。
-列表的所有方法;列表方法;列表所有方法;所有列表方法###list.append(x) 追加\nlist.extend(iterable) 扩展\nlist.insert(i, x) 插入\nlist.remove(x) 删除\nlist.pop([i]) 删除并返回\nlist.clear() 清空\nlist.index(x[, start[, end]]) 返回元素索引\nlist.count(x) 返回元素次数\nlist.sort(*, key=None, reverse=False) 就地排序\nlist.reverse() 就地翻转\nlist.copy() 浅拷贝\nhttps://docs.python.org/zh-cn/3/tutorial/datastructures.html#more-on-lists
-if __name__ == '__main__';__name__ == '__main__';__main__;__name__;最高层级代码###if __name__ == '__main__'\n除非模块在顶层环境中被执行，否则 if __name__ == '__main__' 代码块内的代码不会运行。\n\n当一个 Python 模块或包被导入时，__name__ 会被设为模块的名称。 通常，这将是 Python 文件本身的名称去掉 .py 后缀\n如果文件是包的组成部分，则 __name__ 还将包括父包的路径\n不过，如果模块是在最高层级代码环境中执行的，则它的 __name__ 会被设为字符串 '__main__'。\n\n__main__ 是最高层级代码运行所在环境的名称。 \n“最高层级代码”即用户指定最先启动运行的 Python 模块。 它被称为“最高层级”是因为它将导入程序所需的所有其他模块。 有时“最高层级代码”也被称为应用的 入口点。\nhttps://docs.python.org/zh-cn/3/library/__main__.html
-字典的所有方法;字典所支持的操作;字典所有方法;所有字典方法;字典方法###list(d) 返回字典 d 中所有键的列表。\nlen(d) 返回字典 d 中的项数。\nd[key] 返回 d 中以 key 为键的项。\nd[key] = value 将 d[key] 设为 value。\ndel d[key] 将 d[key] 从 d 中移除。\nkey in d 是否存在 key\nkey not in d 等价于 not key in d。\niter(d) 返回以字典的键为元素的迭代器。\nclear() 移除字典中的所有元素。\ncopy() 返回原字典的浅拷贝。\nclassmethod fromkeys(iterable[, value]) 使用来自 iterable 的键创建一个新字典，并将键值设为 value。\nget(key[, default]) 如果 key 存在于字典中则返回 key 的值，否则返回 default。\nitems() 返回由字典项 ((键, 值) 对) 组成的一个新视图。\nkeys() 返回由字典键组成的一个新视图。\npop(key[, default]) 如果 key 存在于字典中则将其移除并返回其值，否则返回 default。\npopitem() 从字典中移除并返回一个 (键, 值) 对。\nreversed(d) 返回一个逆序获取字典键的迭代器。\nsetdefault(key[, default]) 设置默认值\nupdate([other]) 使用来自 other 的键/值对更新字典，覆盖原有的键。\nvalues() 返回由字典值组成的一个新视图。\nd | other 合并 d 和 other 中的键和值来创建一个新的字典\nd |= other 用 other 的键和值更新字典 d\nhttps://docs.python.org/zh-cn/3/library/stdtypes.html#dict
+
+字典的所有方法;字典所有方法;所有字典方法;字典方法###list(d) 返回字典 d 中所有键的列表。\nlen(d) 返回字典 d 中的项数。\nd[key] 返回 d 中以 key 为键的项。\nd[key] = value 将 d[key] 设为 value。\ndel d[key] 将 d[key] 从 d 中移除。\nkey in d 是否存在 key\nkey not in d 等价于 not key in d。\niter(d) 返回以字典的键为元素的迭代器。\nclear() 移除字典中的所有元素。\ncopy() 返回原字典的浅拷贝。\nclassmethod fromkeys(iterable[, value]) 使用来自 iterable 的键创建一个新字典，并将键值设为 value。\nget(key[, default]) 如果 key 存在于字典中则返回 key 的值，否则返回 default。\nitems() 返回由字典项 ((键, 值) 对) 组成的一个新视图。\nkeys() 返回由字典键组成的一个新视图。\npop(key[, default]) 如果 key 存在于字典中则将其移除并返回其值，否则返回 default。\npopitem() 从字典中移除并返回一个 (键, 值) 对。\nreversed(d) 返回一个逆序获取字典键的迭代器。\nsetdefault(key[, default]) 设置默认值\nupdate([other]) 使用来自 other 的键/值对更新字典，覆盖原有的键。\nvalues() 返回由字典值组成的一个新视图。\nd | other 合并 d 和 other 中的键和值来创建一个新的字典\nd |= other 用 other 的键和值更新字典 d\nhttps://docs.python.org/zh-cn/3/library/stdtypes.html#dict
 dict.clear;清空字典###dict.clear()\n移除字典中的所有元素。
 dict.copy;字典拷贝###dict.copy()\n返回原字典的浅拷贝。
 dict.get;get###dict.get(key[, default])\n如果 key 存在于字典中则返回 key 的值，否则返回 default。 如果 default 未给出则默认为 None，因而此方法绝不会引发 KeyError。
@@ -273,38 +284,42 @@ dict.popitem;popitem###dict.popitem()\n从字典中移除并返回一个 (键, �
 dict.setdefault;setdefault###dict.setdefault(key[, default])\n如果字典存在键 key ，返回它的值。如果不存在，插入值为 default 的键 key ，并返回 default 。 default 默 认为 None。
 dict.update;update###dict.update([other])\n使用来自 other 的键/值对更新字典，覆盖原有的键。 返回 None。\nupdate() 接受另一个字典对象，或者一个包含键/值对（以长度为二的元组 或其他可迭代对象表示）的可迭代对象。 \n如果给出了关键字参数，则会以其所指定的键/值对更新字典: d.update(red=1, blue=2)。
 dict.values;values###dict.values()\n返回由字典值组成的一个新视图。\n两个 dict.values() 视图之间的相等性比较将总是返回 False。 这在 dict.values() 与其自身比较时也同样适用
+
 pop###list.pop([i])\n删除列表中指定位置的元素，并返回被删除的元素。未指定位置时，a.pop() 删除并返回列表的最后一个元素。\n（方法签名中 i 两边的方括号表示该参数是可选的，不是要求输入方括号。这种表示法常见于 Python 参考库）。\n\ndict.pop(key[, default])\n如果 key 存在于字典中则将其移除并返回其值，否则返回 default。 如果 default 未给出且 key 不存在于字典中，则会引发 KeyError。
 clear###list.clear()\n删除列表里的所有元素，相当于 del a[:] 。\n\ndict.clear()\n移除字典中的所有元素。
 copy###list.copy()\n返回列表的浅拷贝。相当于 a[:] 。\n\ndict.copy()\n返回原字典的浅拷贝。
+if __name__ == '__main__';__name__ == '__main__';__main__;__name__;最高层级代码###if __name__ == '__main__'\n除非模块在顶层环境中被执行，否则 if __name__ == '__main__' 代码块内的代码不会运行。\n\n当一个 Python 模块或包被导入时，__name__ 会被设为模块的名称。 通常，这将是 Python 文件本身的名称去掉 .py 后缀\n如果文件是包的组成部分，则 __name__ 还将包括父包的路径\n不过，如果模块是在最高层级代码环境中执行的，则它的 __name__ 会被设为字符串 '__main__'。\n\n__main__ 是最高层级代码运行所在环境的名称。 \n“最高层级代码”即用户指定最先启动运行的 Python 模块。 它被称为“最高层级”是因为它将导入程序所需的所有其他模块。 有时“最高层级代码”也被称为应用的 入口点。\nhttps://docs.python.org/zh-cn/3/library/__main__.html
 
-assert;断言;assert 语句###assert 语句是在程序中插入调试性断言的简便方式。\n简单语句：https://python-abc.xyz/python/8230
-pass;占位;pass 语句###pass 是一个空操作 --- 当它被执行时，什么都不发生。它适合当语法上需要一条语句但并不需要执行任何代码时用来临时占位。\n简单语句：https://python-abc.xyz/python/8230
-del;删除对象;del 语句###del 用于删除对象。\n简单语句：https://python-abc.xyz/python/8230
-return;函数返回;return 语句###return 会离开当前函数调用，并以表达式列表 (或 None) 作为返回值。\n简单语句：https://python-abc.xyz/python/8230
-yield;yield 表达式;yield 语句###yield 表达式在定义 generator 函数或 asynchronous generator 函数时才会用到因此只能在函数定义的内部使用。 在一个函数体内使用 yield 表达式会使这个函数变成一个生成器函数，而在一个 async def 函数的内部使用它则会让这个协程函数变成一个异步生成器函数。\n简单语句：https://python-abc.xyz/python/8230
-raise;抛出异常;raise 语句###raise 用于抛出一个异常。\n简单语句：https://python-abc.xyz/python/8230
-break;跳出循环;break 语句###break 在语法上只会出现于 for 或 while 循环所嵌套的代码，但不会出现于该循环内部的函数或类定义所嵌套的代码。\n它会终结最近的外层循环，如果循环有可选的 else 子句，也会跳过该子句。\n简单语句：https://python-abc.xyz/python/8230
-continue;继续循环;continue 语句###continue 在语法上只会出现于 for 或 while 循环所嵌套的代码中，但不会出现于该循环内部的函数或类定义中。它会继续执行最近的外层循环的下一个轮次。\n简单语句：https://python-abc.xyz/python/8230
-import 语句;import;引入模块;导入模块###import 用于导入模块。\n简单语句：https://python-abc.xyz/python/8230
-future 语句;__future__;future###future 语句, from __future__ import <feature> 指示编译器使用将在未来的 Python 发布版中成为标准的语法和语义来编译当前模块。\n简单语句：https://python-abc.xyz/python/8230
-global;全局变量;global 语句###global 语句是作用于整个当前代码块的声明。 它意味着所列出的标识符将被解读为全局变量。 要给全局变量赋值不可能不用到 global 关键字，不过自由变量也可以指向全局变量而不必声明为全局变量。\n简单语句：https://python-abc.xyz/python/8230
-nonlocal;nonlocal 语句###nonlocal 语句会使其所列出的标识符指向之前在非局部作用域中绑定的名称。 它允许封装的代码重新绑定这样的非局部标识符。\n简单语句：https://python-abc.xyz/python/8230
 
-tkinter;tk###tkinter 包 ("Tk 接口") 是针对 Tcl/Tk GUI 工具包的标准 Python 接口。Tk 和 tkinter 在大多数 Unix 平台，包括 macOS，以及 Windows 系统上均可使用。\n若在命令行执行 python -m tkinter，应会弹出一个简单的 Tk 界面窗口， 表明 tkinter 包已安装完成，还会显示当前安装的 Tcl/Tk 版本，以便阅读对应版本的 Tcl/Tk 文档。\nhttps://docs.python.org/zh-cn/3/library/tkinter.html
-虚拟环境;venv###虚拟环境：一种采用协作式隔离的运行时环境，允许 Python 用户和应用程序在安装和升级 Python 分发包时不会干扰到同一系统上运行的其他 Python 应用程序的行为。\nhttps://docs.python.org/zh-cn/3/library/venv.html
-idle###IDLE：Python 的 IDE，“集成开发与学习环境”的英文缩写。是 Python 标准发行版附带的基本编辑器和解释器环境。\nhttps://docs.python.org/zh-cn/3/library/idle.html
-垃圾回收;gc###垃圾回收：释放不再被使用的内存空间的过程。Python 是通过引用计数和一个能够检测和打破循环引用的循环垃圾回收器来执行垃圾回收的。可以使用 gc 模块来控制垃圾回收器。\nhttps://docs.python.org/zh-cn/3/library/gc.html
-pdb;调试###pdb 模块定义了一个交互式源代码调试器，用于 Python 程序。它支持在源码行间设置（有条件的）断点和单步执行，检视堆栈帧，列出源码列表，以及在任何堆栈帧的上下文中运行任意 Python 代码。它还支持事后调试，可以在程序控制下调用。\nhttps://docs.python.org/zh-cn/3/library/pdb.html
-pprint;美化输出###pprint 模块提供了“美化打印”任意 Python 数据结构的功能，这种美化形式可用作对解释器的输入。\nhttps://docs.python.org/zh-cn/3/library/pprint.html
 pyautogui;autogui###PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持（Windows，OS X，Linux）。\nhttps://github.com/asweigart/pyautogui/blob/master/docs/simplified-chinese.ipynb
 selenium 的使用;selenium;webdriver;浏览器自动化;geckodriver;geckodriver.exe###Selenium 是支持 web 浏览器自动化的一系列工具和库的综合项目。\nSelenium 的使用：https://python-abc.xyz/code/5127
 pywebview;webview;webgui;gui###pywebview: 使用 JavaScript、HTML 和 CSS 为您的 Python 程序构建 GUI\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.gif]\n使用介绍：https://python-abc.xyz/code/6622
-
 路线图;roadmap;学习路线;python学习路线;python学习路线图;python 学习路线图;python 学习路线;python路线图;python 路线图;python roadmap###Python 学习路线图\nhttps://python-abc.xyz/x/roadmap/python\n[CQ:image,file=https://python-abc.xyz/static/img/roadmap-python.png]
 pyinstaller;exe;打包;打包工具###PyInstaller 为 python 的一种打包工具；简单打包命令 pyinstaller -F -w xxx.py\n官网地址：https://pyinstaller.org/en/stable/
 json;json.dumps;json.loads###json.dumps(): 将 obj 序列化为 JSON 格式的 str\njson.loads(): 将 s (一个包含 JSON 文档的 str, bytes 或 bytearray 实例) 反序列化为 Python 对象\nhttps://docs.python.org/zh-cn/3/library/json.html\n输出漂亮格式且支持中文：print(json.dumps(data, indent=4, ensure_ascii=False))
-
 丑头像;ugly;avatar;ugly-avatar;头像;丑###丑头像在线生成：https://python-abc.xyz/x/ugly-avatar/\n[CQ:image,file=https://python-abc.xyz/static/img/ugly.gif]
 运行代码;代码运行;执行代码;代码执行###使用###开头，后加要执行的代码（可多行）\n目前支持 python/c/js 三种代码语言\n示例：###print('hello world.')\n代码实现：https://github.com/shenxgan/qqbot
-
+mysql###MySQL 是一个关系型数据库管理系统\n官网下载地址：https://dev.mysql.com/downloads/installer/\n客户端 Navicat 下载地址：https://www.navicat.com.cn/download/navicat-premium\npymysql 使用示例：https://python-abc.xyz/code/0409
+navicat;npl;navicat精简版###Navicat Premium Lite 是 Navicat 的精简版，拥有基本数据库操作所需的核心功能。【免费】\n它允许你同时连接到各种数据库平台，包括 MySQL、PostgreSQL、SQL Server、Oracle、MariaDB，以及 Redis 和 MongoDB 等 NoSQL 数据库。\n下载地址：https://www.navicat.com.cn/download/navicat-premium-lite
+xpath###XPath 为 XML 路径语言，它是一种用来确定 XML 文档中某部分位置的计算机语言。\n浏览器中可通过按 F12 之后鼠标右键复制出 xpath 路径
+requests###Requests 是一个优雅而简单的 Python HTTP 库，专为人类构建。\n官网地址：https://requests.readthedocs.io/en/latest/\nrequests 爬虫示例：https://python-abc.xyz/basic/5995
+celery;芹菜###Celery - 分布式任务队列，是一个专注于实时处理的任务队列，同时也支持任务调度。\n官网地址：https://docs.celeryq.dev/en/stable/
+jinja2;jinja;模板语言###Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。\nhttps://docs.jinkan.org/docs/jinja2/index.html\n示例代码：https://python-abc.xyz/sanic/0811/
+pandas;数据分析;dataframe;df###Pandas 是 Python 语言的一个用于数据分析的扩展程序库。\n官网地址：https://pandas.pydata.org/\nPandas 常用操作：https://python-abc.xyz/code/6707
+paramiko;ssh;python ssh###Paramiko 是 SSHv2 协议的纯 Python 实现，提供客户端和服务器功能。\n官网地址：https://www.paramiko.org/\n代码示例：https://python-abc.xyz/code/0413
+jupyter;python在线;python 在线;在线python;手机python;在线写代码###Python 在线：https://python-abc.xyz/jupyter/tree
 nginx###Nginx是异步框架的网页服务器，也可以用作反向代理、负载平衡器和HTTP缓存。\n最初由俄罗斯程序员开发，现为免费的开源软件。\nnginx 常用配置：https://python-abc.xyz/op/7605
+树莓派;raspberry;raspberry pi;开发板;raspi;rpi###树莓派（英语：Raspberry Pi）是英国树莓派基金会开发的微型单板计算机，目的是以低价硬体及自由软体促进学校的基本电脑科学教育。\n下图是 Raspberry Pi 4 Model B 的图片\n[CQ:image,file=https://python-abc.xyz/static/img/raspberry-pi.png]
+numpy###NumPy 是使用 Python 进行科学计算的基础包。\n支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。\n官网地址：https://numpy.org/
+scrapy###Scrapy 是一个快速且强大的网络爬虫框架。\n官网地址：https://scrapy.org/
+vim;vi###Vim 是从vi发展出来的一个文本编辑器。其代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。\n和Emacs并列成为类Unix系统用户最喜欢的编辑器。
+emacs###Emacs 是一个文本编辑器家族，它具有可扩展性，用户以程序员和其他以技术工作为主的计算机用户为主。\n在Unix文化里，Emacs是黑客们关于编辑器之战的两大主角之一，它的对手是vi（Vim）。
+十万个为什么###为什么Python使用缩进来分组语句？\n为什么浮点计算不准确？\n为什么Python字符串是不可变的？\n为什么字典key必须是不可变的？\n为什么没有goto？\n为什么Python在列表和元组的末尾允许使用逗号？\nhttps://docs.python.org/zh-cn/3/faq/design.html\nhttps://docs.python.org/zh-cn/3/faq/index.html
+qq机器人;lagrange;onebot;qqbot###当前机器人文档：https://python-abc.xyz/qqbot
+virtual machine;虚拟机###虚拟机：一台完全通过软件定义的计算机。Python 虚拟机可执行字节码编译器所生成的 bytecode。
+flask###Flask 是最流行的 Python Web 框架之一\n官网地址：https://flask.palletsprojects.com/en/latest/\n中文地址：https://dormousehole.readthedocs.io/en/latest/
+django###Django 是最流行的 Python Web 框架之一\n官网教程地址：https://docs.djangoproject.com/zh-hans/4.0/intro/tutorial01/
+sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。\n它允许使用 Python3.5 中添加的 async/await 语法，这使得您的代码有效的避免阻塞从而达到提升响应速度的目的。\n中文官网地址：https://sanic.dev/zh/\nsanic 搭建的网站示例：https://python-abc.xyz/sanic/3849/
+fastapi###FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 并基于标准的 Python 类型提示。\n官网地址：https://fastapi.tiangolo.com/zh/
+docker;容器###Docker 容器与虚拟机类似，但二者在原理上不同。容器是将操作系统层虚拟化，虚拟机则是虚拟化硬件，因此容器更具有便携性、更能高效地利用服务器。\n官网地址：https://www.docker.com/\ndocker 常用命令：https://python-abc.xyz/op/3123
+
