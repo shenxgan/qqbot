@@ -1,14 +1,27 @@
+import importlib
 import json
 import os
-import importlib
+import re
+
+from functools import wraps
 
 from sanic import Sanic
+from sanic import response
+from sanic import exceptions
 from sanic.log import logger
 
 from message import group_msg
 from notice import notice
 
 app = Sanic('qqbot')
+
+
+@app.before_server_start
+async def init(app):
+    """初始化"""
+    app.ctx.msgs = {}
+    app.ctx.msg_maxlen = 30
+    app.ctx.sign = None
 
 
 @app.before_server_start
@@ -32,6 +45,7 @@ async def load_plugins(app):
 async def qqbot(request, ws):
     """QQ机器人"""
     while True:
+        app.ctx.ws = ws
         data = await ws.recv()
         data = json.loads(data)
         logger.debug(json.dumps(data, indent=4, ensure_ascii=False))
@@ -49,6 +63,56 @@ async def qqbot(request, ws):
             await group_msg(ws, data, is_me)
         elif post_type == 'notice':
             await notice(ws, data)
+
+
+def authorized():
+    def decorator(f):
+        @wraps(f)
+        async def decorated_function(request, *args, **kwargs):
+            sign = request.args.get('sign')
+            is_authorized = sign and sign == request.app.ctx.sign
+            if is_authorized:
+                response = await f(request, *args, **kwargs)
+                return response
+            else:
+                raise exceptions.Unauthorized()
+        return decorated_function
+    return decorator
+
+
+@app.get('/webqq/')
+@authorized()
+async def index(request):
+    with open('index.html') as f:
+        html = f.read()
+    return response.html(html)
+
+
+@app.get('/webqq/msgs')
+@authorized()
+async def get_msgs(request):
+    data = {k: list(v) for k, v in request.app.ctx.msgs.items()}
+    return response.json(data)
+
+
+@app.post('/webqq/msgs')
+@authorized()
+async def post_msgs(request):
+    data = request.json
+    msg = data['msg']
+    re_s = r'@(\d+)?'
+    ats = re.findall(re_s, msg)
+    for at in ats:
+        msg = msg.replace(f'@{at}', f'[CQ:at,qq={at}]')
+    ret = {
+        'action': 'send_group_msg',
+        'params': {
+            'group_id': int(data['group_id']),
+            'message': msg,
+        }
+    }
+    await request.app.ctx.ws.send(json.dumps(ret))
+    return response.empty()
 
 
 if __name__ == '__main__':

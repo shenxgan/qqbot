@@ -21,6 +21,8 @@ services:
       DOUBAO_MODEL: ${DOUBAO_MODEL}
     volumes:
       - ./ws:/app
+    ports:
+      - 127.0.0.1:8811:8000
 
   python:
     build: 

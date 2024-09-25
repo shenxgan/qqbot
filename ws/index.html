@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3.4.31/dist/vue.global.prod.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus@2.7.7/dist/index.css">
+    <script src="https://unpkg.com/element-plus@2.7.7/dist/index.full.min.js"></script>
+    <script src="https://unpkg.com/@element-plus/icons-vue@2.3.1/dist/index.iife.min.js"></script>
+    <script src="https://unpkg.com/axios@1.7.7/dist/axios.min.js"></script>
+    <title>WEBQQ</title>
+  </head>
+  <body>
+    <div id="app">
+      <el-tabs v-model="groupId" tab-position="left">
+        <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
+          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 140px);">
+            <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
+              <div @mouseenter="show = true" @mouseLeave="show = false">
+                <el-text type="primary" size="small">{{ msg['sender']['nickname'] }}</el-text>
+                <el-text v-if="show" size="small">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
+                <el-text v-if="show" size="small">&nbsp;&nbsp;{{ formatTime(msg['time']) }}</el-text>
+              </div>
+              <div>
+                <!-- <span>{{ msg['raw_message'] }}</span> -->
+                <template v-for="(message, index) in msg['message']" :key="index">
+                  <el-text v-if="message['type'] == 'image'">
+                    <el-link :href="message['data']['url']" target="_blank" type="success">图片</el-link>
+                  </el-text>
+                  <el-text v-else-if="message['type'] == 'text'">{{ message['data']['text'] }}</el-text>
+                  <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
+                  <el-text v-else-if="message['type'] == 'reply'"><br />&nbsp;&nbsp;</el-text>
+                  <el-text v-else-if="message['type'] == 'face'" type="success">[face:{{ message['data']['id'] }}]</el-text>
+                  <el-text v-else>{{ message['data'] }}</el-text>
+                </template>
+              </div>
+            </div>
+          </el-scrollbar>
+          <div style="margin-top: 15px;">
+            <el-input v-model="msg" type="textarea" :autosize="{ minRows: 3 }"></el-input>
+            <el-button type="primary" plain :loading="loading" @click="sendMsg">发送</el-button>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+  </body>
+</html>
+
+<script>
+  const App = {
+    data() {
+      return {
+        groupId: null,
+        sign: null,
+        msg: null,
+        msgs: {},
+        loading: false,
+        show: false,
+        //axios: require('axios'),
+      }
+    },
+    mounted() {
+      setInterval(this.getMsgs, 10000)
+    },
+    async created() {
+      let params = new URL(document.location.toString()).searchParams;
+      this.sign = params.get('sign')
+      await this.getMsgs()
+      this.groupId = Object.keys(this.msgs)[0]
+    },
+    methods: {
+      formatTime(ts) {
+        const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
+        return date
+      },
+      async getMsgs() {
+        try {
+          const response = await axios.get(`/webqq/msgs?sign=${this.sign}`);
+          this.msgs = response.data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async sendMsg() {
+        this.loading = true
+        try {
+          const params = {
+            group_id: this.groupId,
+            msg: this.msg,
+          }
+          const response = await axios.post(`/webqq/msgs?sign=${this.sign}`, params);
+          this.msg = null
+          await new Promise(r => setTimeout(r, 1000));
+          await this.getMsgs()
+          const refkey = `scrollbar${this.groupId}`
+          this.$refs[refkey][0].setScrollTop(9000);
+        } catch (error) {
+          console.error(error);
+        }
+        this.loading = false
+      }
+    },
+  };
+  const app = Vue.createApp(App);
+  app.use(ElementPlus);
+  app.mount("#app");
+</script>
