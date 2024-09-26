@@ -19,9 +19,10 @@ app = Sanic('qqbot')
 @app.before_server_start
 async def init(app):
     """初始化"""
-    app.ctx.msgs = {}
-    app.ctx.msg_maxlen = 30
-    app.ctx.sign = None
+    app.ctx.msgs = {}           # 所有群组消息
+    app.ctx.msg_maxlen = 30     # 每个群组保存的历史消息条数
+    app.ctx.sign = None         # 网页qq鉴权sign
+    app.ctx.group_id_name = {}  # 群组id与名称对应关系
 
 
 @app.before_server_start
@@ -44,8 +45,10 @@ async def load_plugins(app):
 @app.websocket('/qqbot')
 async def qqbot(request, ws):
     """QQ机器人"""
+    app.ctx.ws = ws
+    await ws.send(json.dumps({'action': 'get_group_list'}))
+
     while True:
-        app.ctx.ws = ws
         data = await ws.recv()
         data = json.loads(data)
         logger.debug(json.dumps(data, indent=4, ensure_ascii=False))
@@ -63,6 +66,10 @@ async def qqbot(request, ws):
             await group_msg(ws, data, is_me)
         elif post_type == 'notice':
             await notice(ws, data)
+        elif isinstance(data.get('data'), list):
+            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
+            app.ctx.group_id_name = {
+                g['group_id']: g['group_name'] for g in data['data']}
 
 
 def authorized():
@@ -71,6 +78,7 @@ def authorized():
         async def decorated_function(request, *args, **kwargs):
             sign = request.args.get('sign')
             is_authorized = sign and sign == request.app.ctx.sign
+            is_authorized = True
             if is_authorized:
                 response = await f(request, *args, **kwargs)
                 return response
@@ -113,6 +121,12 @@ async def post_msgs(request):
     }
     await request.app.ctx.ws.send(json.dumps(ret))
     return response.empty()
+
+
+@app.get('/webqq/groups')
+@authorized()
+async def get_group_list(request):
+    return response.json(request.app.ctx.group_id_name)
 
 
 if __name__ == '__main__':

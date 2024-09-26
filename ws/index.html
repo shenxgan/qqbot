@@ -11,12 +11,20 @@
   </head>
   <body>
     <div id="app">
-      <el-tabs v-model="groupId" tab-position="left">
+      <el-tabs v-model="groupId" type="card" tab-position="left" @tab-click="tabClick">
         <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
+          <template #label>
+            <el-badge :is-dot="msgNew[key]">
+              <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
+            </el-badge>
+          </template>
           <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 140px);">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
               <div @mouseenter="show = true" @mouseLeave="show = false">
                 <el-text type="primary" size="small">{{ msg['sender']['nickname'] }}</el-text>
+                <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small">管理员</el-tag>
+                <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small">群主</el-tag>
+                <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small">我自己</el-tag>
                 <el-text v-if="show" size="small">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
                 <el-text v-if="show" size="small">&nbsp;&nbsp;{{ formatTime(msg['time']) }}</el-text>
               </div>
@@ -30,7 +38,10 @@
                   <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'reply'"><br />&nbsp;&nbsp;</el-text>
                   <el-text v-else-if="message['type'] == 'face'" type="success">[face:{{ message['data']['id'] }}]</el-text>
-                  <el-text v-else>{{ message['data'] }}</el-text>
+                  <el-text v-else-if="message['type'] == 'mface'" type="success">
+                    <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
+                  </el-text>
+                  <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
                 </template>
               </div>
             </div>
@@ -53,6 +64,9 @@
         sign: null,
         msg: null,
         msgs: {},
+        groups: {},
+        msgNew: {},
+        lastMsgIds: {},
         loading: false,
         show: false,
         //axios: require('axios'),
@@ -66,16 +80,33 @@
       this.sign = params.get('sign')
       await this.getMsgs()
       this.groupId = Object.keys(this.msgs)[0]
+      await this.getGroups()
     },
     methods: {
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
         return date
       },
+      async getGroups() {
+        try {
+          const response = await axios.get(`/webqq/groups?sign=${this.sign}`);
+          this.groups = response.data
+        } catch (error) {
+          console.error(error);
+        }
+      },
       async getMsgs() {
         try {
           const response = await axios.get(`/webqq/msgs?sign=${this.sign}`);
           this.msgs = response.data
+          for (const groupId in this.msgs) {
+            const lastMsgId = this.msgs[groupId].at(-1)['message_id']
+            if (groupId in this.lastMsgIds && this.lastMsgIds[groupId] == lastMsgId) {
+              this.msgNew[groupId] = false
+            } else {
+              this.msgNew[groupId] = true
+            }
+          }
         } catch (error) {
           console.error(error);
         }
@@ -91,13 +122,25 @@
           this.msg = null
           await new Promise(r => setTimeout(r, 1000));
           await this.getMsgs()
-          const refkey = `scrollbar${this.groupId}`
-          this.$refs[refkey][0].setScrollTop(9000);
+          this.scrollToBottom(this.groupId)
         } catch (error) {
           console.error(error);
         }
         this.loading = false
-      }
+      },
+      scrollToBottom(groupId) {
+        setTimeout(() => {
+          const refkey = `scrollbar${groupId}`
+          this.$refs[refkey][0].setScrollTop(9000);
+        }, 50);
+      },
+      tabClick(tab) {
+        const groupId = tab.props.name
+        const lastMsgId = this.msgs[groupId].at(-1)['message_id']
+        this.lastMsgIds[groupId] = lastMsgId
+        this.msgNew[groupId] = false
+        this.scrollToBottom(groupId)
+      },
     },
   };
   const app = Vue.createApp(App);
