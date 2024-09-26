@@ -78,7 +78,6 @@ def authorized():
         async def decorated_function(request, *args, **kwargs):
             sign = request.args.get('sign')
             is_authorized = sign and sign == request.app.ctx.sign
-            is_authorized = True
             if is_authorized:
                 response = await f(request, *args, **kwargs)
                 return response
