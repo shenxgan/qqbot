@@ -1,6 +1,7 @@
 services:
   bot:
     image: ghcr.nju.edu.cn/lagrangedev/lagrange.onebot:edge
+    pull_policy: always
     restart: always
     volumes:
       - ./bot:/app/data
