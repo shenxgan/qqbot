@@ -2,6 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="https://python-abc.xyz/qqbot/static/img/logo.png">
     <script src="https://unpkg.com/vue@3.4.31/dist/vue.global.prod.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-plus@2.7.7/dist/index.css">
     <script src="https://unpkg.com/element-plus@2.7.7/dist/index.full.min.js"></script>
@@ -11,28 +12,27 @@
   </head>
   <body>
     <div id="app">
-      <el-tabs v-model="groupId" type="card" tab-position="left" @tab-click="tabClick">
+      <el-tabs v-model="groupId" type="card" tab-position="left" @tab-click="tabClick" style="height: 99%;">
         <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
           <template #label>
             <el-badge :is-dot="msgNew[key]">
               <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
             </el-badge>
           </template>
-          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 140px);">
+          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
-              <div @mouseenter="show = true" @mouseLeave="show = false">
-                <el-text type="primary" size="small">{{ msg['sender']['nickname'] }}</el-text>
-                <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small">管理员</el-tag>
-                <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small">群主</el-tag>
-                <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small">我自己</el-tag>
-                <el-text v-if="show" size="small">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
+              <div>
+                <el-text type="primary" size="small" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
+                <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small" @mouseenter="show = true" @mouseLeave="show = false">管理员</el-tag>
+                <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">群主</el-tag>
+                <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
+                <el-text v-if="show" size="small" @mouseenter="show = true" @mouseLeave="show = false">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
                 <el-text v-if="show" size="small">&nbsp;&nbsp;{{ formatTime(msg['time']) }}</el-text>
               </div>
-              <div>
-                <!-- <span>{{ msg['raw_message'] }}</span> -->
+              <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''">
                 <template v-for="(message, index) in msg['message']" :key="index">
                   <el-text v-if="message['type'] == 'image'">
-                    <el-link :href="message['data']['url']" target="_blank" type="success">图片</el-link>
+                    <el-link :href="message['data']['url']" target="_blank" type="success" :title="'点击后在新标签页中刷新一下'+'\n'+'鼠标点击地址栏链接，回车刷新'">{{ message['data']['summary'] }}</el-link>
                   </el-text>
                   <el-text v-else-if="message['type'] == 'text'">{{ message['data']['text'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
@@ -69,7 +69,6 @@
         lastMsgIds: {},
         loading: false,
         show: false,
-        //axios: require('axios'),
       }
     },
     mounted() {

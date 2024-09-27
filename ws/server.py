@@ -67,9 +67,12 @@ async def qqbot(request, ws):
         elif post_type == 'notice':
             await notice(ws, data)
         elif isinstance(data.get('data'), list):
-            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
             app.ctx.group_id_name = {
                 g['group_id']: g['group_name'] for g in data['data']}
+        else:
+            if data.get('meta_event_type') == 'heartbeat':
+                continue
+            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
 
 
 def authorized():
