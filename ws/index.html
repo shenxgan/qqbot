@@ -19,7 +19,7 @@
               <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
             </el-badge>
           </template>
-          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);">
+          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @click="contentClick">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
               <div>
                 <el-text type="primary" size="small" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
@@ -98,8 +98,17 @@
         try {
           const response = await axios.get(`/webqq/msgs?sign=${this.sign}`);
           this.msgs = response.data
+          let first = false
+          if (Object.keys(this.lastMsgIds).length === 0) {
+            first = true
+          }
           for (const groupId in this.msgs) {
             const lastMsgId = this.msgs[groupId].at(-1)['message_id']
+            if (first === true) {
+              this.lastMsgIds[groupId] = lastMsgId
+              this.msgNew[groupId] = false
+              continue
+            }
             if (groupId in this.lastMsgIds && this.lastMsgIds[groupId] == lastMsgId) {
               this.msgNew[groupId] = false
             } else {
@@ -139,6 +148,10 @@
         this.lastMsgIds[groupId] = lastMsgId
         this.msgNew[groupId] = false
         this.scrollToBottom(groupId)
+      },
+      contentClick() {
+        const tab = {props: {name: this.groupId}}
+        this.tabClick(tab)
       },
     },
   };
