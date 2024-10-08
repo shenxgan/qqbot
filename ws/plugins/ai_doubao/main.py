@@ -39,4 +39,6 @@ class Plugin(Base):
 
     async def handle(self, message):
         content = message[4:].strip()
-        return self.doubao(content)
+        msg = self.doubao(content)
+        msg = '🚀' + msg
+        return msg
