@@ -9,9 +9,9 @@ class Plugin(Base):
     """成语"""
     def __init__(self):
         super().__init__()
+        self.is_start = False   # 默认不开始
         self.is_at = False
         self.data = None
-        self.idiom, self.pinyin = self.load_data()
 
     def load_data(self):
         """加载到本地内存"""
@@ -42,7 +42,16 @@ class Plugin(Base):
                 return None
 
         key = message.strip()
-        if key in self.idiom:
+
+        if '成语接龙' in key:
+            if self.is_start is True:
+                return
+            self.is_start = True
+            self.idiom, self.pinyin = self.load_data()
+            msg = '【成语接龙】启动！'
+            return msg
+
+        if self.is_start and key in self.idiom:
             last = self.idiom[key]
             if last in self.pinyin:
                 msg = random.choice(self.pinyin[last])
