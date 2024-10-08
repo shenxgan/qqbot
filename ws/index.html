@@ -12,7 +12,7 @@
   </head>
   <body>
     <div id="app">
-      <el-tabs v-model="groupId" type="card" tab-position="left" @tab-click="tabClick" style="height: 99%;">
+      <el-tabs v-model="groupId" type="card" tab-position="left" closable @tab-remove="tabRemove" @tab-click="tabClick" style="height: 99%;">
         <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
           <template #label>
             <el-badge :is-dot="msgNew[key]">
@@ -22,7 +22,7 @@
           <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @click="contentClick">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
               <div>
-                <el-text type="primary" size="small" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
+                <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
                 <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small" @mouseenter="show = true" @mouseLeave="show = false">管理员</el-tag>
                 <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">群主</el-tag>
                 <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
@@ -48,7 +48,7 @@
           </el-scrollbar>
           <div style="margin-top: 15px;">
             <el-input v-model="msg" type="textarea" :autosize="{ minRows: 3 }"></el-input>
-            <el-button type="primary" plain :loading="loading" @click="sendMsg">发送</el-button>
+            <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -73,6 +73,14 @@
     },
     mounted() {
       setInterval(this.getMsgs, 10000)
+      const _this = this
+      document.onkeydown = function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10)) {
+          // 监听 Ctrl+Enter 和 ⌘ Command+Enter
+          _this.sendMsg()
+          // window.event.preventDefault(); //关闭浏览器默认快捷键
+        }
+      }
     },
     async created() {
       let params = new URL(document.location.toString()).searchParams;
@@ -90,6 +98,13 @@
         try {
           const response = await axios.get(`/webqq/groups?sign=${this.sign}`);
           this.groups = response.data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async deleteGroup(groupId) {
+        try {
+          const response = await axios.delete(`/webqq/group/${groupId}?sign=${this.sign}`);
         } catch (error) {
           console.error(error);
         }
@@ -120,6 +135,9 @@
         }
       },
       async sendMsg() {
+        if (! this.msg) {
+          return false
+        }
         this.loading = true
         try {
           const params = {
@@ -142,6 +160,14 @@
           this.$refs[refkey][0].setScrollTop(9000);
         }, 50);
       },
+      tabRemove(tabName) {
+        const groupId = tabName
+        delete this.msgs[groupId]
+        if (this.groupId == groupId) {
+          this.groupId = Object.keys(this.msgs)[0]
+        }
+        this.deleteGroup(groupId)
+      },
       tabClick(tab) {
         const groupId = tab.props.name
         const lastMsgId = this.msgs[groupId].at(-1)['message_id']
@@ -152,6 +178,12 @@
       contentClick() {
         const tab = {props: {name: this.groupId}}
         this.tabClick(tab)
+      },
+      nameClick(sender) {
+        if (! this.msg) {
+          this.msg = ''
+        }
+        this.msg += `[CQ:at,qq=${sender.user_id},name=@${sender.nickname}] `
       },
     },
   };

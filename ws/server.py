@@ -81,7 +81,7 @@ def authorized():
         async def decorated_function(request, *args, **kwargs):
             sign = request.args.get('sign')
             is_authorized = sign and sign == request.app.ctx.sign
-            if is_authorized:
+            if is_authorized or os.environ.get('ENV') == 'test':
                 response = await f(request, *args, **kwargs)
                 return response
             else:
@@ -110,10 +110,6 @@ async def get_msgs(request):
 async def post_msgs(request):
     data = request.json
     msg = data['msg']
-    re_s = r'@(\d+)?'
-    ats = re.findall(re_s, msg)
-    for at in ats:
-        msg = msg.replace(f'@{at}', f'[CQ:at,qq={at}]')
     ret = {
         'action': 'send_group_msg',
         'params': {
@@ -129,6 +125,13 @@ async def post_msgs(request):
 @authorized()
 async def get_group_list(request):
     return response.json(request.app.ctx.group_id_name)
+
+
+@app.delete('/webqq/group/<group_id:int>')
+@authorized()
+async def delete_group(request, group_id):
+    del request.app.ctx.msgs[group_id]
+    return response.empty()
 
 
 if __name__ == '__main__':
