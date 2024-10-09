@@ -34,7 +34,7 @@
                   <el-text v-if="message['type'] == 'image'">
                     <el-link :href="message['data']['url']" target="_blank" type="success" :title="'点击后在新标签页中刷新一下'+'\n'+'鼠标点击地址栏链接，回车刷新'">{{ message['data']['summary'] }}</el-link>
                   </el-text>
-                  <el-text v-else-if="message['type'] == 'text'">{{ message['data']['text'] }}</el-text>
+                  <el-text v-else-if="message['type'] == 'text'" style="white-space: pre;" v-html="handleMessage(message['data']['text'])"></el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'reply'"><br />&nbsp;&nbsp;</el-text>
                   <el-text v-else-if="message['type'] == 'face'" type="success">[face:{{ message['data']['id'] }}]</el-text>
@@ -47,7 +47,7 @@
             </div>
           </el-scrollbar>
           <div style="margin-top: 15px;">
-            <el-input v-model="msg" type="textarea" :autosize="{ minRows: 3 }"></el-input>
+            <el-input v-model="msg" type="textarea" :rows="3"></el-input>
             <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
           </div>
         </el-tab-pane>
@@ -74,6 +74,7 @@
     mounted() {
       setInterval(this.getMsgs, 10000)
       const _this = this
+      // 快捷键发送消息
       document.onkeydown = function (e) {
         if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10)) {
           // 监听 Ctrl+Enter 和 ⌘ Command+Enter
@@ -81,6 +82,34 @@
           // window.event.preventDefault(); //关闭浏览器默认快捷键
         }
       }
+      // 粘贴图片，支持截图 https://juejin.cn/post/7366193593168642098
+      document.addEventListener('paste', (event) => {
+        let clipboardData, pastedData;
+        if (! _this.msg) {
+          _this.msg = ''
+        }
+        // 防止默认行为
+        event.preventDefault();
+        // 使用事件对象的clipboardData对象获取剪切板数据
+        clipboardData = event.clipboardData || window.clipboardData;
+        if (clipboardData.types && clipboardData.types.length) {
+          if (clipboardData.types.includes('text/plain')) {
+            pastedData = clipboardData.getData('Text');
+            _this.msg += pastedData
+          } else if (clipboardData.types.includes('Files') && clipboardData.files && clipboardData.files.length) {
+            const reader = new FileReader();
+            // 文件读取成功完成后的处理
+            reader.onload = (e) => {
+              pastedData = e.target.result;
+              // 在这里使用base64String，例如可以将其设置为图片的src
+              let _msg = pastedData.split(',')[1]
+              _this.msg += `[CQ:image,file=base64://${_msg}]`
+            };
+            // 以DataURL的形式读取文件
+            reader.readAsDataURL(clipboardData.files[0]);
+          }
+        }
+      });
     },
     async created() {
       let params = new URL(document.location.toString()).searchParams;
@@ -93,6 +122,14 @@
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
         return date
+      },
+      handleMessage(text) {
+        const reg= /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
+        let urls = text.match(reg) || []
+        for (let url of urls) {
+          text = text.replace(url, `<a href="${url}" target="_blank">${url}</a>`)
+        }
+        return text
       },
       async getGroups() {
         try {
