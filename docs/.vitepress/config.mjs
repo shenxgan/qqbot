@@ -35,6 +35,7 @@ export default defineConfig({
     nav: [
       { text: '指南', link: '/guide/5170' },
       { text: '插件', link: '/plugin/3490' },
+      { text: '插件市场', link: '/plugin/store' },
       { text: 'OneBot 11', link: '/onebot-11/README' },
       { text: 'QQ 群交流', link: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=g6Fq9551gFIq6PyL0Q6JHTV9NPwuKVUk&authKey=38yO%2Bevi%2BxcvNLp87MouhCYhZuVQ7PePL974tCBbFSpCqTUKV8ErIdhEMrVmIPTs&noverify=0&group_code=855013471' },
     ],
