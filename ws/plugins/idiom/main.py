@@ -9,7 +9,7 @@ class Plugin(Base):
     """成语"""
     def __init__(self):
         super().__init__()
-        self.is_start = False   # 默认不开始
+        self.is_start = {}      # 指定群默认不开始
         self.is_at = False
         self.data = None
 
@@ -44,14 +44,15 @@ class Plugin(Base):
         key = message.strip()
 
         if '成语接龙' in key:
-            if self.is_start is True:
+            group_id = self.data['group_id']
+            if self.is_start.get(group_id, False) is True:
                 return
-            self.is_start = True
+            self.is_start[group_id] = True
             self.idiom, self.pinyin = self.load_data()
             msg = '【成语接龙】启动！'
             return msg
 
-        if self.is_start and key in self.idiom:
+        if self.is_start.get(group_id, False) and key in self.idiom:
             last = self.idiom[key]
             if last in self.pinyin:
                 msg = random.choice(self.pinyin[last])

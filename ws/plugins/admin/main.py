@@ -15,7 +15,7 @@ class Plugin(Base):
         self.data = None
         self.ats = None
         self.done = set()
-        self.is_tx_self = False
+        self.is_tx_self = {}    # 指定群是否开启自助头衔
 
     async def set_group_special_title(self, message):
         """设置专属头衔"""
@@ -34,7 +34,8 @@ class Plugin(Base):
 
     async def set_group_special_title_self(self, message):
         """设置专属头衔-自助"""
-        if self.is_tx_self is False:
+        group_id = self.data['group_id']
+        if self.is_tx_self.get(group_id, False) is False:
             return None
         qq = self.data['sender']['user_id']
         if qq in self.done:
@@ -84,10 +85,11 @@ class Plugin(Base):
             message = message[5:]
             msg = self.web_sign(message)
         elif '专属头衔' in message:
-            if self.is_tx_self is True:
+            group_id = self.data['group_id']
+            if self.is_tx_self.get(group_id, False) is True:
                 return
             if self.data['user_id'] != self.data['self_id']:
                 return None
-            self.is_tx_self = True
+            self.is_tx_self[group_id] = True
             msg = '【专属头衔-自助设置】启动！\n示例：头衔 天才萌新'
         return msg
