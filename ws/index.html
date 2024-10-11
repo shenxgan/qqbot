@@ -19,35 +19,38 @@
               <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
             </el-badge>
           </template>
-          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @click="contentClick">
+          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
-              <div>
+              <el-divider border-style="dashed" content-position="left">
                 <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
                 <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small" @mouseenter="show = true" @mouseLeave="show = false">管理员</el-tag>
                 <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">群主</el-tag>
                 <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
                 <el-text v-if="show" size="small" @mouseenter="show = true" @mouseLeave="show = false">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
                 <el-text v-if="show" size="small">&nbsp;&nbsp;{{ formatTime(msg['time']) }}</el-text>
-              </div>
-              <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''">
+              </el-divider>
+              <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''" @mouseenter="funcShow[msg['message_id']] = true" @mouseLeave="funcShow[msg['message_id']] = false">
                 <template v-for="(message, index) in msg['message']" :key="index">
                   <el-text v-if="message['type'] == 'image'">
                     <el-link :href="message['data']['url']" target="_blank" type="success" :title="'点击后在新标签页中刷新一下'+'\n'+'鼠标点击地址栏链接，回车刷新'">{{ message['data']['summary'] }}</el-link>
                   </el-text>
-                  <el-text v-else-if="message['type'] == 'text'" style="white-space: pre;" v-html="handleMessage(message['data']['text'])"></el-text>
+                  <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
-                  <el-text v-else-if="message['type'] == 'reply'"><br />&nbsp;&nbsp;</el-text>
+                  <el-text v-else-if="message['type'] == 'reply'" type="info">[回复:{{ message['data']['id'] }}]</el-text>
                   <el-text v-else-if="message['type'] == 'face'" type="success">[face:{{ message['data']['id'] }}]</el-text>
                   <el-text v-else-if="message['type'] == 'mface'" type="success">
                     <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
                   </el-text>
                   <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
                 </template>
+                <template v-if="funcShow[msg['message_id']]" style="height: 0;">
+                  <el-button type="warning" plain size="small" style="padding: 0; height: 14px;" icon="ChatDotRound" @click="msgReply(msg['message_id'])">回复</el-button>
+                </template>
               </div>
             </div>
           </el-scrollbar>
           <div style="margin-top: 15px;">
-            <el-input v-model="msg" type="textarea" :rows="3"></el-input>
+            <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息'"></el-input>
             <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
           </div>
         </el-tab-pane>
@@ -69,6 +72,7 @@
         lastMsgIds: {},
         loading: false,
         show: false,
+        funcShow: {},
       }
     },
     mounted() {
@@ -222,9 +226,30 @@
         }
         this.msg += `[CQ:at,qq=${sender.user_id},name=@${sender.nickname}] `
       },
+      msgReply(msg_id) {
+        if (! this.msg) {
+          this.msg = ''
+        }
+        this.msg += `[CQ:reply,id=${msg_id}] `
+      },
     },
   };
   const app = Vue.createApp(App);
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
   app.use(ElementPlus);
   app.mount("#app");
 </script>
+
+<style>
+.el-divider__text.is-left {
+  left: 0;
+}
+.el-divider__text {
+  padding: 0;
+}
+.el-divider--horizontal {
+  margin: 18px 0 12px 0;
+}
+</style>
