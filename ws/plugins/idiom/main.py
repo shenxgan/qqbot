@@ -37,6 +37,7 @@ class Plugin(Base):
 
     async def handle(self, message):
         data = self.data
+        group_id = self.data['group_id']
         if 'user_id' in data and 'self_id' in data:
             if data['user_id'] == data['self_id']:
                 return None
@@ -44,7 +45,6 @@ class Plugin(Base):
         key = message.strip()
 
         if '成语接龙' in key:
-            group_id = self.data['group_id']
             if self.is_start.get(group_id, False) is True:
                 return
             self.is_start[group_id] = True
