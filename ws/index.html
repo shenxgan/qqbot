@@ -37,7 +37,9 @@
                   <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'reply'" type="info">[回复:{{ message['data']['id'] }}]</el-text>
-                  <el-text v-else-if="message['type'] == 'face'" type="success">[face:{{ message['data']['id'] }}]</el-text>
+                  <el-text v-else-if="message['type'] == 'face'">
+                    <img :src="'/static/img/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
+                  </el-text>
                   <el-text v-else-if="message['type'] == 'mface'" type="success">
                     <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
                   </el-text>
@@ -251,5 +253,10 @@
 }
 .el-divider--horizontal {
   margin: 18px 0 12px 0;
+}
+.face {
+  width: 20px;
+  height: 20px;
+  margin-bottom: -5px;
 }
 </style>

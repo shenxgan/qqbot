@@ -1,7 +1,6 @@
 import importlib
 import json
 import os
-import re
 
 from functools import wraps
 
@@ -14,6 +13,7 @@ from message import group_msg
 from notice import notice
 
 app = Sanic('qqbot')
+app.static('/static/', './static/')
 
 
 @app.before_server_start
