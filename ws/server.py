@@ -20,7 +20,7 @@ app.static('/static/', './static/')
 async def init(app):
     """初始化"""
     app.ctx.msgs = {}           # 所有群组消息
-    app.ctx.msg_maxlen = 30     # 每个群组保存的历史消息条数
+    app.ctx.msg_maxlen = 100    # 每个群组保存的历史消息条数
     app.ctx.sign = None         # 网页qq鉴权sign
     app.ctx.group_id_name = {}  # 群组id与名称对应关系
 
@@ -98,27 +98,36 @@ async def index(request):
     return response.html(html)
 
 
-@app.get('/webqq/msgs')
-@authorized()
-async def get_msgs(request):
-    data = {k: list(v) for k, v in request.app.ctx.msgs.items()}
-    return response.json(data)
-
-
 @app.post('/webqq/msgs')
 @authorized()
 async def post_msgs(request):
     data = request.json
-    msg = data['msg']
-    ret = {
-        'action': 'send_group_msg',
-        'params': {
-            'group_id': int(data['group_id']),
-            'message': msg,
+    if 'msg' in data:
+        msg = data['msg']
+        ret = {
+            'action': 'send_group_msg',
+            'params': {
+                'group_id': int(data['group_id']),
+                'message': msg,
+            }
         }
-    }
-    await request.app.ctx.ws.send(json.dumps(ret))
-    return response.empty()
+        await request.app.ctx.ws.send(json.dumps(ret))
+        return response.empty()
+    else:  # get msg data
+        last_msg_ids = data['last_msg_ids']
+        msgs = {}
+        for k, v in request.app.ctx.msgs.items():
+            k = str(k)
+            if k not in last_msg_ids:
+                msgs[k] = list(v)
+                continue
+            for i, msg in enumerate(v):
+                if msg['message_id'] == last_msg_ids[k]:
+                    vv = list(v)[i+1:]
+                    if vv:
+                        msgs[k] = vv
+                    break
+        return response.json(msgs)
 
 
 @app.get('/webqq/groups')

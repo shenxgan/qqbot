@@ -19,7 +19,7 @@
               <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
             </el-badge>
           </template>
-          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);">
+          <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @scroll="scroll" @click="scroll">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
               <el-divider border-style="dashed" content-position="left">
                 <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
@@ -35,7 +35,7 @@
                     <el-link :href="message['data']['url']" target="_blank" type="success" :title="'点击后在新标签页中刷新一下'+'\n'+'鼠标点击地址栏链接，回车刷新'">{{ message['data']['summary'] }}</el-link>
                   </el-text>
                   <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
-                  <el-text v-else-if="message['type'] == 'at'" type="success">{{ message['data']['name'] }}</el-text>
+                  <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'reply'" type="info">[回复:{{ message['data']['id'] }}]</el-text>
                   <el-text v-else-if="message['type'] == 'face'">
                     <img :src="'/static/img/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
@@ -52,7 +52,7 @@
             </div>
           </el-scrollbar>
           <div style="margin-top: 15px;">
-            <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息'"></el-input>
+            <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息"></el-input>
             <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
           </div>
         </el-tab-pane>
@@ -78,7 +78,7 @@
       }
     },
     mounted() {
-      setInterval(this.getMsgs, 10000)
+      setInterval(this.getMsgs, 5000)
       const _this = this
       // 快捷键发送消息
       document.onkeydown = function (e) {
@@ -154,20 +154,23 @@
       },
       async getMsgs() {
         try {
-          const response = await axios.get(`/webqq/msgs?sign=${this.sign}`);
-          this.msgs = response.data
+          const params = {
+            last_msg_ids: this.lastMsgIds,
+          }
+          const response = await axios.post(`/webqq/msgs?sign=${this.sign}`, params);
           let first = false
           if (Object.keys(this.lastMsgIds).length === 0) {
             first = true
           }
-          for (const groupId in this.msgs) {
-            const lastMsgId = this.msgs[groupId].at(-1)['message_id']
-            if (first === true) {
-              this.lastMsgIds[groupId] = lastMsgId
-              this.msgNew[groupId] = false
-              continue
+          for (const groupId in response.data) {
+            if (groupId in this.msgs) {
+              this.msgs[groupId] = this.msgs[groupId].concat(response.data[groupId])
+            } else {
+              this.msgs[groupId] = response.data[groupId]
             }
-            if (groupId in this.lastMsgIds && this.lastMsgIds[groupId] == lastMsgId) {
+            const lastMsgId = this.msgs[groupId].at(-1)['message_id']
+            this.lastMsgIds[groupId] = lastMsgId
+            if (first === true) {
               this.msgNew[groupId] = false
             } else {
               this.msgNew[groupId] = true
@@ -197,6 +200,9 @@
         }
         this.loading = false
       },
+      scroll() {
+        this.msgNew[this.groupId] = false
+      },
       scrollToBottom(groupId) {
         setTimeout(() => {
           const refkey = `scrollbar${groupId}`
@@ -222,11 +228,18 @@
         const tab = {props: {name: this.groupId}}
         this.tabClick(tab)
       },
-      nameClick(sender) {
+      userAt(data) {
         if (! this.msg) {
           this.msg = ''
         }
-        this.msg += `[CQ:at,qq=${sender.user_id},name=@${sender.nickname}] `
+        this.msg += `[CQ:at,qq=${data.qq},name=${data.name}] `
+      },
+      nameClick(sender) {
+        const data = {
+          qq: sender.user_id,
+          name: `@${sender.nickname}`,
+        }
+        this.userAt(data)
       },
       msgReply(msg_id) {
         if (! this.msg) {
