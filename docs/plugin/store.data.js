@@ -23,6 +23,13 @@ export default {
           documentUrl: '/qqbot/plugin/4233',
           downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/welcome',
         },
+        {
+          name: '天气预报',
+          desc: '查询指定城市的天气预报',
+          author: '@彩铅木流年',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/weather.zip',
+        },
       ]
     }
   }
