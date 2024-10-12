@@ -11,7 +11,7 @@ class Plugin(Base):
         super().__init__()
         self.type = 'notice'
         self.last_ts = {}       # 记录每个群的触发时间
-        self.cd = 3600 * 8      # 同一群回复间隔为8小时
+        self.cd = 3600 * 18     # 同一群回复间隔为18小时
         self.welcome_msg = self.load_msg()
 
     def load_msg(self):
