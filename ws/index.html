@@ -2,6 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="https://python-abc.xyz/qqbot/static/img/logo.png">
     <script src="https://unpkg.com/vue@3.4.31/dist/vue.global.prod.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-plus@2.7.7/dist/index.css">
@@ -32,7 +33,7 @@
               <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''" @mouseenter="funcShow[msg['message_id']] = true" @mouseLeave="funcShow[msg['message_id']] = false">
                 <template v-for="(message, index) in msg['message']" :key="index">
                   <el-text v-if="message['type'] == 'image'">
-                    <el-link :href="message['data']['url']" target="_blank" type="success" :title="'点击后在新标签页中刷新一下'+'\n'+'鼠标点击地址栏链接，回车刷新'">{{ message['data']['summary'] }}</el-link>
+                    <img :src="message['data']['url']" style="max-width: 100px; max-height: 50px" />
                   </el-text>
                   <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] }}</el-text>
