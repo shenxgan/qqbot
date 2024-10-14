@@ -13,6 +13,9 @@
   </head>
   <body>
     <div id="app">
+      <el-dialog v-model="imgShow" draggable width="fit-content">
+        <img :src="imgUrl" style="max-width: 100%;" />
+      </el-dialog>
       <el-tabs v-model="groupId" type="card" tab-position="left" closable @tab-remove="tabRemove" @tab-click="tabClick" style="height: 99%;">
         <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
           <template #label>
@@ -33,7 +36,7 @@
               <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''" @mouseenter="funcShow[msg['message_id']] = true" @mouseLeave="funcShow[msg['message_id']] = false">
                 <template v-for="(message, index) in msg['message']" :key="index">
                   <el-text v-if="message['type'] == 'image'">
-                    <img :src="message['data']['url']" style="max-width: 100px; max-height: 50px" />
+                    <img :src="message['data']['url']" style="max-width: 100px; max-height: 50px" @click="imgClick(message['data']['url'])" />
                   </el-text>
                   <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                   <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] }}</el-text>
@@ -76,6 +79,8 @@
         loading: false,
         show: false,
         funcShow: {},
+        imgShow: false,
+        imgUrl: null,
       }
     },
     mounted() {
@@ -126,11 +131,17 @@
       await this.getGroups()
     },
     methods: {
+      imgClick(url) {
+        this.imgShow = true
+        this.imgUrl = url
+      },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
         return date
       },
       handleMessage(text) {
+        text = text.replaceAll('<', '&lt;')
+        text = text.replaceAll('>', '&gt;')
         const reg= /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
         let urls = text.match(reg) || []
         for (let url of urls) {
@@ -207,7 +218,7 @@
       scrollToBottom(groupId) {
         setTimeout(() => {
           const refkey = `scrollbar${groupId}`
-          this.$refs[refkey][0].setScrollTop(9000);
+          this.$refs[refkey][0].setScrollTop(99999);
         }, 50);
       },
       tabRemove(tabName) {
