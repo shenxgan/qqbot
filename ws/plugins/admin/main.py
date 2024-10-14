@@ -75,16 +75,18 @@ class Plugin(Base):
 
     async def handle(self, message):
         msg = None
+        self.is_at = False
         if message[:3] == r'\tx':
             message = message[3:]
             msg = await self.set_group_special_title(message)
         elif message[:2] == '头衔':
+            self.is_at = True
             message = message[2:]
             msg = await self.set_group_special_title_self(message)
         elif message[:5] == r'\sign':
             message = message[5:]
             msg = self.web_sign(message)
-        elif '专属头衔' in message:
+        elif message.startswith('专属头衔'):
             group_id = self.data['group_id']
             if self.is_tx_self.get(group_id, False) is True:
                 return
