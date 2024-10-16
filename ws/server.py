@@ -13,7 +13,7 @@ from message import group_msg
 from notice import notice
 
 app = Sanic('qqbot')
-app.static('/static/', './static/')
+app.static('/webqq/static/', './static/')
 
 
 @app.before_server_start
