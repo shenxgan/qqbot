@@ -30,6 +30,13 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/weather.zip',
         },
+        {
+          name: '点歌',
+          desc: '点歌后发送歌曲语音到群里',
+          author: '@只会敲键盘的猿人',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/choose_a_song_v1.0.1.zip',
+        },
       ]
     }
   }
