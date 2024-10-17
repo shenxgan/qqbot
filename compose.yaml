@@ -1,12 +1,28 @@
 services:
-  bot:
+  lagrange:
     image: ghcr.nju.edu.cn/lagrangedev/lagrange.onebot:edge
-    pull_policy: always
+    # pull_policy: always
     restart: always
     volumes:
       - ./bot:/app/data
     depends_on:
       - ws
+    profiles: [lagrange]
+
+  napcat:
+    image: mlikiowa/napcat-docker:latest
+    # pull_policy: always
+    restart: always
+    environment:
+      - ACCOUNT=${ACCOUNT}
+      - NAPCAT_UID=${UID}
+      - NAPCAT_GID=${GID}
+    volumes:
+      - ./bot/.config/QQ:/app/.config/QQ
+      - ./bot/napcat/config:/app/napcat/config
+    depends_on:
+      - ws
+    profiles: [napcat]
 
   ws:
     image: python:3.12-slim

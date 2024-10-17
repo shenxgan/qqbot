@@ -60,10 +60,9 @@ async def qqbot(request, ws):
 
         post_type = data.get('post_type')
         # 根据消息类型、内容来进行分别处理
-        if post_type == 'message' \
-                and data.get('message_type') == 'group' \
-                and data.get('raw_message'):
-            await group_msg(ws, data, is_me)
+        if post_type == 'message' or post_type == 'message_sent':
+            if data.get('message_type') == 'group' and data.get('raw_message'):
+                await group_msg(ws, data, is_me)
         elif post_type == 'notice':
             await notice(ws, data)
         elif isinstance(data.get('data'), list):
