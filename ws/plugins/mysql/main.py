@@ -27,7 +27,7 @@ class Plugin(Base):
 
     def is_match(self, message):
         """检测是否匹配此插件"""
-        if self.data['sender']['role'] not in {'owner', 'admin'}:
+        if self.data['user_id'] != self.data['self_id']:
             return False
         if not self.ats:
             return False
