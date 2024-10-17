@@ -37,6 +37,13 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/choose_a_song_v1.0.1.zip',
         },
+        {
+          name: '快递查询',
+          desc: '查询快递物流信息',
+          author: '@只会敲键盘的猿人',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/GetExpress_v1.0.0.zip',
+        },
       ]
     }
   }
