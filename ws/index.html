@@ -42,7 +42,7 @@
                   <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] || '@'+message['data']['qq'] }}</el-text>
                   <el-text v-else-if="message['type'] == 'reply'" type="info">[回复:{{ message['data']['id'] }}]</el-text>
                   <el-text v-else-if="message['type'] == 'face'">
-                    <img :src="'static/img/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
+                    <img :src="'static/img/qqface/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
                   </el-text>
                   <el-text v-else-if="message['type'] == 'mface'" type="success">
                     <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
@@ -58,6 +58,22 @@
           <div style="margin-top: 15px;">
             <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息"></el-input>
             <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
+            <el-popover placement="top-start" :width="390" trigger="hover">
+              <template #reference>
+                <img src="static/img/emoji3d/88.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+              </template>
+              <el-text v-for="i in 144">
+                <img :src="'static/img/emoji3d/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+              </el-text>
+            </el-popover>
+            <el-popover placement="top-start" :width="420" trigger="hover">
+              <template #reference>
+                <img src="static/img/qqface/24.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+              </template>
+              <el-text v-for="i in 396">
+                <img :onerror="faceError" :src="'static/img/qqface/'+(i-1)+'.png'" style="width: 30px; height: 30px;" :title="i-1" @click="faceClick" />
+              </el-text>
+            </el-popover>
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -134,6 +150,25 @@
       imgClick(url) {
         this.imgShow = true
         this.imgUrl = url
+      },
+      faceError(ev) {
+        const img = ev.target
+        img.style.display = 'none'
+        img.onerror = null
+      },
+      faceClick(ev) {
+        const img = ev.target
+        var canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        const base64 = dataURL.split(',')[1]
+        if (! this.msg) {
+          this.msg = ''
+        }
+        this.msg += `[CQ:image,file=base64://${base64}]`
       },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
