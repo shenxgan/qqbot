@@ -1,3 +1,4 @@
+import os
 import random
 import requests
 
@@ -11,6 +12,8 @@ class Plugin(Base):
         self.url = 'http://python:8001/code'    # 代码运行的服务器
         self.result_prefix = '🏄✨🚀⚡⚽🧐'     # 运行结果要添加的前缀序列
         self.result_empty = '😶无输出😲'        # 无输出时的提示文字
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
+        self.db = self.load_config()
 
     def is_match(self, message):
         """检测是否匹配此插件"""

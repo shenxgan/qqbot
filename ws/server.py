@@ -53,16 +53,11 @@ async def qqbot(request, ws):
         data = json.loads(data)
         logger.debug(json.dumps(data, indent=4, ensure_ascii=False))
 
-        # 记录是否是自己发送的消息
-        is_me = False
-        if 'user_id' in data and 'self_id' in data:
-            is_me = data['user_id'] == data['self_id']
-
         post_type = data.get('post_type')
         # 根据消息类型、内容来进行分别处理
         if post_type == 'message' or post_type == 'message_sent':
             if data.get('message_type') == 'group' and data.get('raw_message'):
-                await group_msg(ws, data, is_me)
+                await group_msg(ws, data)
         elif post_type == 'notice':
             await notice(ws, data)
         elif isinstance(data.get('data'), list):

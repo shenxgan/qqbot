@@ -10,6 +10,8 @@ class Plugin(Base):
         super().__init__()
         self.is_at = True
         self.system_content = '你的每次回复都在50字以内'
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
+        self.db = self.load_config()
 
     def doubao(self, content):
         api_key = os.environ.get('DOUBAO_API_KEY')

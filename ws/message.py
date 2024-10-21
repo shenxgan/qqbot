@@ -1,5 +1,6 @@
 import json
 import re
+import traceback
 
 from collections import deque
 
@@ -23,7 +24,7 @@ def init_message(data):
     return message, ats
 
 
-async def group_msg(ws, data, is_me):
+async def group_msg(ws, data):
     """群消息处理"""
     app = Sanic.get_app()
 
@@ -42,6 +43,8 @@ async def group_msg(ws, data, is_me):
             for attr in {'ws', 'data', 'ats'}:
                 if hasattr(plugin, attr):
                     setattr(plugin, attr, locals()[attr])
+            if hasattr(plugin, 'db'):
+                setattr(plugin, 'data', data)
             msg = await plugin.run(message)
             if msg:
                 if plugin.is_at:
@@ -49,6 +52,7 @@ async def group_msg(ws, data, is_me):
                 break
         except Exception as e:
             logger.error(f'插件 {plugin} 运行报错：{e}')
+            logger.error(traceback.format_exc())
 
     if msg:
         if ats:

@@ -12,6 +12,8 @@ class Plugin(Base):
         self.is_start = {}      # 指定群默认不开始
         self.is_at = False
         self.data = None
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
+        self.db = self.load_config()
 
     def load_data(self):
         """加载到本地内存"""

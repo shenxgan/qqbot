@@ -8,12 +8,13 @@ class Plugin(Base):
     def __init__(self):
         super().__init__()
         self.is_at = False
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
         self.kvmsg = self.load_kvmsg()
+        self.db = self.load_config()
 
     def load_kvmsg(self):
         """加载机器人回复内容到本地内存"""
-        fdir = os.path.dirname(os.path.abspath(__file__))
-        fpath = os.path.join(fdir, 'kvmsg.txt')
+        fpath = os.path.join(self.fdir, 'kvmsg.txt')
         with open(fpath) as f:
             res = f.read()
 

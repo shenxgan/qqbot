@@ -14,6 +14,8 @@ class Plugin(Base):
         self.data = None
         self.ats = None
         self.conn_info = self.get_mysql_conn()
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
+        self.db = self.load_config()
 
     def get_mysql_conn(self):
         conn_info = {

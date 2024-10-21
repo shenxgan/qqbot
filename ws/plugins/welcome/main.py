@@ -11,13 +11,14 @@ class Plugin(Base):
         super().__init__()
         self.type = 'notice'
         self.last_ts = {}       # 记录每个群的触发时间
-        self.cd = 3600 * 18     # 同一群回复间隔为18小时
+        self.cd = 3600 * 1      # 同一群回复间隔为1小时
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
         self.welcome_msg = self.load_msg()
+        self.db = self.load_config()
 
     def load_msg(self):
         """加载欢迎语到本地内存"""
-        fdir = os.path.dirname(os.path.abspath(__file__))
-        fpath = os.path.join(fdir, 'msg.txt')
+        fpath = os.path.join(self.fdir, 'msg.txt')
         with open(fpath) as f:
             data = f.read()
         welcome_msg = [line for line in data.split('\n') if line.strip()]

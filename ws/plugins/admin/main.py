@@ -86,7 +86,7 @@ class Plugin(Base):
         elif message[:5] == r'\sign':
             message = message[5:]
             msg = self.web_sign(message)
-        elif message.startswith('专属头衔'):
+        elif message == '开启专属头衔自助':
             group_id = self.data['group_id']
             if self.is_tx_self.get(group_id, False) is True:
                 return
