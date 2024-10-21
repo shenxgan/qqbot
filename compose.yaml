@@ -30,6 +30,7 @@ services:
     command: bash -c "pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt && python server.py"
     working_dir: /app
     environment:
+      TZ: "Asia/Shanghai"
       ENV: ${ENV}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_PORT: ${MYSQL_PORT}
@@ -47,6 +48,7 @@ services:
       context: ./python
     restart: always
     environment:
+      TZ: "Asia/Shanghai"
       # SANIC_KEEP_ALIVE: False
       SANIC_REQUEST_TIMEOUT: 10
       SANIC_RESPONSE_TIMEOUT: 10

@@ -88,7 +88,7 @@
       const _this = this
       // 快捷键发送消息
       document.onkeydown = function (e) {
-        if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10)) {
+        if ((e.ctrlKey || e.metaKey || e.shiftKey) && (e.keyCode == 13 || e.keyCode == 10)) {
           // 监听 Ctrl+Enter 和 ⌘ Command+Enter
           _this.sendMsg()
           // window.event.preventDefault(); //关闭浏览器默认快捷键
