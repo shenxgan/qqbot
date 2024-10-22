@@ -194,6 +194,7 @@
       },
       async deleteGroup(groupId) {
         try {
+          delete this.lastMsgIds[groupId]
           const response = await axios.delete(`/webqq/group/${groupId}?sign=${this.sign}`);
         } catch (error) {
           console.error(error);
