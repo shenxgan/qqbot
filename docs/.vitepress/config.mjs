@@ -56,6 +56,7 @@ export default defineConfig({
           items: [
             { text: '插件介绍', link: '/plugin/3490' },
             { text: '如何创建插件', link: '/plugin/5640' },
+            { text: '配置环境变量', link: '/plugin/1538' },
           ]
         },
         {
