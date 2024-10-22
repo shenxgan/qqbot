@@ -1,4 +1,5 @@
 import os
+import random
 import requests
 
 from plugins.base import Base
@@ -15,7 +16,8 @@ class Plugin(Base):
 
     def doubao(self, content):
         api_key = os.environ.get('DOUBAO_API_KEY')
-        model = os.environ.get('DOUBAO_MODEL')
+        models = os.environ.get('DOUBAO_MODEL').split(',')
+        model = random.choice(models)
         url = 'https://ark.cn-beijing.volces.com/api/v3/chat/completions'
         headers = {
             'Content-Type': 'application/json',
