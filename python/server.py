@@ -49,7 +49,7 @@ async def run_code(request):
     cmd = cmds[tp].format(timeout=timeout, fname=fname)
     logger.info(cmd)
     proc = await asyncio.create_subprocess_shell(
-        cmd,
+        f'su work -c "{cmd}"',
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
