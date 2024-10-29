@@ -39,6 +39,8 @@ class Base:
         """黑白名单判断"""
         if not hasattr(self, 'db'):
             return True
+        if not hasattr(self, 'data'):
+            return True
         if 'user_id' in self.data and 'self_id' in self.data:
             if self.data['user_id'] == self.data['self_id']:
                 return True

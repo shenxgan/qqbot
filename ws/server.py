@@ -11,6 +11,7 @@ from sanic.log import logger
 
 from message import group_msg
 from notice import notice
+from cron import cron_job
 
 app = Sanic('qqbot')
 app.static('/webqq/static/', './static/')
@@ -46,6 +47,7 @@ async def load_plugins(app):
 async def qqbot(request, ws):
     """QQ机器人"""
     app.ctx.ws = ws
+    app.add_task(cron_job())
     await ws.send(json.dumps({'action': 'get_group_list'}))
 
     while True:
