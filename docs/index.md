@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "QQ 机器人"
-  text: "基于 Lagrange.OneBot"
+  text: "基于 OneBot"
   tagline: 聚焦于使用 python 来实现 qq 机器人的各种功能
   image:
     src: /static/img/logo-large.png
@@ -24,7 +24,7 @@ features:
   - icon:
       src: /static/img/electron.png
     title: NTQQ 协议
-    details: Lagrange.Core - NTQQ 的协议实现
+    details: NTQQ 的协议实现
   - icon:
       src: /static/img/docker.png
     title: Docker 部署
