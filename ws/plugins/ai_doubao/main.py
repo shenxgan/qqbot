@@ -6,7 +6,10 @@ from plugins.base import Base
 
 
 class Plugin(Base):
-    """豆包AI"""
+    """豆包AI
+    申请地址：https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint
+    API 地址：https://www.volcengine.com/docs/82379/1298454
+    """
     def __init__(self):
         super().__init__()
         self.is_at = True
