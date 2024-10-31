@@ -46,10 +46,17 @@ export default {
         },
         {
           name: '疯狂星期四',
-          desc: '识别后，自动发送疯狂星期四语录',
+          desc: '在星期四的时候，识别关键字后发送疯狂星期四语录',
           author: '@古一',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/kfc.zip',
+        },
+        {
+          name: '复读机',
+          desc: '检测到复读机行为时，自动跟一条',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/plus1.zip',
         },
       ]
     }
