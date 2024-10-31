@@ -44,6 +44,13 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/GetExpress_v1.0.0.zip',
         },
+        {
+          name: '疯狂星期四',
+          desc: '识别后，自动发送疯狂星期四语录',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/kfc.zip',
+        },
       ]
     }
   }
