@@ -58,6 +58,13 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/plus1.zip',
         },
+        {
+          name: 'IP 归属地查询',
+          desc: '查询给定 IP 地址的归属地信息',
+          author: '@快乐哈哈',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/ip.zip',
+        },
       ]
     }
   }
