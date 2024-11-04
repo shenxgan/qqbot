@@ -2,3 +2,4 @@ bot/
 __pycache__
 .env
 db.json
+ws/plugins
