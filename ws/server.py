@@ -20,10 +20,11 @@ app.static('/webqq/static/', './static/')
 @app.before_server_start
 async def init(app):
     """初始化"""
-    app.ctx.msgs = {}           # 所有群组消息
-    app.ctx.msg_maxlen = 100    # 每个群组保存的历史消息条数
-    app.ctx.sign = None         # 网页qq鉴权sign
-    app.ctx.group_id_name = {}  # 群组id与名称对应关系
+    app.ctx.msgs = {}               # 所有群组消息
+    app.ctx.msg_maxlen = 100        # 每个群组保存的历史消息条数
+    app.ctx.sign = None             # 网页qq鉴权sign
+    app.ctx.group_id_name = {}      # 群组id与名称对应关系
+    app.ctx.delete_groups = set()   # 当前过滤不查看的群组
 
 
 @app.before_server_start
@@ -129,6 +130,7 @@ async def post_msgs(request):
 @app.get('/webqq/groups')
 @authorized()
 async def get_group_list(request):
+    request.app.ctx.delete_groups.clear()
     return response.json(request.app.ctx.group_id_name)
 
 
@@ -136,6 +138,7 @@ async def get_group_list(request):
 @authorized()
 async def delete_group(request, group_id):
     del request.app.ctx.msgs[group_id]
+    request.app.ctx.delete_groups.add(group_id)
     return response.empty()
 
 

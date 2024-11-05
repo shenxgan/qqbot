@@ -32,9 +32,11 @@ async def group_msg(ws, data):
     # who = data['sender']['user_id']
     who = data['user_id']
     msg = None
-    if data['group_id'] not in app.ctx.msgs:
-        app.ctx.msgs[data['group_id']] = deque(maxlen=app.ctx.msg_maxlen)
-    app.ctx.msgs[data['group_id']].append(data)
+    group_id = data['group_id']
+    if group_id not in app.ctx.delete_groups:
+        if group_id not in app.ctx.msgs:
+            app.ctx.msgs[group_id] = deque(maxlen=app.ctx.msg_maxlen)
+        app.ctx.msgs[group_id].append(data)
 
     for plugin in app.ctx.plugins:
         if plugin.type != 'message':
