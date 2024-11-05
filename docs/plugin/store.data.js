@@ -5,6 +5,7 @@ export default {
         {
           name: '成语接龙',
           desc: '开启后识别成语，自动接龙',
+          type: 'message',
           author: '@古一',
           documentUrl: '/qqbot/plugin/1296',
           downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/idiom',
@@ -12,6 +13,7 @@ export default {
         {
           name: '豆包 AI',
           desc: '接入抖音豆包 AI，提供 AI 文字聊天',
+          type: 'message',
           author: '@古一',
           documentUrl: '/qqbot/plugin/9234',
           downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/ai_doubao',
@@ -19,6 +21,7 @@ export default {
         {
           name: '入群欢迎',
           desc: '在有新人入群时发送欢迎（文字、图片或其他）',
+          type: 'notice',
           author: '@古一',
           documentUrl: '/qqbot/plugin/4233',
           downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/welcome',
@@ -26,6 +29,7 @@ export default {
         {
           name: '天气预报',
           desc: '查询指定城市的天气预报',
+          type: 'message',
           author: '@彩铅木流年',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/weather.zip',
@@ -33,6 +37,7 @@ export default {
         {
           name: '点歌',
           desc: '点歌后发送歌曲语音到群里',
+          type: 'message',
           author: '@只会敲键盘的猿人',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/choose_a_song_v1.0.1.zip',
@@ -40,6 +45,7 @@ export default {
         {
           name: '快递查询',
           desc: '查询快递物流信息',
+          type: 'message',
           author: '@只会敲键盘的猿人',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/GetExpress_v1.0.0.zip',
@@ -47,6 +53,7 @@ export default {
         {
           name: '疯狂星期四',
           desc: '在星期四的时候，识别关键字后发送疯狂星期四语录',
+          type: 'message',
           author: '@古一',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/kfc.zip',
@@ -54,6 +61,7 @@ export default {
         {
           name: '复读机',
           desc: '检测到复读机行为时，自动跟一条',
+          type: 'message',
           author: '@古一',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/plus1.zip',
@@ -61,9 +69,18 @@ export default {
         {
           name: 'IP 归属地查询',
           desc: '查询给定 IP 地址的归属地信息',
+          type: 'message',
           author: '@快乐哈哈',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/ip.zip',
+        },
+        {
+          name: '早中晚问候',
+          desc: '定时在每日的早中晚时间，主动发出问候',
+          type: 'cron',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/hello',
         },
       ]
     }
