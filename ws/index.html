@@ -50,7 +50,7 @@
                   <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
                 </template>
                 <template v-if="funcShow[msg['message_id']]" style="height: 0;">
-                  <el-button type="warning" plain size="small" style="padding: 0; height: 14px;" icon="ChatDotRound" @click="msgReply(msg['message_id'])">回复</el-button>
+                  <el-button type="warning" plain size="small" style="padding: 0; height: 14px;" icon="ChatDotRound" @click="msgReply(msg)">回复</el-button>
                 </template>
               </div>
             </div>
@@ -289,11 +289,13 @@
         }
         this.userAt(data)
       },
-      msgReply(msg_id) {
+      msgReply(msg) {
+        const msg_id = msg['message_id']
         if (! this.msg) {
           this.msg = ''
         }
         this.msg += `[CQ:reply,id=${msg_id}] `
+        this.nameClick(msg['sender'])
       },
     },
   };
