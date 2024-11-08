@@ -21,7 +21,7 @@ app.static('/webqq/static/', './static/')
 async def init(app):
     """初始化"""
     app.ctx.msgs = {}               # 所有群组消息
-    app.ctx.msg_maxlen = 100        # 每个群组保存的历史消息条数
+    app.ctx.msg_maxlen = 50         # 每个群组保存的历史消息条数
     app.ctx.sign = None             # 网页qq鉴权sign
     app.ctx.group_id_name = {}      # 群组id与名称对应关系
     app.ctx.delete_groups = set()   # 当前过滤不查看的群组

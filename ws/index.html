@@ -47,6 +47,16 @@
                   <el-text v-else-if="message['type'] == 'mface'" type="success">
                     <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
                   </el-text>
+                  <el-text v-else-if="message['type'] == 'video'">
+                    <video style="max-height: 100px;" autoplay muted loop>
+                      <source :src="message['data']['url']" type="video/mp4">
+                    </video>
+                  </el-text>
+                  <el-text v-else-if="message['type'] == 'record'">
+                    <audio style="height: 30px;" muted controls>
+                      <source :src="message['data']['url']" type="audio/mpeg">
+                    </audio>
+                  </el-text>
                   <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
                 </template>
                 <template v-if="funcShow[msg['message_id']]" style="height: 0;">
