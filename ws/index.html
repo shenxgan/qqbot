@@ -97,11 +97,13 @@
         funcShow: {},
         imgShow: false,
         imgUrl: null,
+        cnt: 0,
+        timer: null,
       }
     },
     mounted() {
-      setInterval(this.getMsgs, 5000)
       const _this = this
+      this.timer = setInterval(this.getMsgs, 5000)
       // 快捷键发送消息
       document.onkeydown = function (e) {
         if ((e.ctrlKey || e.metaKey || e.shiftKey) && (e.keyCode == 13 || e.keyCode == 10)) {
@@ -179,8 +181,9 @@
         text = text.replaceAll('>', '&gt;')
         const reg= /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
         let urls = text.match(reg) || []
+        urls = Array.from(new Set(urls))  // 去重
         for (let url of urls) {
-          text = text.replace(url, `<a href="${url}" target="_blank">${url}</a>`)
+          text = text.replaceAll(url, `<a href="${url}" target="_blank">${url}</a>`)
         }
         return text
       },
@@ -224,8 +227,17 @@
               this.msgNew[groupId] = true
             }
           }
+          if (this.msgs.length >= 50) {
+            this.msgs.splice(0, 30)
+          }
         } catch (error) {
           console.error(error);
+        }
+        this.cnt += 1
+        if (this.cnt >= 10) {
+          clearInterval(this.timer)
+          this.timer = setInterval(this.getMsgs, 5000)
+          this.cnt = 0
         }
       },
       async sendMsg() {
