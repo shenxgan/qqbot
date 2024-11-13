@@ -20,7 +20,8 @@
         <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
           <template #label>
             <el-badge :is-dot="msgNew[key]">
-              <el-text size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
+              <el-text v-if="key in groups" size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
+              <el-text v-else size="small" :type="groupId == key ? 'primary' : ''" style="width: 100px;" truncated>{{ item[0]['sender']['nickname'] }}</el-text>
             </el-badge>
           </template>
           <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @scroll="scroll" @click="scroll">

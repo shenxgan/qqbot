@@ -67,3 +67,17 @@ async def group_msg(ws, data):
             }
         }
         await ws.send(json.dumps(ret))
+
+
+async def private_msg(ws, data):
+    """私有消息处理"""
+    app = Sanic.get_app()
+
+    qq = data['user_id']
+    group_id = f'qq{qq}'
+    data['group_id'] = group_id
+
+    if group_id not in app.ctx.delete_groups:
+        if group_id not in app.ctx.msgs:
+            app.ctx.msgs[group_id] = deque(maxlen=app.ctx.msg_maxlen)
+        app.ctx.msgs[group_id].append(data)
