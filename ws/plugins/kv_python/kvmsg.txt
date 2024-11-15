@@ -323,3 +323,4 @@ sanic###Sanic 是 Python3.7+ Web 服务器和 Web 框架，旨在提高性能。
 fastapi###FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 并基于标准的 Python 类型提示。\n官网地址：https://fastapi.tiangolo.com/zh/
 docker;容器###Docker 容器与虚拟机类似，但二者在原理上不同。容器是将操作系统层虚拟化，虚拟机则是虚拟化硬件，因此容器更具有便携性、更能高效地利用服务器。\n官网地址：https://www.docker.com/\ndocker 常用命令：https://python-abc.xyz/op/3123
 
+xai;grok;马斯克###每月 $25 美元免费额度\n接入马斯克的 xAI：https://python-abc.xyz/code/0986

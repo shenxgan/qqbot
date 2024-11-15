@@ -255,6 +255,10 @@
         if (! this.msg) {
           return false
         }
+        if (this.msg == 'qxx') {
+          this.msg = `${this.groupId}\n${this.groups[this.groupId]}`
+          return false
+        }
         this.loading = true
         try {
           const params = {

@@ -126,10 +126,12 @@ async def get_group_list(request):
     return response.json(request.app.ctx.group_id_name)
 
 
-@webqq.delete('/group/<group_id:int>')
+@webqq.delete('/group/<group_id>')
 @authorized()
 async def delete_group(request, group_id):
     """删除本地群组记录"""
+    if group_id[:2] != 'qq':
+        group_id = int(group_id)
     del request.app.ctx.msgs[group_id]
     request.app.ctx.delete_groups.add(group_id)
     return response.empty()
