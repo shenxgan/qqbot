@@ -12,6 +12,7 @@ usage() {
     echo '    tail:         查看日志'
     echo '    deploy:       部署到服务器'
     echo '    upload|up:    将改动的文件上传到服务器'
+    echo '    upp:          将本地所有插件全部拷贝到服务器'
     echo '--------- 指定 onebot ---------'
     echo '    lagrange:     lagrange.onebot'
     echo '    napcat:       napcat.onebot'
@@ -53,6 +54,23 @@ copy_change() {
     fi
 }
 
+upload_plugins() {
+    for dir in ws/plugins/*
+    do
+        if [[ -f $dir ]]; then
+            continue
+        fi
+        if [[ "$dir" = "ws/plugins/__pycache__" ]]; then
+            continue
+        fi
+        echo "scp -r $dir/* abc:~/qqbot/$dir/"
+        sudo rm -rf $dir/__pycache__
+        if [[ "$1" == "all" ]]; then
+            scp -r $dir/* abc:~/qqbot/$dir/
+        fi
+    done
+}
+
 case "$1" in
     start)
         if [[ $# -lt 2 ]]; then
@@ -87,6 +105,10 @@ case "$1" in
     upload|up)
         shift
         copy_change "$@"
+    ;;
+    upp)
+        shift
+        upload_plugins "$@"
     ;;
     *)
         usage
