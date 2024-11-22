@@ -7,6 +7,8 @@ class Base:
         self.is_open = True     # 插件开关
         self.is_at = True       # 回复消息时是否at触发之人
         self.type = 'message'   # 类型
+        self.ats = None
+        self.user_cd = 15
 
     def load_config(self):
         """从本地文件中加载插件的配置"""

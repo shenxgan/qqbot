@@ -1,5 +1,6 @@
 import json
 import re
+import time
 import traceback
 
 from collections import deque
@@ -10,6 +11,7 @@ from sanic.log import logger
 
 def init_message(data):
     """初始处理消息体"""
+    is_at_me = False
     raw_message = data['raw_message']
     re_s = r'(\[CQ:.*?\])'
     cqs = re.findall(re_s, raw_message)
@@ -17,10 +19,14 @@ def init_message(data):
     ats = set()
     for cq in cqs:
         if cq[1:6] == 'CQ:at':
-            if cq != f'[CQ:at,qq={data["self_id"]}]':  # 不@自己
+            # if cq != f'[CQ:at,qq={data["self_id"]}]':  # 不@自己
+            if str(data['self_id']) not in cq:
                 ats.add(cq)
+            else:
+                is_at_me = True
         message = message.replace(cq, '')
     message = message.strip()
+    data['is_at_me'] = is_at_me
     return message, ats
 
 
@@ -38,10 +44,17 @@ async def group_msg(ws, data):
             app.ctx.msgs[group_id] = deque(maxlen=app.ctx.msg_maxlen)
         app.ctx.msgs[group_id].append(data)
 
+    if '[CQ:json' in data['raw_message']:
+        with open('raw_message_json.txt', 'a') as f:
+            f.write(data['raw_message'])
+
     for plugin in app.ctx.plugins:
         if plugin.type != 'message':
             continue
         try:
+            plugin_id = id(plugin)
+            if plugin_id not in app.ctx.user_last_ts:
+                app.ctx.user_last_ts[plugin_id] = {}
             for attr in {'ws', 'data', 'ats'}:
                 if hasattr(plugin, attr):
                     setattr(plugin, attr, locals()[attr])
@@ -49,7 +62,17 @@ async def group_msg(ws, data):
                 setattr(plugin, 'data', data)
             msg = await plugin.run(message)
             if msg:
-                if plugin.is_at:
+                if who == data['self_id'] \
+                        or data['sender']['role'] in {'owner', 'admin'}:
+                    pass
+                else:
+                    now = time.time()
+                    if now - app.ctx.user_last_ts[plugin_id].get(who, 0) \
+                            > plugin.user_cd:
+                        app.ctx.user_last_ts[plugin_id][who] = now
+                    else:
+                        msg = None
+                if plugin.is_at and who != data['self_id']:
                     ats.add(f'[CQ:at,qq={who}]')
                 break
         except Exception as e:
