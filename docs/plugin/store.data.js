@@ -82,6 +82,14 @@ export default {
           documentUrl: '',
           downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/hello',
         },
+        {
+          name: '爬/啪',
+          desc: '对头像图片的各种加工',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/avatar.zip',
+        },
       ]
     }
   }
