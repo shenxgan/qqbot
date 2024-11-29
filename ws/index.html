@@ -27,7 +27,7 @@
           <el-scrollbar :ref="'scrollbar'+key" style="height: calc(100vh - 150px);" @scroll="scroll" @click="scroll">
             <div v-for="(msg, index) in item" :key="index" style="margin: 10px 0;">
               <el-divider border-style="dashed" content-position="left">
-                <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ msg['sender']['nickname'] }}</el-text>
+                <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ '@' + msg['sender']['nickname'] }}</el-text>
                 <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small" @mouseenter="show = true" @mouseLeave="show = false">管理员</el-tag>
                 <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">群主</el-tag>
                 <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
