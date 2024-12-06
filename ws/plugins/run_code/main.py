@@ -14,6 +14,7 @@ class Plugin(Base):
         self.result_empty = '😶无输出😲'        # 无输出时的提示文字
         self.fdir = os.path.dirname(os.path.abspath(__file__))
         self.db = self.load_config()
+        self.user_cd = 60
 
     def is_match(self, message):
         """检测是否匹配此插件"""

@@ -63,7 +63,11 @@ upload_plugins() {
         if [[ "$dir" = "ws/plugins/__pycache__" ]]; then
             continue
         fi
-        echo "scp -r $dir/* abc:~/qqbot/$dir/"
+        if [[ "$1" == "abc" ]]; then
+            echo "scp -r abc:~/qqbot/$dir/* $dir/"
+        else
+            echo "scp -r $dir/* abc:~/qqbot/$dir/"
+        fi
         sudo rm -rf $dir/__pycache__
         if [[ "$1" == "all" ]]; then
             scp -r $dir/* abc:~/qqbot/$dir/

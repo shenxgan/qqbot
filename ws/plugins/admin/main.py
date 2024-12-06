@@ -1,3 +1,4 @@
+import os
 import json
 import re
 import secrets
@@ -16,6 +17,8 @@ class Plugin(Base):
         self.ats = None
         self.done = set()
         self.is_tx_self = {}    # 指定群是否开启自助头衔
+        self.fdir = os.path.dirname(os.path.abspath(__file__))
+        self.db = self.load_config()
 
     async def set_group_special_title(self, message):
         """设置专属头衔"""
@@ -63,7 +66,8 @@ class Plugin(Base):
         from sanic import Sanic
         app = Sanic.get_app()
 
-        if self.data['user_id'] != self.data['self_id']:
+        if self.data['user_id'] != self.data['self_id'] \
+                and self.data['user_id'] not in self.db['myself']:
             return None
         sign = message.strip()
         if not sign:
