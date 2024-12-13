@@ -54,6 +54,65 @@ class Base:
             return False
         return True
 
+    def check_empty(self):
+        for item in self.data['message']:
+            if item['type'] not in {'at', 'text'}:
+                return False
+        return True
+
+    def get_image_url_from_msg(self):
+        """获取当前消息中的图片或者引用消息中的图片"""
+        image_url = None
+        reply_message_id = self.data['message_id']
+        for msg in self.data['message']:
+            if msg['type'] == 'image':
+                image_url = msg['data']['url']
+                break
+        if image_url is None:
+            image_url, reply_message_id = self._get_reply_image_url()
+        return image_url, reply_message_id
+
+    def _get_reply_image_url(self):
+        """获取回复消息中的图片"""
+        from sanic import Sanic
+        app = Sanic.get_app()
+        image_url = None
+        reply_message_id = None
+        for msg in self.data['message']:
+            if msg['type'] == 'reply':
+                reply_message_id = int(msg['data']['id'])
+                break
+        if reply_message_id:
+            group_id = self.data['group_id']
+            for data in reversed(app.ctx.msgs[group_id]):
+                if data['message_id'] == reply_message_id:
+                    for msg in data['message']:
+                        if msg['type'] == 'image':
+                            image_url = msg['data']['url']
+                            break
+                    break
+        return image_url, reply_message_id
+
+    def get_reply_text(self):
+        """获取回复消息"""
+        from sanic import Sanic
+        app = Sanic.get_app()
+        texts = []
+        reply_message_id = None
+        for msg in self.data['message']:
+            if msg['type'] == 'reply':
+                reply_message_id = int(msg['data']['id'])
+                break
+        if reply_message_id:
+            group_id = self.data['group_id']
+            for data in reversed(app.ctx.msgs[group_id]):
+                if data['message_id'] == reply_message_id:
+                    for msg in data['message']:
+                        if msg['type'] == 'text':
+                            texts.append(msg['data']['text'])
+                    break
+        return texts
+
     async def handle(self, message):
         """核心处理逻辑"""
         pass
