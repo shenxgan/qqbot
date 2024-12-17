@@ -106,6 +106,14 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/like.zip',
         },
+        {
+          name: '戳一戳',
+          desc: '当群友戳我（机器人）时通过AI进行回复消息',
+          type: 'notice',
+          author: '@亚梦',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/poke.zip',
+        },
       ]
     }
   }
