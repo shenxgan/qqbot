@@ -90,6 +90,22 @@ export default {
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/avatar.zip',
         },
+        {
+          name: '退群提醒',
+          desc: '群友退群时发送一条退群通知',
+          type: 'notice',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/leave.zip',
+        },
+        {
+          name: '点赞',
+          desc: '触发后给对方点赞',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/like.zip',
+        },
       ]
     }
   }
