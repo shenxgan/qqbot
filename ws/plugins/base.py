@@ -70,6 +70,8 @@ class Base:
                 break
         if image_url is None:
             image_url, reply_message_id = self._get_reply_image_url()
+            if image_url:
+                image_url = image_url.replace('https', 'http', 1)
         return image_url, reply_message_id
 
     def _get_reply_image_url(self):
