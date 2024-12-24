@@ -84,11 +84,19 @@ export default {
         },
         {
           name: '爬/啪',
-          desc: '对头像图片的各种加工',
+          desc: '对头像图片的各种加工（本地），需在 ws/requirements.txt 文件中添加 pillow 库',
           type: 'message',
           author: '@古一',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/avatar.zip',
+        },
+        {
+          name: '头像娱乐',
+          desc: '对头像图片的各种加工（通过调用远程 api 实现），需要申请 apikey',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/avatar_abc.zip',
         },
         {
           name: '退群提醒',
@@ -113,6 +121,14 @@ export default {
           author: '@亚梦',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/poke.zip',
+        },
+        {
+          name: 'chatgpt',
+          desc: '可接入多个 AI，目前智谱 AI 可文字聊天和识别图片',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/chatgpt.zip',
         },
       ]
     }
