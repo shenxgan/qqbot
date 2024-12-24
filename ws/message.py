@@ -44,9 +44,9 @@ async def group_msg(ws, data):
             app.ctx.msgs[group_id] = deque(maxlen=app.ctx.msg_maxlen)
         app.ctx.msgs[group_id].append(data)
 
-    if '[CQ:json' in data['raw_message']:
-        with open('raw_message_json.txt', 'a') as f:
-            f.write(data['raw_message'])
+    # if '[CQ:json' in data['raw_message']:
+    #     with open('raw_message_json.txt', 'a') as f:
+    #         f.write(data['raw_message'])
 
     for plugin in app.ctx.plugins:
         if plugin.type != 'message':
