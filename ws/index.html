@@ -58,6 +58,19 @@
                       <source :src="message['data']['url']" type="audio/mpeg">
                     </audio>
                   </el-text>
+                  <el-text v-else-if="message['type'] == 'file'">
+                    <el-button-group size="small">
+                      <el-button plain disabled type="primary" icon="FolderOpened">{{ message['data']['file'] }}</el-button>
+                      <el-button plain disabled type="">{{ Math.round(message['data']['file_size'] / 1024) }} KB</el-button>
+                    </el-button-group>
+                  </el-text>
+                  <el-text v-else-if="message['type'] == 'forward'">
+                    <el-descriptions title="" size="small" border :column="1" style="max-width: 600px;">
+                      <el-descriptions-item v-for="(item, index) in message['data']['content']" :key="index" :label="item['sender']['nickname']">
+                        <el-text style="width: 400px;" truncated>{{ item['raw_message'] }}</el-text>
+                      </el-descriptions-item>
+                    </el-descriptions>
+                  </el-text>
                   <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
                 </template>
                 <template v-if="funcShow[msg['message_id']]" style="height: 0;">
@@ -255,7 +268,7 @@
         if (! this.msg) {
           return false
         }
-        if (this.msg == 'qxx') {
+        if (this.msg == '\\qxx') {
           this.msg = `${this.groupId}\n${this.groups[this.groupId]}`
           return false
         }

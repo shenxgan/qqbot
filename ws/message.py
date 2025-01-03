@@ -37,6 +37,17 @@ async def group_msg(ws, data):
     message, ats = init_message(data)
     # who = data['sender']['user_id']
     who = data['user_id']
+
+    # 弥补 napcat 中 at 信息不带昵称的问题
+    if who not in app.ctx.user_id_name:
+        app.ctx.user_id_name[who] = data['sender']['nickname']
+    for item in data['message']:
+        if item['type'] == 'at':
+            if 'name' not in item['data']:
+                _qq = item['data']['qq']
+                _nickname = app.ctx.user_id_name.get(int(_qq), _qq)
+                item['data']['name'] = f'@{_nickname}'
+
     msg = None
     group_id = data['group_id']
     if group_id not in app.ctx.delete_groups:

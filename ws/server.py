@@ -24,6 +24,7 @@ async def init(app):
     app.ctx.group_id_name = {}      # 群组id与名称对应关系
     app.ctx.delete_groups = set()   # 当前过滤不查看的群组
     app.ctx.user_last_ts = {}       # 用户频率限制，记录触发的时间戳
+    app.ctx.user_id_name = {}       # QQ号与昵称对应关系
 
 
 @app.before_server_start
