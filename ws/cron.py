@@ -36,7 +36,11 @@ async def cron(app, now):
 async def cron_job():
     """时刻运行，每分钟检测一次定时任务"""
     app = Sanic.get_app()
+    flag = False
     while True:
+        if flag is False:
+            logger.info('定时任务启动，应只启动一次，多次就是有误')
+            flag = True
         now = datetime.datetime.now()
         if now.second == 0:
             if now.minute == 0:

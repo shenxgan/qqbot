@@ -1,3 +1,4 @@
+websockets==14.1
 sanic
 requests
 pymysql

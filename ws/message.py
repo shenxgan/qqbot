@@ -45,7 +45,10 @@ async def group_msg(ws, data):
         if item['type'] == 'at':
             if 'name' not in item['data']:
                 _qq = item['data']['qq']
-                _nickname = app.ctx.user_id_name.get(int(_qq), _qq)
+                if _qq == 'all':
+                    _nickname = '全体成员'
+                else:
+                    _nickname = app.ctx.user_id_name.get(int(_qq), _qq)
                 item['data']['name'] = f'@{_nickname}'
 
     msg = None
