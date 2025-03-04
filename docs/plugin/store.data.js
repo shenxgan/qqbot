@@ -16,7 +16,7 @@ export default {
           type: 'message',
           author: '@古一',
           documentUrl: '/qqbot/plugin/9234',
-          downloadUrl: 'https://github.com/shenxgan/qqbot/tree/main/ws/plugins/ai_doubao',
+          downloadUrl: '/qqbot/static/file/ai_doubao.zip',
         },
         {
           name: '入群欢迎',
@@ -92,7 +92,7 @@ export default {
         },
         {
           name: '头像娱乐',
-          desc: '对头像图片的各种加工（通过调用远程 api 实现），需要申请 apikey',
+          desc: '对头像图片的各种加工（通过调用远程 api 实现）',
           type: 'message',
           author: '@古一',
           documentUrl: '',

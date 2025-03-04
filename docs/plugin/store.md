@@ -8,6 +8,7 @@ sidebar: false
 <ClientOnly>
 <el-container style="width: 100%; max-width: 980px;">
 <el-main>
+  <el-alert title="插件安装：下载后直接解压到 ./ws/plugins/ 目录；然后重启" type="success" center show-icon :closable="false" style="margin-bottom: 10px;" />
   <el-table :data="data.tableData" style="width: 100%">
     <el-table-column prop="name" label="插件" min-width="90">
       <template #default="scope">
@@ -27,6 +28,7 @@ sidebar: false
       </template>
     </el-table-column>
   </el-table>
+  <el-alert title="插件安装：下载后直接解压到 ./ws/plugins/ 目录；然后重启" type="warning" center show-icon :closable="false" style="margin-top: 10px;" />
 </el-main>
 </el-container>
 </ClientOnly>
