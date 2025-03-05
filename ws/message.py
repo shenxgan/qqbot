@@ -62,7 +62,8 @@ async def group_msg(ws, data):
     #     with open('raw_message_json.txt', 'a') as f:
     #         f.write(data['raw_message'])
 
-    for plugin in app.ctx.plugins:
+    for k, v in app.ctx.plugins.items():
+        plugin = v['instance']
         if plugin.type != 'message':
             continue
         try:

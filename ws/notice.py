@@ -10,7 +10,8 @@ async def notice(ws, data):
     app = Sanic.get_app()
     msg = None
 
-    for plugin in app.ctx.plugins:
+    for k, v in app.ctx.plugins.items():
+        plugin = v['instance']
         if plugin.type != 'notice':
             continue
         try:

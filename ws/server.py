@@ -8,6 +8,7 @@ from sanic.log import logger
 from message import group_msg, private_msg
 from notice import notice
 from cron import cron_job
+from utils import get_files_hash
 
 from webqq import webqq
 
@@ -30,7 +31,7 @@ async def init(app):
 @app.before_server_start
 async def load_plugins(app):
     """加载所有插件，并初始化"""
-    app.ctx.plugins = []
+    app.ctx.plugins = {}
     for de in os.scandir('plugins'):
         if not de.is_dir():
             continue
@@ -39,7 +40,10 @@ async def load_plugins(app):
         try:
             logger.info(f'加载插件 {de.name}')
             x = importlib.import_module(f'plugins.{de.name}.main')
-            app.ctx.plugins.append(x.Plugin())
+            app.ctx.plugins[de.name] = {
+                'instance': x.Plugin(),
+                'hash': get_files_hash(f'plugins/{de.name}'),
+            }
         except Exception as e:
             logger.error(f'插件 {de.name} 加载失败：{e}')
 

@@ -1,17 +1,32 @@
 import asyncio
 import datetime
+import importlib
 import json
 import traceback
 
+from utils import get_files_hash
+
 from sanic import Sanic
 from sanic.log import logger
+
+
+async def update_plugin_hash(app):
+    """更新插件的哈希值，检测文件是否变动"""
+    for k, v in app.ctx.plugins.items():
+        new_hash = get_files_hash(f'plugins/{k}')
+        if new_hash != v['hash']:
+            logger.info(f'插件文件有变动，重新加载插件 {k}')
+            x = importlib.import_module(f'plugins.{k}.main')
+            v['instance'] = x.Plugin()
+            v['hash'] = new_hash
 
 
 async def cron(app, now):
     """定时任务，每次运行所有定时任务插件"""
     ws = app.ctx.ws
 
-    for plugin in app.ctx.plugins:
+    for k, v in app.ctx.plugins.items():
+        plugin = v['instance']
         if plugin.type != 'cron':
             continue
         plugin.is_at = False
@@ -46,4 +61,5 @@ async def cron_job():
             if now.minute == 0:
                 logger.info(f'整点报时：{now}')
             await cron(app, now)
+            await update_plugin_hash(app)
         await asyncio.sleep(1)
