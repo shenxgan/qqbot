@@ -76,7 +76,13 @@
                           </el-descriptions-item>
                         </el-descriptions>
                       </el-text>
-                      <el-text v-else>{{ message['type'] }}<br>{{ message['data'] }}</el-text>
+                      <el-text v-else>
+                        <el-popover placement="right" :width="600" trigger="click" :content="message['data']">
+                          <template #reference>
+                            <el-button style="" size="small">{{ message['type'] }}</el-button>
+                          </template>
+                        </el-popover>
+                      </el-text>
                     </template>
                     <template v-if="funcShow[msg['message_id']]" style="height: 0;">
                       <el-button type="warning" plain size="small" style="padding: 0; height: 14px;" icon="ChatDotRound" @click="msgReply(msg)">回复</el-button>
@@ -112,7 +118,62 @@
           <template #label>
             <span style="font-size: 24px;">插件管理</span>
           </template>
-          <div>hello</div>
+          <el-alert type="success" center show-icon :closable="false" style="margin-bottom: 15px;">
+            <template #title>
+              <el-text>插件市场中还有一些可用的插件供选择使用：</el-text>
+              <a href="https://python-abc.xyz/qqbot/plugin/store" target="_blank">点击访问</a>
+            </template>
+          </el-alert>
+          <el-table :data="plugins" border style="width: 100%; height: 555px;">
+            <el-table-column prop="name" label="插件目录" min-width="120">
+              <template #default="scope">
+                <el-popover effect="dark" trigger="hover" placement="right" width="auto">
+                  <template #default>
+                    <div style="white-space: pre;">插件目录结构：<br>{{ scope.row.tree }}</div>
+                  </template>
+                  <template #reference>
+                    <el-text :type="scope.row.is_open ? 'primary' : 'info'">{{ scope.row.name }}</el-text>
+                  </template>
+                </el-popover>
+              </template>
+            </el-table-column>
+            <el-table-column prop="is_open" label="开关" width="70">
+              <template #default="scope">
+                <el-popconfirm title="调整后会立即生效，继续吗？" @confirm="changeOpen(scope.row.name)" @cancel="changeCancel(scope.row)" width="auto">
+                  <template #reference>
+                    <el-switch v-model="scope.row.is_open" size="small" inline-prompt active-text="开启" inactive-text="关闭"></el-switch>
+                  </template>
+                </el-popconfirm>
+              </template>
+            </el-table-column>
+            <el-table-column prop="type" label="类型" width="70">
+              <template #default="scope">
+                <el-tag v-if="scope.row.type == 'message'" type="primary" :title="scope.row.type">消息</el-tag>
+                <el-tag v-if="scope.row.type == 'notice'" type="success" :title="scope.row.type">事件</el-tag>
+                <el-tag v-if="scope.row.type == 'cron'" type="danger" :title="scope.row.type">定时</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column prop="desc" label="介绍" min-width="150">
+              <template #default="scope">
+                <el-text type="">{{ scope.row.desc }}</el-text>
+              </template>
+            </el-table-column>
+            <el-table-column prop="" label="上次运行时间">
+              <template #default="scope">
+                <el-text type="">{{ timeAgo(scope.row.last_run) }}</el-text>
+              </template>
+            </el-table-column>
+            <el-table-column prop="" label="运行次数">
+              <template #default="scope">
+                <el-text type="">{{ scope.row.run_times }}</el-text>
+              </template>
+            </el-table-column>
+            <el-table-column prop="" label="操作" width="60">
+              <template #default="scope">
+                <el-link :underline="false" type="primary">详情</el-link>
+              </template>
+            </el-table-column>
+          </el-table>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -139,6 +200,7 @@
         imgUrl: null,
         cnt: 0,
         timer: null,
+        plugins: [],
       }
     },
     mounted() {
@@ -187,8 +249,46 @@
       await this.getMsgs()
       this.groupId = Object.keys(this.msgs)[0]
       await this.getGroups()
+      await this.getPlugins()
     },
     methods: {
+      timeAgo(timestamp) {
+        if (! timestamp) {
+          return null
+        }
+        timestamp *= 1000
+        const now = Date.now();
+        const diff = Math.floor((now - timestamp) / 1000); // 转换为秒
+
+        if (diff < 60) return `${diff} 秒前`;
+        if (diff < 3600) return `${Math.floor(diff / 60)} 分钟前`;
+        if (diff < 86400) return `${Math.floor(diff / 3600)} 小时前`;
+        if (diff < 2592000) return `${Math.floor(diff / 86400)} 天前`;
+
+        return new Date(timestamp).toLocaleDateString(); // 超过 30 天，显示日期
+      },
+      changeCancel(row) {
+        row.is_open = !row.is_open
+      },
+      async getPlugins() {
+        try {
+          const response = await axios.get(`/webqq/plugins?sign=${this.sign}`);
+          this.plugins = response.data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async updatePlugin(name, data) {
+        try {
+          await axios.put(`/webqq/plugins/${name}?sign=${this.sign}`, data);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      changeOpen(name) {
+        const data = {action: 'is_open'}
+        this.updatePlugin(name, data)
+      },
       imgClick(url) {
         this.imgShow = true
         this.imgUrl = url
@@ -238,7 +338,7 @@
       async deleteGroup(groupId) {
         try {
           delete this.lastMsgIds[groupId]
-          const response = await axios.delete(`/webqq/group/${groupId}?sign=${this.sign}`);
+          const response = await axios.delete(`/webqq/groups/${groupId}?sign=${this.sign}`);
         } catch (error) {
           console.error(error);
         }

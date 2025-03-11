@@ -1,5 +1,6 @@
 import os
 import json
+import time
 
 
 class Base:
@@ -9,6 +10,8 @@ class Base:
         self.type = 'message'   # 类型
         self.ats = None
         self.user_cd = 15
+        self.last_run = None    # 上一次触发的时间
+        self.run_times = 0      # 启动后触发的次数
 
     def load_config(self):
         """从本地文件中加载插件的配置"""
@@ -127,4 +130,8 @@ class Base:
             return
         if not self.is_match(message):
             return
-        return await self.handle(message)
+        msg = await self.handle(message)
+        if msg:
+            self.last_run = time.time()
+            self.run_times += 1
+        return msg

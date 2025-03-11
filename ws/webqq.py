@@ -1,12 +1,15 @@
 import os
 import json
 import time
+import importlib
 
 from functools import wraps
+from pathlib import Path
 
 from sanic import Blueprint
 from sanic import exceptions
 from sanic import response
+from sanic.log import logger
 
 webqq = Blueprint('webqq', url_prefix='/webqq')
 
@@ -126,7 +129,7 @@ async def get_group_list(request):
     return response.json(request.app.ctx.group_id_name)
 
 
-@webqq.delete('/group/<group_id>')
+@webqq.delete('/groups/<group_id>')
 @authorized()
 async def delete_group(request, group_id):
     """删除本地群组记录"""
@@ -135,3 +138,63 @@ async def delete_group(request, group_id):
     del request.app.ctx.msgs[group_id]
     request.app.ctx.delete_groups.add(group_id)
     return response.empty()
+
+
+def generate_tree(directory, prefix, tree):
+    """获取与 `tree` 命令类似的目录结构"""
+    entries = sorted(directory.iterdir(), key=lambda e: e.name)
+    entries_count = len(entries)
+
+    for index, entry in enumerate(entries):
+        if entry.name == '__pycache__':
+            continue
+        connector = '├── ' if index < entries_count - 1 else '└── '  # 选择连接符
+        line = prefix + connector + entry.name
+        tree.append(line)
+
+        if entry.is_dir():  # 递归处理子目录
+            new_prefix = prefix + (
+                '│   ' if index < entries_count - 1 else '    ')
+            generate_tree(entry, new_prefix, tree)
+
+
+@webqq.get('/plugins')
+@authorized()
+async def get_plugin_list(request):
+    """获取插件列表"""
+    plugins = []
+    for k, v in request.app.ctx.plugins.items():
+        instance = v['instance']
+        path = f'plugins/{k}'
+        tree = [f'ws/{path}']
+        generate_tree(Path(path), '', tree)
+        plugin = {
+            'name': k,
+            'type': instance.type,
+            'is_open': instance.is_open,
+            'desc': instance.__doc__,
+            'last_run': instance.last_run,
+            'run_times': instance.run_times,
+            'tree': '\n'.join(tree),
+        }
+        plugins.append(plugin)
+    return response.json(plugins)
+
+
+@webqq.put('/plugins/<name>')
+@authorized()
+async def put_plugin(request, name):
+    """更新插件"""
+    data = request.json
+    logger.info(data)
+    action = data['action']
+    plugin = request.app.ctx.plugins[name]
+    if action == 'is_open':
+        x = importlib.import_module(f'plugins.{name}.main')
+        plugin['instance'].is_open = not plugin['instance'].is_open
+        plugin['instance'].save_config()
+        plugin['instance'] = x.Plugin()
+    elif action == 'reload':
+        x = importlib.import_module(f'plugins.{name}.main')
+        plugin['instance'] = x.Plugin()
+    return response.json(data)
