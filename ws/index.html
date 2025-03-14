@@ -13,7 +13,27 @@
   </head>
   <body>
     <div id="app" style="max-width: 900px; width: 100%; margin: 0 auto; margin-top: 30px;">
-      <el-dialog v-model="imgShow" draggable width="fit-content">
+      <el-dialog v-model="xShow.plugin" title="代码编辑" draggable width="800" :close-on-click-modal="false" :close-on-press-escape="false">
+        <el-row gutter="5">
+          <el-col :span="6" style="background-color: #eee">
+            <el-tree :data="dirTree" :props="defaultProps" node-key="id"
+              :default-expand-all="true"
+              @node-click="clickTreeNode"
+              style="background-color: #eee;"
+            ></el-tree>
+          </el-col>
+          <el-col :span="18">
+            <el-input v-model="codeContent" type="textarea" :autosize="{ minRows: 10, maxRows: 20 }" style=""></el-input>
+          </el-col>
+        </el-row>
+        <template #footer>
+          <div class="dialog-footer">
+            <el-button @click="xShow.plugin = false">取消</el-button>
+            <el-button type="primary" @click="submitCodeEdit">提交</el-button>
+          </div>
+        </template>
+      </el-dialog>
+      <el-dialog v-model="xShow.img" draggable width="fit-content">
         <img :src="imgUrl" style="max-width: 100%;" />
       </el-dialog>
       <el-tabs v-model="type" type="card">
@@ -118,13 +138,21 @@
           <template #label>
             <span style="font-size: 24px;">插件管理</span>
           </template>
-          <el-alert type="success" center show-icon :closable="false" style="margin-bottom: 15px;">
-            <template #title>
-              <el-text>插件市场中还有一些可用的插件供选择使用：</el-text>
-              <a href="https://python-abc.xyz/qqbot/plugin/store" target="_blank">点击访问</a>
-            </template>
-          </el-alert>
-          <el-table :data="plugins" border style="width: 100%; height: 555px;">
+          <el-row>
+            <el-col :span="23">
+              <el-alert type="success" center show-icon :closable="false" style="margin-bottom: 15px;">
+                <template #title>
+                  <el-text>插件市场中还有一些可用的插件供选择使用：</el-text>
+                  <a href="https://python-abc.xyz/qqbot/plugin/store" target="_blank">点击访问</a>
+                </template>
+              </el-alert>
+            </el-col>
+            <el-col :span="1">
+              <el-button type="primary" plain icon="Refresh" style="margin: 3px 1px;" circle title="刷新插件信息" @click="getPlugins"></el-button>
+            </el-col>
+          </el-row>
+          <el-table :data="plugins" border style="width: 100%; height: 555px;" :cell-style="{'font-size': '14px'}">
+            <el-table-column type="index" label="#" width="45"></el-table-column>
             <el-table-column prop="name" label="插件目录" min-width="120">
               <template #default="scope">
                 <el-popover effect="dark" trigger="hover" placement="right" width="auto">
@@ -163,14 +191,14 @@
                 <el-text type="">{{ timeAgo(scope.row.last_run) }}</el-text>
               </template>
             </el-table-column>
-            <el-table-column prop="" label="运行次数">
+            <el-table-column prop="" label="运行次数" width="90">
               <template #default="scope">
                 <el-text type="">{{ scope.row.run_times }}</el-text>
               </template>
             </el-table-column>
             <el-table-column prop="" label="操作" width="60">
               <template #default="scope">
-                <el-link :underline="false" type="primary">详情</el-link>
+                <el-link :underline="false" type="primary" @click="pluginAdmin(scope.row.name)">详情</el-link>
               </template>
             </el-table-column>
           </el-table>
@@ -196,11 +224,19 @@
         loading: false,
         show: false,
         funcShow: {},
-        imgShow: false,
+        xShow: {},
         imgUrl: null,
         cnt: 0,
         timer: null,
         plugins: [],
+        codeContent: null,
+        codePath: 'main.py',
+        currentPlugin: null,
+        dirTree: [],
+        defaultProps: {
+          children: 'children',
+          label: 'label',
+        },
       }
     },
     mounted() {
@@ -252,6 +288,26 @@
       await this.getPlugins()
     },
     methods: {
+      submitCodeEdit() {
+        const data = {action: 'code', fpath: this.codePath, code: this.codeContent}
+        this.updatePlugin(this.currentPlugin, data)
+        this.xShow.plugin = false
+      },
+      clickTreeNode(node) {
+        if (! node.children) {
+          this.codePath = node.id
+          this.getFileData(this.codePath)
+        }
+      },
+      async getFileData(fpath) {
+        await this.getPluginFile(this.currentPlugin, {'fpath': fpath})
+      },
+      pluginAdmin(name) {
+        this.xShow.plugin = true
+        this.codePath = 'main.py'
+        this.currentPlugin = name
+        this.getFileData(this.codePath)
+      },
       timeAgo(timestamp) {
         if (! timestamp) {
           return null
@@ -270,6 +326,16 @@
       changeCancel(row) {
         row.is_open = !row.is_open
       },
+      async getPluginFile(name, data) {
+        try {
+          const ret = await axios.get(`/webqq/plugins/${name}?sign=${this.sign}`, {params: data});
+          this.codeContent = ret.data.fdata
+          this.dirTree = ret.data.dir_tree
+          console.log(this.dirTree)
+        } catch (error) {
+          console.error(error);
+        }
+      },
       async getPlugins() {
         try {
           const response = await axios.get(`/webqq/plugins?sign=${this.sign}`);
@@ -281,6 +347,12 @@
       async updatePlugin(name, data) {
         try {
           await axios.put(`/webqq/plugins/${name}?sign=${this.sign}`, data);
+          this.$notify({
+            type: 'success',
+            title: '操作提示',
+            message: '操作成功',
+            duration: 2000,
+          })
         } catch (error) {
           console.error(error);
         }
@@ -290,7 +362,7 @@
         this.updatePlugin(name, data)
       },
       imgClick(url) {
-        this.imgShow = true
+        this.xShow.img = true
         this.imgUrl = url
       },
       faceError(ev) {
@@ -502,6 +574,11 @@
 }
 .el-tabs__item:hover .is-icon-close {
   display: block;
+}
+.el-dialog__body textarea {
+  font-family: monospace;
+  width: 100%;
+  white-space: pre;
 }
 
 ::-webkit-scrollbar {

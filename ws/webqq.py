@@ -2,6 +2,7 @@ import os
 import json
 import time
 import importlib
+import mimetypes
 
 from functools import wraps
 from pathlib import Path
@@ -158,6 +159,44 @@ def generate_tree(directory, prefix, tree):
             generate_tree(entry, new_prefix, tree)
 
 
+def is_text_file(file_path):
+    text_extensions = {
+        '.txt', '.md', '.json', '.csv', '.xml', '.html', '.css', '.js',
+        '.py', '.java', '.c', '.cpp', '.h', '.sh'}  # 常见文本文件扩展名
+    if file_path.suffix in text_extensions:
+        return True
+    mime_type, _ = mimetypes.guess_type(file_path)
+    return mime_type is not None and mime_type.startswith('text')
+
+
+def dir_to_json(path):
+    """获取目录的层次结构"""
+    base_path = Path(path)
+
+    def traverse(directory):
+        result = {
+            'id': str(directory.relative_to(base_path)),
+            'label': directory.name,
+            'children': [],
+        }
+        try:
+            entries = sorted(directory.iterdir(), key=lambda e: e.name)
+            for entry in entries:
+                if entry.name == '__pycache__':
+                    continue
+                if entry.is_dir():
+                    result['children'].append(traverse(entry))
+                elif is_text_file(entry):
+                    result['children'].append({
+                        'id': str(entry.relative_to(base_path)),
+                        'label': entry.name,
+                    })
+        except PermissionError:
+            pass  # 忽略无权限访问的目录
+        return result
+    return traverse(Path(path))
+
+
 @webqq.get('/plugins')
 @authorized()
 async def get_plugin_list(request):
@@ -181,6 +220,23 @@ async def get_plugin_list(request):
     return response.json(plugins)
 
 
+@webqq.get('/plugins/<name>')
+@authorized()
+async def get_plugin(request, name):
+    """获取插件详情"""
+    fpath = request.args.get('fpath')
+    data = {}
+    if fpath:
+        fpath = f'plugins/{name}/{fpath}'
+        with open(fpath) as f:
+            fdata = f.read()
+        data = {
+            'fdata': fdata,
+            'dir_tree': [dir_to_json(f'plugins/{name}')],
+        }
+    return response.json(data)
+
+
 @webqq.put('/plugins/<name>')
 @authorized()
 async def put_plugin(request, name):
@@ -197,4 +253,9 @@ async def put_plugin(request, name):
     elif action == 'reload':
         x = importlib.import_module(f'plugins.{name}.main')
         plugin['instance'] = x.Plugin()
-    return response.json(data)
+    elif action == 'code':
+        fpath = data['fpath']
+        fpath = f'plugins/{name}/{fpath}'
+        with open(fpath, 'w') as f:
+            f.write(data['code'])
+    return response.empty()
