@@ -9,11 +9,22 @@
     <script src="https://unpkg.com/element-plus@2.7.7/dist/index.full.min.js"></script>
     <script src="https://unpkg.com/@element-plus/icons-vue@2.3.1/dist/index.iife.min.js"></script>
     <script src="https://unpkg.com/axios@1.7.7/dist/axios.min.js"></script>
+    <!-- CodeMirror 核心 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+    <!-- CodeMirror 样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css">
+    <!-- Python 语法高亮 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/python/python.min.js"></script>
+    <!-- 代码折叠 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldgutter.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldgutter.min.css">
+
     <title>WEBQQ</title>
   </head>
   <body>
     <div id="app" style="max-width: 900px; width: 100%; margin: 0 auto; margin-top: 30px;">
-      <el-dialog v-model="xShow.plugin" title="代码编辑" draggable width="800" :close-on-click-modal="false" :close-on-press-escape="false">
+      <el-dialog v-model="xShow.plugin" title="代码编辑" draggable width="800" :close-on-click-modal="false" :close-on-press-escape="false" @opened="getFileData">
         <el-row gutter="5">
           <el-col :span="6" style="background-color: #eee">
             <el-tree :data="dirTree" :props="defaultProps" node-key="id"
@@ -23,7 +34,7 @@
             ></el-tree>
           </el-col>
           <el-col :span="18">
-            <el-input v-model="codeContent" type="textarea" :autosize="{ minRows: 10, maxRows: 20 }" style=""></el-input>
+            <textarea ref="editor"></textarea>
           </el-col>
         </el-row>
         <template #footer>
@@ -289,24 +300,38 @@
     },
     methods: {
       submitCodeEdit() {
-        const data = {action: 'code', fpath: this.codePath, code: this.codeContent}
+        const data = {action: 'code', fpath: this.codePath, code: this.$editor.getValue()}
         this.updatePlugin(this.currentPlugin, data)
         this.xShow.plugin = false
       },
       clickTreeNode(node) {
         if (! node.children) {
           this.codePath = node.id
-          this.getFileData(this.codePath)
+          this.getFileData()
         }
       },
-      async getFileData(fpath) {
-        await this.getPluginFile(this.currentPlugin, {'fpath': fpath})
+      async getFileData() {
+        if (! this.$editor){
+          this.$editor = CodeMirror.fromTextArea(this.$refs.editor, {
+            mode: "python",           // Python 语法
+            theme: "default",         // 主题
+            lineNumbers: true,        // 行号
+            matchBrackets: true,      // 括号匹配
+            autoCloseBrackets: true,  // 自动补全括号
+            foldGutter: true,         // 代码折叠
+            fontFamily: "monospace",  // 设置等宽字体
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+          });
+          this.$editor.setSize(null, 390);
+        }
+        await this.getPluginFile(this.currentPlugin, {'fpath': this.codePath})
+        this.$editor.setValue(this.codeContent);
       },
       pluginAdmin(name) {
         this.xShow.plugin = true
         this.codePath = 'main.py'
         this.currentPlugin = name
-        this.getFileData(this.codePath)
+        // this.getFileData()
       },
       timeAgo(timestamp) {
         if (! timestamp) {
@@ -528,6 +553,7 @@
     },
   };
   const app = Vue.createApp(App);
+  app.config.globalProperties.$editor = null;
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
   }
