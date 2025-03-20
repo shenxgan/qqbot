@@ -3,6 +3,8 @@ import json
 import time
 import importlib
 import mimetypes
+import shutil
+import zipfile
 
 from functools import wraps
 from pathlib import Path
@@ -11,6 +13,8 @@ from sanic import Blueprint
 from sanic import exceptions
 from sanic import response
 from sanic.log import logger
+
+from utils import get_files_hash
 
 webqq = Blueprint('webqq', url_prefix='/webqq')
 
@@ -211,13 +215,51 @@ async def get_plugin_list(request):
             'name': k,
             'type': instance.type,
             'is_open': instance.is_open,
-            'desc': instance.__doc__,
+            'desc': instance.__doc__ or '',
             'last_run': instance.last_run,
             'run_times': instance.run_times,
             'tree': '\n'.join(tree),
         }
+        plugin['desc'] = plugin['desc'].split('\n')[0]
         plugins.append(plugin)
     return response.json(plugins)
+
+
+@webqq.post('/plugins')
+@authorized()
+async def post_plugins(request):
+    """添加插件"""
+    data = request.json
+    logger.info(data)
+    fpath = data['fpath']
+    name = fpath.rsplit('/', 1)[1].split('.')[0]
+
+    with zipfile.ZipFile(fpath, 'r') as zip_ref:
+        file_list = zip_ref.namelist()
+
+        # 检查 ZIP 是否所有文件都在一个相同的根目录下
+        top_dirs = {f.split('/')[0] for f in file_list if '/' in f}
+
+        if len(top_dirs) == 1:
+            extract_to = os.path.join('plugins')  # 直接解压到 output
+        else:
+            extract_to = os.path.join('plugins', name)
+
+        os.makedirs(extract_to, exist_ok=True)
+        zip_ref.extractall(extract_to)
+    # 加载插件 load_plugin
+    try:
+        if name in request.app.ctx.plugins:
+            raise Exception('存在同名插件，跳过')
+        logger.info(f'加载插件 {name}')
+        x = importlib.import_module(f'plugins.{name}.main')
+        request.app.ctx.plugins[name] = {
+            'instance': x.Plugin(),
+            'hash': get_files_hash(f'plugins/{name}'),
+        }
+    except Exception as e:
+        logger.error(f'插件 {name} 加载失败：{e}')
+    return response.empty()
 
 
 @webqq.get('/plugins/<name>')
@@ -259,3 +301,36 @@ async def put_plugin(request, name):
         with open(fpath, 'w') as f:
             f.write(data['code'])
     return response.empty()
+
+
+@webqq.delete('/plugins/<name>')
+@authorized()
+async def delete_plugin(request, name):
+    """删除插件"""
+    del request.app.ctx.plugins[name]
+    path = Path(f'plugins/{name}')
+    shutil.rmtree(path)  # 递归删除目录及其内容
+    return response.empty()
+
+
+@webqq.get('/plugins/store')
+@authorized()
+async def get_plugin_store_list(request):
+    """获取插件市场中的插件列表"""
+    plugins = []
+    with open('/tmp/store.data.js') as f:
+        data = f.read()
+    name = None
+    fpath = None
+    for line in data.split('\n'):
+        line = line.strip()
+        if line.startswith('name'):
+            name = line.split("'")[1]
+        if line.startswith('downloadUrl') and line.endswith(".zip',"):
+            fpath = line.split("'")[1]
+            fpath = fpath.replace('/qqbot/static/file', '/tmp/store')
+            plugins.append({
+                'name': name,
+                'fpath': fpath,
+            })
+    return response.json(plugins)

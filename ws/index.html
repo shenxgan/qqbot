@@ -47,7 +47,7 @@
       <el-dialog v-model="xShow.img" draggable width="fit-content">
         <img :src="imgUrl" style="max-width: 100%;" />
       </el-dialog>
-      <el-tabs v-model="type" type="card">
+      <el-tabs v-model="type" type="card" @tab-click="tabClickType">
         <el-tab-pane name="webqq">
           <template #label>
             <span style="font-size: 24px;">网页QQ</span>
@@ -149,18 +149,22 @@
           <template #label>
             <span style="font-size: 24px;">插件管理</span>
           </template>
-          <el-row>
-            <el-col :span="23">
-              <el-alert type="success" center show-icon :closable="false" style="margin-bottom: 15px;">
-                <template #title>
-                  <el-text>插件市场中还有一些可用的插件供选择使用：</el-text>
-                  <a href="https://python-abc.xyz/qqbot/plugin/store" target="_blank">点击访问</a>
-                </template>
-              </el-alert>
-            </el-col>
-            <el-col :span="1">
-              <el-button type="primary" plain icon="Refresh" style="margin: 3px 1px;" circle title="刷新插件信息" @click="getPlugins"></el-button>
-            </el-col>
+          <el-alert type="success" center show-icon :closable="false" style="">
+            <template #title>
+              <el-text>插件市场中还有一些可用的插件供选择使用：</el-text>
+              <a href="https://python-abc.xyz/qqbot/plugin/store" target="_blank">点击访问</a>
+            </template>
+          </el-alert>
+          <el-row style="margin: 10px 0;">
+            <el-dropdown trigger="click" @command="handleCommandStore">
+              <el-button plain type="primary" icon="CirclePlus">从插件市场直接导入</el-button>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item v-for="item in pluginsStore" :key="item.name" :command="item.fpath">{{ item.name }}</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+            <el-button plain type="primary" icon="Refresh" @click="refreshPlugins" style="margin-left: 5px;">刷新插件列表</el-button>
           </el-row>
           <el-table :data="plugins" border style="width: 100%; height: 555px;" :cell-style="{'font-size': '14px'}">
             <el-table-column type="index" label="#" width="45"></el-table-column>
@@ -209,7 +213,17 @@
             </el-table-column>
             <el-table-column prop="" label="操作" width="60">
               <template #default="scope">
-                <el-link :underline="false" type="primary" @click="pluginAdmin(scope.row.name)">详情</el-link>
+                <!-- <el-link :underline="false" type="primary" @click="editCode(scope.row.name)">详情</el-link> -->
+                <el-dropdown @command="handleCommand(scope.row, $event)">
+                  <el-link :underline="false" type="primary">管理</el-link>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item icon="Edit" command="edit">编辑</el-dropdown-item>
+                      <el-dropdown-item icon="RefreshRight" command="reload">重载</el-dropdown-item>
+                      <el-dropdown-item icon="Delete" command="delete" divided>删除</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
               </template>
             </el-table-column>
           </el-table>
@@ -248,6 +262,7 @@
           children: 'children',
           label: 'label',
         },
+        pluginsStore: [],
       }
     },
     mounted() {
@@ -296,9 +311,35 @@
       await this.getMsgs()
       this.groupId = Object.keys(this.msgs)[0]
       await this.getGroups()
-      await this.getPlugins()
+      // await this.getPlugins()
+      // await this.getPluginsStore()
     },
     methods: {
+      handleCommandStore(command){
+        this.postPlugins({'fpath': command})
+        this.getPlugins()
+      },
+      handleCommand(row, command) {
+        if (command == 'edit') {
+          this.editCode(row.name)
+        } else if (command == 'reload') {
+          this.updatePlugin(row.name, {action: 'reload'})
+        } else if (command == 'delete') {
+          this.$confirm(`是否确认删除 ${row.name}？（会直接删除插件目录）`, '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            this.deletePlugin(row.name)
+            this.getPlugins()
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              message: '已取消'
+            });
+          });
+        }
+      },
       submitCodeEdit() {
         const data = {action: 'code', fpath: this.codePath, code: this.$editor.getValue()}
         this.updatePlugin(this.currentPlugin, data)
@@ -327,7 +368,7 @@
         await this.getPluginFile(this.currentPlugin, {'fpath': this.codePath})
         this.$editor.setValue(this.codeContent);
       },
-      pluginAdmin(name) {
+      editCode(name) {
         this.xShow.plugin = true
         this.codePath = 'main.py'
         this.currentPlugin = name
@@ -351,12 +392,20 @@
       changeCancel(row) {
         row.is_open = !row.is_open
       },
+      refreshPlugins() {
+        this.getPlugins()
+        this.$notify({
+          type: 'success',
+          title: '操作提示',
+          message: '刷新完成',
+          duration: 2000,
+        })
+      },
       async getPluginFile(name, data) {
         try {
           const ret = await axios.get(`/webqq/plugins/${name}?sign=${this.sign}`, {params: data});
           this.codeContent = ret.data.fdata
           this.dirTree = ret.data.dir_tree
-          console.log(this.dirTree)
         } catch (error) {
           console.error(error);
         }
@@ -365,6 +414,19 @@
         try {
           const response = await axios.get(`/webqq/plugins?sign=${this.sign}`);
           this.plugins = response.data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async postPlugins(data) {
+        try {
+          await axios.post(`/webqq/plugins?sign=${this.sign}`, data);
+          this.$notify({
+            type: 'success',
+            title: '操作提示',
+            message: '操作成功',
+            duration: 2000,
+          })
         } catch (error) {
           console.error(error);
         }
@@ -378,6 +440,21 @@
             message: '操作成功',
             duration: 2000,
           })
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async deletePlugin(name) {
+        try {
+          await axios.delete(`/webqq/plugins/${name}?sign=${this.sign}`);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async getPluginsStore() {
+        try {
+          const response = await axios.get(`/webqq/plugins/store?sign=${this.sign}`);
+          this.pluginsStore = response.data
         } catch (error) {
           console.error(error);
         }
@@ -525,6 +602,14 @@
         this.msgNew[groupId] = false
         this.scrollToBottom(groupId)
       },
+      tabClickType(tab) {
+        if (tab.props.name == 'plugin') {
+          this.getPlugins()
+          if (this.pluginsStore.length == 0) {
+            this.getPluginsStore()
+          }
+        }
+      },
       contentClick() {
         const tab = {props: {name: this.groupId}}
         this.tabClick(tab)
@@ -605,6 +690,9 @@
   font-family: monospace;
   width: 100%;
   white-space: pre;
+}
+.CodeMirror {
+  border: 1px solid #eee;
 }
 
 ::-webkit-scrollbar {

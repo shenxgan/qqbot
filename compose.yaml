@@ -34,6 +34,8 @@ services:
       ENV: ${ENV}
     volumes:
       - ./ws:/app
+      - ./docs/plugin/store.data.js:/tmp/store.data.js
+      - ./docs/public/static/file:/tmp/store
     ports:
       - 127.0.0.1:8811:8000
 
