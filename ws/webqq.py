@@ -145,6 +145,30 @@ async def delete_group(request, group_id):
     return response.empty()
 
 
+@webqq.post('/action')
+@authorized()
+async def post_action(request):
+    """一些动作"""
+    data = request.json
+    action = data['action']
+    if action == 'delete_msg':  # 撤回消息
+        params = {
+            'message_id': data['message_id'],
+        }
+    elif action == 'set_group_ban':  # 群组单人禁言
+        params = {
+            'group_id': data['group_id'],
+            'user_id': data['user_id'],
+            'duration': data.get('duration', 150),
+        }
+    ret = {
+        'action': action,
+        'params': params,
+    }
+    await request.app.ctx.ws.send(json.dumps(ret))
+    return response.empty()
+
+
 def generate_tree(directory, prefix, tree):
     """获取与 `tree` 命令类似的目录结构"""
     entries = sorted(directory.iterdir(), key=lambda e: e.name)

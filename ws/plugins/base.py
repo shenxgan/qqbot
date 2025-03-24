@@ -15,6 +15,8 @@ class Base:
 
     def load_config(self):
         """从本地文件中加载插件的配置"""
+        if not hasattr(self, 'fdir'):
+            return {}
         fpath = os.path.join(self.fdir, 'db.json')
         if not os.path.exists(fpath):
             return {}
@@ -30,6 +32,8 @@ class Base:
 
     def save_config(self):
         """存储配置"""
+        if not hasattr(self, 'fdir'):
+            return
         fpath = os.path.join(self.fdir, 'db.json')
         self.db['is_open'] = self.is_open
         self.db['is_at'] = self.is_at
