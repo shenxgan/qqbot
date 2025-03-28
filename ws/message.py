@@ -86,7 +86,8 @@ async def group_msg(ws, data):
                             > plugin.user_cd:
                         app.ctx.user_last_ts[plugin_id][who] = now
                     else:
-                        msg = f'🚫不要刷屏，此功能频率限制为 {plugin.user_cd} 秒'
+                        if plugin.is_tip is True:
+                            msg = f'🚫不要刷屏，此功能频率限制为 {plugin.user_cd} 秒'
                 if plugin.is_at and who != data['self_id']:
                     ats.add(f'[CQ:at,qq={who}]')
                 break

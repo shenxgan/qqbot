@@ -7,6 +7,7 @@ class Base:
     def __init__(self):
         self.is_open = True     # 插件开关
         self.is_at = True       # 回复消息时是否at触发之人
+        self.is_tip = True      # 超频率后是否提示
         self.type = 'message'   # 类型
         self.ats = None
         self.user_cd = 15

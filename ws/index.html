@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="https://python-abc.xyz/qqbot/static/img/logo.png">
-    <script src="https://unpkg.com/vue@3.4.31/dist/vue.global.prod.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/element-plus@2.7.7/dist/index.css">
-    <script src="https://unpkg.com/element-plus@2.7.7/dist/index.full.min.js"></script>
-    <script src="https://unpkg.com/@element-plus/icons-vue@2.3.1/dist/index.iife.min.js"></script>
-    <script src="https://unpkg.com/axios@1.7.7/dist/axios.min.js"></script>
+    <script src="https://python-abc.xyz/static/vue.js"></script>
+    <link rel="stylesheet" href="https://python-abc.xyz/static/element-plus.css">
+    <script src="https://python-abc.xyz/static/element-plus.js"></script>
+    <script src="https://python-abc.xyz/static/element-plus-icons.js"></script>
+    <script src="https://python-abc.xyz/static/axios.js"></script>
     <!-- CodeMirror 核心 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
     <!-- CodeMirror 样式 -->
@@ -409,7 +409,7 @@
       },
       async getPluginFile(name, data) {
         try {
-          const ret = await axios.get(`/webqq/plugins/${name}?sign=${this.sign}`, {params: data});
+          const ret = await axios.get(`plugins/${name}?sign=${this.sign}`, {params: data});
           this.codeContent = ret.data.fdata
           this.dirTree = ret.data.dir_tree
         } catch (error) {
@@ -418,7 +418,7 @@
       },
       async getPlugins() {
         try {
-          const response = await axios.get(`/webqq/plugins?sign=${this.sign}`);
+          const response = await axios.get(`plugins?sign=${this.sign}`);
           this.plugins = response.data
         } catch (error) {
           console.error(error);
@@ -426,7 +426,7 @@
       },
       async postPlugins(data) {
         try {
-          await axios.post(`/webqq/plugins?sign=${this.sign}`, data);
+          await axios.post(`plugins?sign=${this.sign}`, data);
           this.$notify({
             type: 'success',
             title: '操作提示',
@@ -439,7 +439,7 @@
       },
       async updatePlugin(name, data) {
         try {
-          await axios.put(`/webqq/plugins/${name}?sign=${this.sign}`, data);
+          await axios.put(`plugins/${name}?sign=${this.sign}`, data);
           this.$notify({
             type: 'success',
             title: '操作提示',
@@ -452,14 +452,14 @@
       },
       async deletePlugin(name) {
         try {
-          await axios.delete(`/webqq/plugins/${name}?sign=${this.sign}`);
+          await axios.delete(`plugins/${name}?sign=${this.sign}`);
         } catch (error) {
           console.error(error);
         }
       },
       async getPluginsStore() {
         try {
-          const response = await axios.get(`/webqq/plugins/store?sign=${this.sign}`);
+          const response = await axios.get(`plugins/store?sign=${this.sign}`);
           this.pluginsStore = response.data
         } catch (error) {
           console.error(error);
@@ -509,7 +509,7 @@
       },
       async getGroups() {
         try {
-          const response = await axios.get(`/webqq/groups?sign=${this.sign}`);
+          const response = await axios.get(`groups?sign=${this.sign}`);
           this.groups = response.data
         } catch (error) {
           console.error(error);
@@ -518,14 +518,14 @@
       async deleteGroup(groupId) {
         try {
           delete this.lastMsgIds[groupId]
-          const response = await axios.delete(`/webqq/groups/${groupId}?sign=${this.sign}`);
+          const response = await axios.delete(`groups/${groupId}?sign=${this.sign}`);
         } catch (error) {
           console.error(error);
         }
       },
       async postAction(data) {
         try {
-          await axios.post(`/webqq/action?sign=${this.sign}`, data);
+          await axios.post(`action?sign=${this.sign}`, data);
           this.$notify({
             type: 'success',
             title: '操作提示',
@@ -541,7 +541,7 @@
           const params = {
             last_msg_ids: this.lastMsgIds,
           }
-          const response = await axios.post(`/webqq/msgs?sign=${this.sign}`, params);
+          const response = await axios.post(`msgs?sign=${this.sign}`, params);
           let first = false
           if (Object.keys(this.lastMsgIds).length === 0) {
             first = true
@@ -587,7 +587,7 @@
             group_id: this.groupId,
             msg: this.msg,
           }
-          const response = await axios.post(`/webqq/msgs?sign=${this.sign}`, params);
+          const response = await axios.post(`msgs?sign=${this.sign}`, params);
           this.msg = null
           await new Promise(r => setTimeout(r, 1000));
           await this.getMsgs()
