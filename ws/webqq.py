@@ -161,6 +161,12 @@ async def post_action(request):
             'user_id': data['user_id'],
             'duration': data.get('duration', 150),
         }
+    elif action == 'set_group_kick':  # 群组踢人
+        params = {
+            'group_id': data['group_id'],
+            'user_id': data['user_id'],
+            'reject_add_request': True,
+        }
     ret = {
         'action': action,
         'params': params,

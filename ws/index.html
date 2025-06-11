@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldgutter.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldgutter.min.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js"></script>
     <title>WEBQQ</title>
   </head>
   <body>
@@ -119,8 +120,9 @@
                     <template v-if="funcShow[msg['message_id']]" style="height: 0;">
                       <el-button-group size="small">
                         <el-button type="success" plain style="padding: 0 1px; height: 14px;" icon="ChatDotRound" @click="msgReply(msg)">回复</el-button>
-                        <el-button type="warning" plain style="padding: 0 1px; height: 14px;" icon="Delete" @click="msgDelete(msg)">撤回</el-button>
-                        <el-button type="danger" plain style="padding: 0 1px; height: 14px;" icon="Lock" @click="msgBan(msg)">禁言</el-button>
+                        <el-button type="primary" plain style="padding: 0 1px; height: 14px;" icon="Delete" @click="msgDelete(msg)">撤回</el-button>
+                        <el-button type="warning" plain style="padding: 0 1px; height: 14px;" icon="Lock" @click="msgBan(msg)">禁言</el-button>
+                        <el-button type="danger" plain style="padding: 0 1px; height: 14px;" icon="TopRight" @click="msgKick(msg)">踢群</el-button>
                       </el-button-group>
                     </template>
                   </div>
@@ -128,7 +130,10 @@
               </el-scrollbar>
               <div style="margin-top: 15px;">
                 <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息"></el-input>
-                <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">发送</el-button>
+                <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">
+                  <div style="margin-top: 2px; margin-right: 3px;">发送</div>
+                <el-switch v-model="langType" size="small" inline-prompt style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="简体" inactive-text="繁体"></el-switch>
+                </el-button>
                 <el-popover placement="top-start" :width="390" trigger="hover">
                   <template #reference>
                     <img src="static/img/emoji3d/88.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
@@ -269,6 +274,7 @@
           label: 'label',
         },
         pluginsStore: [],
+        langType: true,
       }
     },
     mounted() {
@@ -581,6 +587,10 @@
           this.msg = `${this.groupId}\n${this.groups[this.groupId]}`
           return false
         }
+        if (!this.langType && !this.msg.startsWith("\\")) {
+          const converter = OpenCC.Converter({ from: 'cn', to: 'tw' });
+          this.msg = converter(this.msg)
+        }
         this.loading = true
         try {
           const params = {
@@ -665,6 +675,14 @@
       msgBan(msg) {
         const data = {
           action: 'set_group_ban',
+          group_id: parseInt(this.groupId),
+          user_id: msg['sender']['user_id'],
+        }
+        this.postAction(data)
+      },
+      msgKick(msg) {
+        const data = {
+          action: 'set_group_kick',
           group_id: parseInt(this.groupId),
           user_id: msg['sender']['user_id'],
         }
