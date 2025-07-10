@@ -68,7 +68,7 @@
                     <el-text type="primary" size="small" @click="nameClick(msg['sender'])" title="点击进行@" @mouseenter="show = true" @mouseLeave="show = false">{{ '@' + msg['sender']['nickname'] }}</el-text>
                     <el-tag v-if="msg['sender']['role'] == 'admin'" type="warning" size="small" @mouseenter="show = true" @mouseLeave="show = false">管理员</el-tag>
                     <el-tag v-else-if="msg['sender']['role'] == 'owner'" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">群主</el-tag>
-                    <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="danger" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
+                    <el-tag v-if="msg['sender']['user_id'] == msg['self_id']" type="success" effect="plain" size="small" @mouseenter="show = true" @mouseLeave="show = false">我自己</el-tag>
                     <el-text v-if="show" size="small" @mouseenter="show = true" @mouseLeave="show = false">&nbsp;{{ msg['sender']['user_id'] }}</el-text>
                     <el-text v-if="show" size="small">&nbsp;&nbsp;{{ formatTime(msg['time']) }}</el-text>
                   </el-divider>
@@ -79,7 +79,7 @@
                       </el-text>
                       <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                       <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] || '@'+message['data']['qq'] }}</el-text>
-                      <el-text v-else-if="message['type'] == 'reply'" type="info">[回复:{{ message['data']['id'] }}]</el-text>
+                      <el-text v-else-if="message['type'] == 'reply'" type="info" @click="getReply(message['data']['id'])">[回复:{{ message['data']['id'] }}]</el-text>
                       <el-text v-else-if="message['type'] == 'face'">
                         <img :src="'static/img/qqface/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
                       </el-text>
@@ -656,6 +656,19 @@
         }
         this.userAt(data)
       },
+      getReply(msg_id) {
+        let msg = '未查询到历史信息'
+        for (let v of this.msgs[this.groupId]) {
+          if (v['message_id'] == msg_id) {
+            msg = `${v['sender']['nickname']}: ${v['raw_message']}`
+            break
+          }
+        }
+        this.$message({
+          type: 'success',
+          message: msg
+        });
+      },
       msgReply(msg) {
         const msg_id = msg['message_id']
         if (! this.msg) {
@@ -673,6 +686,7 @@
         this.postAction(data)
       },
       msgBan(msg) {
+        this.msgDelete(msg)
         const data = {
           action: 'set_group_ban',
           group_id: parseInt(this.groupId),
@@ -681,6 +695,7 @@
         this.postAction(data)
       },
       msgKick(msg) {
+        this.msgDelete(msg)
         const data = {
           action: 'set_group_kick',
           group_id: parseInt(this.groupId),

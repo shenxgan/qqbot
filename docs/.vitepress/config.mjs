@@ -48,6 +48,7 @@ export default defineConfig({
           items: [
             { text: '简要介绍', link: '/guide/5170' },
             { text: '安装使用', link: '/guide/7947' },
+            { text: 'NapCat [可选]', link: '/guide/1452' },
           ]
         }
       ],
