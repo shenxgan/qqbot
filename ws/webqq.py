@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import time
 import importlib
@@ -323,7 +324,9 @@ async def put_plugin(request, name):
         plugin['instance'].save_config()
         plugin['instance'] = x.Plugin()
     elif action == 'reload':
-        x = importlib.import_module(f'plugins.{name}.main')
+        module_name = f'plugins.{name}.main'
+        module = sys.modules[module_name]
+        x = importlib.reload(module)  # 有缓存，必须重新加载
         plugin['instance'] = x.Plugin()
     elif action == 'code':
         fpath = data['fpath']

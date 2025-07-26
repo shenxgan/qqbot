@@ -1,3 +1,4 @@
+import sys
 import asyncio
 import datetime
 import importlib
@@ -16,7 +17,10 @@ async def update_plugin_hash(app):
         new_hash = get_files_hash(f'plugins/{k}')
         if new_hash != v['hash']:
             logger.info(f'插件文件有变动，重新加载插件 {k}')
-            x = importlib.import_module(f'plugins.{k}.main')
+            module_name = f'plugins.{k}.main'
+            module = sys.modules[module_name]
+            # x = importlib.import_module(f'plugins.{k}.main')
+            x = importlib.reload(module)  # 有缓存，必须重新加载
             app.ctx.plugins[k]['instance'] = x.Plugin()
             app.ctx.plugins[k]['hash'] = new_hash
 
