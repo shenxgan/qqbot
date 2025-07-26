@@ -17,8 +17,8 @@ async def update_plugin_hash(app):
         if new_hash != v['hash']:
             logger.info(f'插件文件有变动，重新加载插件 {k}')
             x = importlib.import_module(f'plugins.{k}.main')
-            v['instance'] = x.Plugin()
-            v['hash'] = new_hash
+            app.ctx.plugins[k]['instance'] = x.Plugin()
+            app.ctx.plugins[k]['hash'] = new_hash
 
 
 async def cron(app, now):
