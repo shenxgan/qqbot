@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/fold/foldgutter.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js"></script>
+    <script src="https://unpkg.com/pinyin-pro"></script>
     <title>WEBQQ</title>
   </head>
   <body>
@@ -132,7 +133,14 @@
                 <el-input v-model="msg" type="textarea" :rows="3" placeholder="1.点击头像进行@; 2.可直接粘贴截图或图片; 3.按键 Ctrl+Enter 发送消息"></el-input>
                 <el-button type="primary" plain :loading="loading" @click="sendMsg" title="Ctrl+Enter发送">
                   <div style="margin-top: 2px; margin-right: 3px;">发送</div>
-                <el-switch v-model="langType" size="small" inline-prompt style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="简体" inactive-text="繁体"></el-switch>
+                  <el-popover placement="top" width="auto" trigger="hover">
+                    <template #reference>
+                      <el-tag type="danger" size="small" round>{{ langType }}</el-tag>
+                    </template>
+                    <el-button size="small" plain type="primary" @click="langType = '简'">简体</el-button>
+                    <el-button size="small" plain type="warning" @click="langType = '繁'">繁体</el-button>
+                    <el-button size="small" plain type="danger" @click="langType = '拼'">拼音</el-button>
+                  </el-popover>
                 </el-button>
                 <el-popover placement="top-start" :width="390" trigger="hover">
                   <template #reference>
@@ -274,7 +282,7 @@
           label: 'label',
         },
         pluginsStore: [],
-        langType: true,
+        langType: '简',
       }
     },
     mounted() {
@@ -327,6 +335,25 @@
       // await this.getPluginsStore()
     },
     methods: {
+      convertText(text) {
+        const regex = /\[.*?\]|[\u4e00-\u9fa5]+|\d+|\s+|[^\u4e00-\u9fa5\d\s\[\]]+/g;
+        const result = [];
+
+        let match;
+        while ((match = regex.exec(text)) !== null) {
+          const token = match[0];
+
+          if (/^\[.*\]$/.test(token)) {
+            result.push(token);
+          } else if (/^[\u4e00-\u9fa5]+$/.test(token)) {
+            result.push(pinyinPro.pinyin(token));
+          } else {
+            result.push(token);
+          }
+        }
+
+        return result.join('');
+      },
       handleCommandStore(command){
         this.postPlugins({'fpath': command})
         this.getPlugins()
@@ -587,9 +614,13 @@
           this.msg = `${this.groupId}\n${this.groups[this.groupId]}`
           return false
         }
-        if (!this.langType && !this.msg.startsWith("\\")) {
-          const converter = OpenCC.Converter({ from: 'cn', to: 'tw' });
-          this.msg = converter(this.msg)
+        if (!this.msg.startsWith("\\")) {
+          if (this.langType == '繁') {
+            const converter = OpenCC.Converter({ from: 'cn', to: 'tw' });
+            this.msg = converter(this.msg)
+          } else if (this.langType == '拼') {
+            this.msg = this.convertText(this.msg)
+          }
         }
         this.loading = true
         try {
