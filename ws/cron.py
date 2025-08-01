@@ -1,3 +1,4 @@
+import os
 import sys
 import asyncio
 import datetime
@@ -23,6 +24,26 @@ async def update_plugin_hash(app):
             x = importlib.reload(module)  # 有缓存，必须重新加载
             app.ctx.plugins[k]['instance'] = x.Plugin()
             app.ctx.plugins[k]['hash'] = new_hash
+
+
+async def load_new_plugins(app):
+    """自动加载新的插件"""
+    for de in os.scandir('plugins'):
+        if not de.is_dir():
+            continue
+        if de.name == '__pycache__':
+            continue
+        if de.name in app.ctx.plugins:
+            continue
+        try:
+            logger.info(f'加载插件 {de.name}')
+            x = importlib.import_module(f'plugins.{de.name}.main')
+            app.ctx.plugins[de.name] = {
+                'instance': x.Plugin(),
+                'hash': get_files_hash(f'plugins/{de.name}'),
+            }
+        except Exception as e:
+            logger.error(f'插件 {de.name} 加载失败：{e}')
 
 
 async def cron(app, now):
@@ -66,4 +87,5 @@ async def cron_job():
                 logger.info(f'整点报时：{now}')
             await cron(app, now)
             await update_plugin_hash(app)
+            await load_new_plugins(app)
         await asyncio.sleep(1)
