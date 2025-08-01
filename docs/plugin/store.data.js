@@ -84,7 +84,7 @@ export default {
         },
         {
           name: '爬/啪',
-          desc: '对头像图片的各种加工（本地），需在 ws/requirements.txt 文件中添加 pillow 库',
+          desc: '对头像图片的各种加工（本地）',
           type: 'message',
           author: '@古一',
           documentUrl: '',
@@ -129,6 +129,22 @@ export default {
           author: '@古一',
           documentUrl: '',
           downloadUrl: '/qqbot/static/file/chatgpt.zip',
+        },
+        {
+          name: 'cowsay',
+          desc: '小牛说话',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/cowsay.zip',
+        },
+        {
+          name: 'stock',
+          desc: 'A 股数据',
+          type: 'message',
+          author: '@古一',
+          documentUrl: '',
+          downloadUrl: '/qqbot/static/file/stock.zip',
         },
       ]
     }
