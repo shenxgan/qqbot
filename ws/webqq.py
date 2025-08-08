@@ -135,6 +135,13 @@ async def get_group_list(request):
     return response.json(request.app.ctx.group_id_name)
 
 
+@webqq.get('/myfaces')
+@authorized()
+async def get_myfaces(request):
+    """获取收藏表情包列表"""
+    return response.json(request.app.ctx.myfaces)
+
+
 @webqq.delete('/groups/<group_id>')
 @authorized()
 async def delete_group(request, group_id):

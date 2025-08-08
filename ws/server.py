@@ -23,6 +23,7 @@ async def init(app):
     app.ctx.msg_maxlen = 50         # 每个群组保存的历史消息条数
     app.ctx.sign = None             # 网页qq鉴权sign
     app.ctx.group_id_name = {}      # 群组id与名称对应关系
+    app.ctx.myfaces = []            # 机器人的收藏表情列表
     app.ctx.delete_groups = set()   # 当前过滤不查看的群组
     app.ctx.user_last_ts = {}       # 用户频率限制，记录触发的时间戳
     app.ctx.user_id_name = {}       # QQ号与昵称对应关系
@@ -54,6 +55,12 @@ async def qqbot(request, ws):
     app.ctx.ws = ws
     app.add_task(cron_job())
     await ws.send(json.dumps({'action': 'get_group_list'}))
+    await ws.send(json.dumps({
+        'action': 'fetch_custom_face',
+        'params': {
+            'count': 120,
+        }
+    }))
 
     while True:
         data = await ws.recv()
@@ -70,8 +77,14 @@ async def qqbot(request, ws):
         elif post_type == 'notice':
             await notice(ws, data)
         elif isinstance(data.get('data'), list):
-            app.ctx.group_id_name = {
-                g['group_id']: g['group_name'] for g in data['data']}
+            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
+            if isinstance(data['data'][0], dict) \
+                    and 'group_id' in data['data'][0]:
+                app.ctx.group_id_name = {
+                    g['group_id']: g['group_name'] for g in data['data']}
+            elif isinstance(data['data'][0], str) \
+                    and data['data'][0].startswith('http'):
+                app.ctx.myfaces = data['data']
         else:
             if data.get('meta_event_type') == 'heartbeat':
                 continue

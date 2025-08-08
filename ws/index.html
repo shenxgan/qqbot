@@ -158,6 +158,14 @@
                     <img :onerror="faceError" :src="'static/img/qqface/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
                   </el-text>
                 </el-popover>
+                <el-popover placement="top-start" :width="390" trigger="hover">
+                  <template #reference>
+                    <img :src="myfaces[0]" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+                  </template>
+                  <el-text v-for="url in myfaces">
+                    <img :onerror="faceError" :src="url" style="width: 30px; height: 30px;" @click="faceClick" />
+                  </el-text>
+                </el-popover>
               </div>
             </el-tab-pane>
           </el-tabs>
@@ -263,6 +271,7 @@
         msg: null,
         msgs: {},
         groups: {},
+        myfaces: [],
         msgNew: {},
         lastMsgIds: {},
         loading: false,
@@ -331,6 +340,7 @@
       await this.getMsgs()
       this.groupId = Object.keys(this.msgs)[0]
       await this.getGroups()
+      await this.getMyFaces()
       // await this.getPlugins()
       // await this.getPluginsStore()
     },
@@ -512,18 +522,11 @@
         img.onerror = null
       },
       faceClick(ev) {
-        const img = ev.target
-        var canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL("image/png");
-        const base64 = dataURL.split(',')[1]
+        const url = ev.target.src
         if (! this.msg) {
           this.msg = ''
         }
-        this.msg += `[CQ:image,file=base64://${base64}]`
+        this.msg += `[CQ:image,url=${url}]`
       },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
@@ -539,6 +542,14 @@
           text = text.replaceAll(url, `<a href="${url}" target="_blank">${url}</a>`)
         }
         return text
+      },
+      async getMyFaces() {
+        try {
+          const response = await axios.get(`myfaces?sign=${this.sign}`);
+          this.myfaces = response.data
+        } catch (error) {
+          console.error(error);
+        }
       },
       async getGroups() {
         try {
