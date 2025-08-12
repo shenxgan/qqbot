@@ -59,7 +59,7 @@
             <el-tab-pane v-for="(item, key) in msgs" :key="key" :label="key" :name="key">
               <template #label>
                 <el-badge :is-dot="msgNew[key]">
-                  <el-text v-if="key in groups" size="small" :type="groupId == key ? 'primary' : ''" style="width: 80px;" truncated :title="key + '\n' + groups[key]">{{ groups[key] }}</el-text>
+                  <el-text v-if="key in groups" size="small" :type="groupId == key ? 'primary' : ''" style="width: 80px;" truncated :title="key + '\n' + groups[key]['group_name'] + '\n' + groups[key]['member_count'] + '/' + groups[key]['max_member_count']">{{ groups[key]['group_name'] }}</el-text>
                   <el-text v-else size="small" :type="groupId == key ? 'primary' : ''" style="width: 80px;" truncated>{{ item[0]['sender']['nickname'] }}</el-text>
                 </el-badge>
               </template>
@@ -160,7 +160,7 @@
                 </el-popover>
                 <el-popover placement="top-start" :width="390" trigger="hover">
                   <template #reference>
-                    <img :src="myfaces[0]" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+                    <img :src="myfaces.at(-1)" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
                   </template>
                   <el-text v-for="url in myfaces">
                     <img :onerror="faceError" :src="url" style="width: 30px; height: 30px;" @click="faceClick" />
@@ -547,6 +547,7 @@
         try {
           const response = await axios.get(`myfaces?sign=${this.sign}`);
           this.myfaces = response.data
+          this.myfaces.reverse()
         } catch (error) {
           console.error(error);
         }
@@ -622,7 +623,7 @@
           return false
         }
         if (this.msg == '\\qxx') {
-          this.msg = `${this.groupId}\n${this.groups[this.groupId]}`
+          this.msg = `${this.groupId}\n${this.groups[this.groupId]['group_name']}`
           return false
         }
         if (!this.msg.startsWith("\\")) {

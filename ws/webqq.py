@@ -132,7 +132,7 @@ async def post_msgs(request):
 async def get_group_list(request):
     """获取群组列表信息"""
     request.app.ctx.delete_groups.clear()
-    return response.json(request.app.ctx.group_id_name)
+    return response.json(request.app.ctx.group_info)
 
 
 @webqq.get('/myfaces')
