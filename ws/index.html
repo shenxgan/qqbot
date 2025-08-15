@@ -49,6 +49,9 @@
       <el-dialog v-model="xShow.img" draggable width="fit-content">
         <img :src="imgUrl" style="max-width: 100%;" />
       </el-dialog>
+      <el-dialog v-model="xShow.video" draggable width="fit-content">
+        <video :src="videoUrl" style="max-width: 100%;" autoplay muted loop></video>
+      </el-dialog>
       <el-tabs v-model="type" type="card" @tab-click="tabClickType">
         <el-tab-pane name="webqq">
           <template #label>
@@ -88,7 +91,7 @@
                         <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
                       </el-text>
                       <el-text v-else-if="message['type'] == 'video'">
-                        <video style="max-height: 100px;" autoplay muted loop>
+                        <video style="max-height: 100px;" autoplay muted loop @click="videoClick(message['data']['url'])">
                           <source :src="message['data']['url']" type="video/mp4">
                         </video>
                       </el-text>
@@ -279,6 +282,7 @@
         funcShow: {},
         xShow: {},
         imgUrl: null,
+        videoUrl: null,
         cnt: 0,
         timer: null,
         plugins: [],
@@ -515,6 +519,10 @@
       imgClick(url) {
         this.xShow.img = true
         this.imgUrl = url
+      },
+      videoClick(url) {
+        this.xShow.video = true
+        this.videoUrl = url
       },
       faceError(ev) {
         const img = ev.target
