@@ -122,8 +122,11 @@
                       </el-text>
                     </template>
                     <template v-if="funcShow[msg['message_id']]" style="height: 0;">
-                      <el-button-group size="small">
-                        <el-button type="success" plain style="padding: 0 1px; height: 14px;" icon="ChatDotRound" @click="msgReply(msg)">回复</el-button>
+                      <el-button-group size="small" style="margin-left: 3px;">
+                        <el-button type="primary" plain style="padding: 0 1px; height: 14px;" icon="ChatDotRound" @click="msgReply(msg)">回复</el-button>
+                        <el-button type="success" plain style="padding: 0 1px; height: 14px;" icon="CopyDocument" @click="msgCopy(msg)">复制</el-button>
+                      </el-button-group>
+                      <el-button-group size="small" style="margin-left: 3px;">
                         <el-button type="primary" plain style="padding: 0 1px; height: 14px;" icon="Delete" @click="msgDelete(msg)">撤回</el-button>
                         <el-button type="warning" plain style="padding: 0 1px; height: 14px;" icon="Lock" @click="msgBan(msg)">禁言</el-button>
                         <el-button type="danger" plain style="padding: 0 1px; height: 14px;" icon="TopRight" @click="msgKick(msg)">踢群</el-button>
@@ -534,7 +537,9 @@
         if (! this.msg) {
           this.msg = ''
         }
-        this.msg += `[CQ:image,url=${url}]`
+        const tips = ['嘎？', '嘎嘎。', '嘎嘎嘎！', '🧧有红包']
+        const tip = tips[Math.floor(Math.random() * tips.length)];
+        this.msg += `[CQ:image,url=${url},sub_type=1,summary=&#91;${tip}&#93;]`
       },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
@@ -727,6 +732,12 @@
         }
         this.msg += `[CQ:reply,id=${msg_id}] `
         this.nameClick(msg['sender'])
+      },
+      msgCopy(msg) {
+        if (! this.msg) {
+          this.msg = ''
+        }
+        this.msg += msg['raw_message']
       },
       msgDelete(msg) {
         const msg_id = msg['message_id']
