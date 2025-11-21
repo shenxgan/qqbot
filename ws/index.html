@@ -79,13 +79,13 @@
                   <div :style="msg['raw_message'].includes(msg['self_id']) ? 'background-color: #E3EDCD;' : ''" @mouseenter="funcShow[msg['message_id']] = true" @mouseLeave="funcShow[msg['message_id']] = false">
                     <template v-for="(message, index) in msg['message']" :key="index">
                       <el-text v-if="message['type'] == 'image'">
-                        <img :src="message['data']['url']" style="max-width: 100px; max-height: 50px" @click="imgClick(message['data']['url'])" />
+                        <img class="zoom2" :src="message['data']['url']" style="max-width: 100px; max-height: 50px" @click="imgClick(message['data']['url'])" />
                       </el-text>
                       <el-text v-else-if="message['type'] == 'text'" style="white-space: pre-wrap;" v-html="handleMessage(message['data']['text'])"></el-text>
                       <el-text v-else-if="message['type'] == 'at'" type="success" @click="userAt(message['data'])" title="点击我也@TA">{{ message['data']['name'] || '@'+message['data']['qq'] }}</el-text>
                       <el-text v-else-if="message['type'] == 'reply'" type="info" @click="getReply(message['data']['id'])">[回复:{{ message['data']['id'] }}]</el-text>
                       <el-text v-else-if="message['type'] == 'face'">
-                        <img :src="'static/img/qqface/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
+                        <img class="zoom2" :src="'static/img/qqface/'+message['data']['id']+'.png'" class="face" :title="'[face:'+message['data']['id']+']'" />
                       </el-text>
                       <el-text v-else-if="message['type'] == 'mface'" type="success">
                         <el-link :href="message['data']['url']" target="_blank" type="success">{{ message['data']['summary'] }}</el-link>
@@ -153,7 +153,7 @@
                     <img src="static/img/emoji3d/88.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
                   </template>
                   <el-text v-for="i in 144">
-                    <img :src="'static/img/emoji3d/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                    <img class="zoom" :src="'static/img/emoji3d/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
                   </el-text>
                 </el-popover>
                 <el-popover placement="top-start" :width="420" trigger="hover">
@@ -161,7 +161,34 @@
                     <img src="static/img/qqface/24.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
                   </template>
                   <el-text v-for="i in qqfaces">
-                    <img :onerror="faceError" :src="'static/img/qqface/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                    <img class="zoom" :onerror="faceError" :src="'static/img/qqface/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                  </el-text>
+                </el-popover>
+                <el-popover placement="top-start" :width="420" trigger="hover">
+                  <template #reference>
+                    <img src="static/img/douyin/29.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+                  </template>
+                  <el-text v-for="i in 138">
+                    <img class="zoom" :src="'static/img/douyin/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                  </el-text>
+                </el-popover>
+                <el-popover placement="top-start" :width="420" trigger="hover">
+                  <template #reference>
+                    <img src="https://sf1-scmcdn-cn.feishucdn.com/obj/lark-reaction-cn/emoji_youarethebest.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+                  </template>
+                  <el-text v-for="i in fsfaces">
+                    <img class="zoom" :src="'https://sf1-scmcdn-cn.feishucdn.com/obj/lark-reaction-cn/emoji_'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                  </el-text>
+                </el-popover>
+                <el-popover placement="top-start" :width="390" trigger="hover">
+                  <template #reference>
+                    <img src="static/img/dingding/70.png" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
+                  </template>
+                  <el-text v-for="i in 88">
+                    <img class="zoom" :src="'static/img/dingding/'+i+'.png'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
+                  </el-text>
+                  <el-text v-for="i in 10">
+                    <img class="zoom" :src="'static/img/dingding/super_emoji/'+i+'.gif'" style="width: 30px; height: 30px;" :title="i" @click="faceClick" />
                   </el-text>
                 </el-popover>
                 <el-popover placement="top-start" :width="390" trigger="hover">
@@ -169,7 +196,7 @@
                     <img :src="myfaces.at(-1)" style="width: 25px; height: 25px; margin-bottom: -10px; margin-left: 5px;" />
                   </template>
                   <el-text v-for="url in myfaces">
-                    <img :onerror="faceError" :src="url" style="width: 30px; height: 30px;" @click="faceClick" />
+                    <img class="zoom" :onerror="faceError" :src="url" style="width: 30px; height: 30px; margin: 1.5px;" @click="faceClick" />
                   </el-text>
                 </el-popover>
               </div>
@@ -274,6 +301,7 @@
         groupId: null,
         sign: null,
         qqfaces: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 46, 49, 53, 56, 59, 60, 63, 64, 66, 67, 74, 75, 76, 77, 78, 79, 85, 86, 89, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 114, 116, 118, 119, 120, 121, 123, 124, 125, 129, 137, 144, 146, 147, 169, 171, 172, 173, 174, 175, 176, 177, 178, 179, 181, 182, 183, 185, 187, 201, 212, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 277, 281, 282, 283, 284, 285, 286, 287, 289, 293, 294, 295, 297, 298, 299, 300, 302, 303, 305, 306, 307, 311, 312, 314, 317, 318, 319, 320, 323, 324, 325, 326, 332, 333, 334, 336, 337, 338, 339, 341, 342, 343, 344, 345, 346, 347, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 392, 393, 394, 395],
+        fsfaces: 'eighteen,angry,applaud_v2,bear,beer,bigkiss,blubber,blush,bomb,cake_v2,chuckle,clap,cleaver_v3,showoff,crazy,cry,cucumber_v3,dizzy,drowsy,dull,eating,embarrassed,errr,eyesclosed,facepalm,fingerheart_v2,fistbump_v2,gift_v2,glance,grin,hammer_v1,headset_v3,heart,heartbroken,highfive_v2,hug,husky,innocentsmile,joyful,kiss,laugh,lips_v1,lol,lookdown,love,blackface,nosepick,hearts_v2,ok_v2,party,petrified,poop,praise,proud,puke,rainbowpuke_v2,rose,salute_v2,scowl,shake_v2,shhh,shocked,shy,sick,silent,skull,slap,sleep,slight,smart,smile,smirk,smooch,smug,sob,speechless,spitblood,strive,sweat,tears,tease,terror,thanks_v2,thinking,thumbsup_v2,toasted,tongue,click_v2,wail,wave,what,whimper,wink,witty,wow,wronged,yawn,yeah,done,luck,redpacket,firecracker_v3,enough,comfort,drool,trick,dullstare,fighton_v2,irritated_v2,donnotgo,frown,plusone,attention,welldone,followme,detergent,awesome,goodjob,eatingfood_v2,typing,lemon_v2,lgtm_v3,thumbsdown_v2,youarethebest,xmastree,snowman,xmashat,onit_v1,onesecond,sigh,partying_v1,gogogo_v4,get_v3,money,awesomen_v2,betrayed'.split(","),
         msg: null,
         msgs: {},
         groups: {},
@@ -539,7 +567,7 @@
         }
         const tips = ['嘎？', '嘎嘎。', '嘎嘎嘎！', '🧧有红包']
         const tip = tips[Math.floor(Math.random() * tips.length)];
-        this.msg += `[CQ:image,url=${url},sub_type=1,summary=&#91;${tip}&#93;]`
+        this.msg += `[CQ:image,file=${url},sub_type=1,summary=&#91;${tip}&#93;]`
       },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
@@ -790,6 +818,19 @@
   width: 20px;
   height: 20px;
   margin-bottom: -5px;
+}
+.zoom {
+  transition: transform 0.3s ease;
+}
+.zoom:hover {
+  transform: scale(2.4);
+}
+.zoom2 {
+    transition: transform 0.3s ease;
+    transform-origin: bottom left; /* 从左下角开始放大 */
+}
+.zoom2:hover {
+    transform: scale(3);
 }
 .webqq-tabs {
   height: 555px;
