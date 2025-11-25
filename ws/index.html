@@ -141,11 +141,12 @@
                   <div style="margin-top: 2px; margin-right: 3px;">发送</div>
                   <el-popover placement="top" width="auto" trigger="hover">
                     <template #reference>
-                      <el-tag type="danger" size="small" round>{{ langType }}</el-tag>
+                      <el-tag :type="langType == '全' ? 'danger' : 'success'" size="small" round>{{ langType }}</el-tag>
                     </template>
+                    <el-button size="small" plain type="danger" @click="langType = '全'">全部群</el-button>
                     <el-button size="small" plain type="primary" @click="langType = '简'">简体</el-button>
-                    <el-button size="small" plain type="warning" @click="langType = '繁'">繁体</el-button>
-                    <el-button size="small" plain type="danger" @click="langType = '拼'">拼音</el-button>
+                    <el-button size="small" plain type="success" @click="langType = '繁'">繁体</el-button>
+                    <el-button size="small" plain type="success" @click="langType = '拼'">拼音</el-button>
                   </el-popover>
                 </el-button>
                 <el-popover placement="top-start" :width="390" trigger="hover">
@@ -677,15 +678,26 @@
         }
         this.loading = true
         try {
-          const params = {
-            group_id: this.groupId,
-            msg: this.msg,
+          let groups
+          if (this.langType == '全') {
+            groups = this.groups
+          } else {
+            groups = {[this.groupId]: null}
           }
-          const response = await axios.post(`msgs?sign=${this.sign}`, params);
+          for (const group_id in groups) {
+            const params = {
+              group_id: group_id,
+              msg: this.msg,
+            }
+            await axios.post(`msgs?sign=${this.sign}`, params);
+            await new Promise(r => setTimeout(r, 1000));
+          }
           this.msg = null
-          await new Promise(r => setTimeout(r, 1000));
           await this.getMsgs()
           this.scrollToBottom(this.groupId)
+          if (this.langType == '全') {
+            this.langType = '简'
+          }
         } catch (error) {
           console.error(error);
         }
