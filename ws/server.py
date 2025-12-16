@@ -54,12 +54,16 @@ async def qqbot(request, ws):
     """QQ机器人"""
     app.ctx.ws = ws
     app.add_task(cron_job())
-    await ws.send(json.dumps({'action': 'get_group_list'}))
+    await ws.send(json.dumps({
+        'action': 'get_group_list',
+        'echo': 'get_group_list',
+    }))
     await ws.send(json.dumps({
         'action': 'fetch_custom_face',
         'params': {
             'count': 120,
-        }
+        },
+        'echo': 'fetch_custom_face',
     }))
 
     while True:
@@ -76,18 +80,16 @@ async def qqbot(request, ws):
                 await private_msg(ws, data)
         elif post_type == 'notice':
             await notice(ws, data)
-        elif isinstance(data.get('data'), list):
-            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
-            if isinstance(data['data'][0], dict) \
-                    and 'group_id' in data['data'][0]:  # 获取群列表
-                app.ctx.group_info = {g['group_id']: g for g in data['data']}
-            elif isinstance(data['data'][0], str) \
-                    and data['data'][0].startswith('http'):
-                app.ctx.myfaces = data['data']
         else:
+            echo = data.get('echo')
             if data.get('meta_event_type') == 'heartbeat':
                 continue
-            logger.info(json.dumps(data, indent=4, ensure_ascii=False))
+            elif echo == 'get_group_list':
+                app.ctx.group_info = {g['group_id']: g for g in data['data']}
+            elif echo == 'fetch_custom_face':
+                app.ctx.myfaces = data['data']
+            else:
+                logger.info(json.dumps(data, indent=4, ensure_ascii=False))
 
 
 if __name__ == '__main__':
