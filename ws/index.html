@@ -143,7 +143,7 @@
                     <template #reference>
                       <el-tag :type="langType == '全' ? 'danger' : 'success'" size="small" round>{{ langType }}</el-tag>
                     </template>
-                    <el-button size="small" plain type="danger" @click="langType = '全'">全部群</el-button>
+                    <!-- <el-button size="small" plain type="danger" @click="langType = '全'">全部群</el-button> -->
                     <el-button size="small" plain type="primary" @click="langType = '简'">简体</el-button>
                     <el-button size="small" plain type="success" @click="langType = '繁'">繁体</el-button>
                     <el-button size="small" plain type="success" @click="langType = '拼'">拼音</el-button>
@@ -582,14 +582,26 @@
         img.style.display = 'none'
         img.onerror = null
       },
-      faceClick(ev) {
+      async getSummary() {
+        try {
+          // const ret = await axios.get('https://python-abc.xyz/api/shici/ajax');
+          // return ret.data.data.content
+          const ret = await axios.get('https://v1.jinrishici.com/all');
+          return ret.data.content
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async faceClick(ev) {
         const url = ev.target.src
         if (! this.msg) {
           this.msg = ''
         }
-        const tips = ['嘎？', '嘎嘎。', '嘎嘎嘎！', '🧧有红包']
-        const tip = tips[Math.floor(Math.random() * tips.length)];
-        this.msg += `[CQ:image,file=${url},sub_type=1,summary=&#91;${tip}&#93;]`
+        // const tips = ['嘎？', '嘎嘎。', '嘎嘎嘎！', '🧧有红包']
+        // const tip = tips[Math.floor(Math.random() * tips.length)];
+        // const tip = await this.getSummary()
+        const tip = "&#91;动画表情&#93;"
+        this.msg += `[CQ:image,file=${url},sub_type=1,summary=${tip}]`
       },
       formatTime(ts) {
         const date = new Date(ts * 1000).toLocaleString().split(' ')[1]
@@ -764,7 +776,11 @@
         if (! this.msg) {
           this.msg = ''
         }
-        this.msg += `[CQ:at,qq=${data.qq},name=${data.name}] `
+        if (data.name.includes("[") || data.name.includes("]")) {
+          this.msg += `[CQ:at,qq=${data.qq}] `
+        } else {
+          this.msg += `[CQ:at,qq=${data.qq},name=${data.name}] `
+        }
       },
       nameClick(sender) {
         const data = {

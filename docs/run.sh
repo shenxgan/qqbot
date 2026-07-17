@@ -20,7 +20,8 @@ case "$1" in
         npm run docs:build
     ;;
     deploy|up)
-        scp -r .vitepress/dist/* abc:/var/www/qqbot/
+        # scp -r .vitepress/dist/* abc:/var/www/qqbot/
+        rsync -avz --progress --info=progress2 .vitepress/dist/* abc:/var/www/qqbot/
     ;;
     *)
         usage

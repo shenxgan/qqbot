@@ -101,7 +101,8 @@ case "$1" in
         docker compose --profile $2 up $3
     ;;
     tail)
-        docker compose logs -f $2
+        # docker compose logs -f $2
+        docker compose logs -f --since=$3m $2
     ;;
     deploy)
         ssh $host "cd $project_path && git pull origin main && ./run.sh restart $2 -d"
