@@ -204,7 +204,7 @@ def generate_tree(directory, prefix, tree):
 def is_text_file(file_path):
     text_extensions = {
         '.txt', '.md', '.json', '.csv', '.xml', '.html', '.css', '.js',
-        '.py', '.java', '.c', '.cpp', '.h', '.sh'}  # 常见文本文件扩展名
+        '.py', '.java', '.c', '.cpp', '.h', '.sh', '.prompt'}  # 常见文本文件扩展名
     if file_path.suffix in text_extensions:
         return True
     mime_type, _ = mimetypes.guess_type(file_path)

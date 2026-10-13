@@ -24,6 +24,7 @@ async def init(app):
     app.ctx.sign = None             # 网页qq鉴权sign
     app.ctx.group_info = {}         # 群组id与群信息的对应关系
     app.ctx.myfaces = []            # 机器人的收藏表情列表
+    app.ctx.myfaces_cnt = 180       # 机器人的收藏表情最多展示数量
     app.ctx.delete_groups = set()   # 当前过滤不查看的群组
     app.ctx.user_last_ts = {}       # 用户频率限制，记录触发的时间戳
     app.ctx.user_id_name = {}       # QQ号与昵称对应关系
@@ -61,7 +62,7 @@ async def qqbot(request, ws):
     await ws.send(json.dumps({
         'action': 'fetch_custom_face',
         'params': {
-            'count': 120,
+            'count': app.ctx.myfaces_cnt,
         },
         'echo': 'fetch_custom_face',
     }))
